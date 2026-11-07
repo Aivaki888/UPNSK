@@ -12,13 +12,14 @@
   function applyTheme(pref) {
     const theme = resolveTheme(pref);
     root.setAttribute("data-theme", theme);
-    root.setAttribute("data-theme-pref", pref);
-    localStorage.setItem("dari-theme", pref);
-    document.cookie = `theme=${encodeURIComponent(pref)};path=/;max-age=31536000;SameSite=Lax`;
+    root.setAttribute("data-theme-pref", pref === "dark" || pref === "light" ? pref : "system");
+    localStorage.setItem("dari-theme", pref === "dark" || pref === "light" ? pref : "system");
+    document.cookie = `theme=${encodeURIComponent(root.getAttribute("data-theme-pref"))};path=/;max-age=31536000;SameSite=Lax`;
   }
 
   if (themeToggle) {
-    themeToggle.addEventListener("click", () => {
+    themeToggle.addEventListener("click", (event) => {
+      event.preventDefault();
       const current = root.getAttribute("data-theme") === "dark" ? "dark" : "light";
       applyTheme(current === "dark" ? "light" : "dark");
     });

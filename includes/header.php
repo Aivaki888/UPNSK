@@ -10,7 +10,7 @@ $activeNav = $activeNav ?? '';
 $themePref = $user['theme_pref'] ?? ($_COOKIE['theme'] ?? 'system');
 ?>
 <!DOCTYPE html>
-<html lang="ru" data-theme="<?= e($themePref === 'system' ? 'system' : $themePref) ?>">
+<html lang="ru" data-theme="light" data-theme-pref="<?= e($themePref) ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,12 +24,13 @@ $themePref = $user['theme_pref'] ?? ($_COOKIE['theme'] ?? 'system');
       (function () {
         try {
           var stored = localStorage.getItem('dari-theme');
-          var pref = stored || <?= json_encode($themePref, JSON_UNESCAPED_UNICODE) ?>;
+          var pref = stored || document.documentElement.getAttribute('data-theme-pref') || 'system';
           var theme = pref;
-          if (pref === 'system') {
+          if (pref !== 'dark' && pref !== 'light') {
             theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            pref = 'system';
           }
-          document.documentElement.setAttribute('data-theme', theme === 'dark' ? 'dark' : 'light');
+          document.documentElement.setAttribute('data-theme', theme);
           document.documentElement.setAttribute('data-theme-pref', pref);
         } catch (e) {}
       })();
