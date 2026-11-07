@@ -6,7 +6,13 @@
       "type": "shell",
       "command": "php scripts/init_db.php",
       "windows": {
-        "command": "php scripts\\init_db.php"
+        "command": "if (Test-Path 'C:\\xampp\\php\\php.exe') { & 'C:\\xampp\\php\\php.exe' scripts\\init_db.php } elseif (Test-Path 'C:\\XAMPP\\php\\php.exe') { & 'C:\\XAMPP\\php\\php.exe' scripts\\init_db.php } else { php scripts\\init_db.php }",
+        "options": {
+          "shell": {
+            "executable": "powershell.exe",
+            "args": ["-NoProfile", "-Command"]
+          }
+        }
       },
       "options": {
         "cwd": "${workspaceFolder}"
@@ -21,6 +27,15 @@
       "label": "Dari: Start website",
       "type": "shell",
       "command": "php -S 127.0.0.1:8765 -t .",
+      "windows": {
+        "command": "if (Test-Path 'C:\\xampp\\php\\php.exe') { & 'C:\\xampp\\php\\php.exe' -S 127.0.0.1:8765 -t . } elseif (Test-Path 'C:\\XAMPP\\php\\php.exe') { & 'C:\\XAMPP\\php\\php.exe' -S 127.0.0.1:8765 -t . } else { php -S 127.0.0.1:8765 -t . }",
+        "options": {
+          "shell": {
+            "executable": "powershell.exe",
+            "args": ["-NoProfile", "-Command"]
+          }
+        }
+      },
       "isBackground": true,
       "options": {
         "cwd": "${workspaceFolder}"
@@ -36,6 +51,22 @@
           "endsPattern": "(Development Server|started|Listening|Failed)"
         }
       },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "focus": true
+      }
+    },
+    {
+      "label": "Dari: Start via start.bat (Windows)",
+      "type": "shell",
+      "windows": {
+        "command": "cmd /c start.bat"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
       "presentation": {
         "reveal": "always",
         "panel": "dedicated",
