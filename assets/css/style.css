@@ -170,12 +170,15 @@ html[data-theme="dark"] .nav-cta {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  position: relative;
+  z-index: 5;
+  flex-shrink: 0;
 }
 
 .theme-toggle,
 .nav-toggle {
-  width: 2.6rem;
-  height: 2.6rem;
+  width: 2.75rem;
+  height: 2.75rem;
   border: 1px solid var(--line);
   border-radius: 999px;
   background: var(--bg-elevated);
@@ -184,6 +187,8 @@ html[data-theme="dark"] .nav-cta {
   display: inline-grid;
   place-items: center;
   position: relative;
+  z-index: 6;
+  touch-action: manipulation;
 }
 
 .theme-icon {
@@ -192,6 +197,7 @@ html[data-theme="dark"] .nav-cta {
   border-radius: 999px;
   border: 2px solid currentColor;
   position: absolute;
+  pointer-events: none;
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
