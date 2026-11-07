@@ -2,11 +2,6 @@
 
 declare(strict_types=1);
 
-/**
- * Инициализация таблиц MySQL и демо-пользователя.
- * Запуск: php scripts/init_db.php
- */
-
 $host = getenv('DB_HOST') ?: '127.0.0.1';
 $name = getenv('DB_NAME') ?: 'giftshop';
 $user = getenv('DB_USER') ?: 'giftuser';
@@ -21,7 +16,6 @@ if ($rootSql === false) {
     exit(1);
 }
 
-// Убираем CREATE DATABASE / USE — база уже должна существовать.
 $statements = preg_replace('/^\s*CREATE DATABASE[\s\S]*?;/mi', '', $rootSql) ?? $rootSql;
 $statements = preg_replace('/^\s*USE\s+\w+\s*;/mi', '', $statements) ?? $statements;
 

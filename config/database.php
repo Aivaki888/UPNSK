@@ -2,11 +2,6 @@
 
 declare(strict_types=1);
 
-/**
- * Подключение к MySQL.
- * Локально используются значения по умолчанию;
- * на сервере можно задать DB_HOST, DB_NAME, DB_USER, DB_PASS, DB_SOCKET.
- */
 function db(): PDO
 {
     static $pdo = null;
