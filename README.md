@@ -20,6 +20,15 @@
 
 ## Быстрый старт
 
+### VS Code / Cursor
+
+1. Открой папку проекта в VS Code.  
+2. Убедись, что установлены PHP и MySQL, БД создана (см. ниже).  
+3. `Terminal` → `Run Task…` → **Dari: Init DB and start website**  
+   или нажми `Ctrl+Shift+B` (задача по умолчанию).  
+4. Открой http://127.0.0.1:8765 в браузере  
+   или `Run and Debug` → **Dari: Open in browser** (нужен Chrome).
+
 ### Windows (XAMPP / OpenServer)
 
 1. Установи [XAMPP](https://www.apachefriends.org/) или OpenServer.  
