@@ -13,13 +13,6 @@
 7. `profile.php` — профиль  
 8. `certificates.php` — мои сертификаты  
 
-## Возможности
-
-- Регистрация, вход, выход, редактирование профиля и смена пароля  
-- Светлая и тёмная тема (переключатель в шапке, сохранение в `localStorage` и cookie)  
-- Покупка сертификата: картинка, сумма, повод, получатель, акцент, доставка, сообщение  
-- История сертификатов с уникальным кодом в MySQL  
-
 ## Требования
 
 - PHP 8.1+ с расширением `pdo_mysql`  
@@ -27,21 +20,51 @@
 
 ## Быстрый старт
 
-```bash
-# 1. Создайте БД и пользователя (пример для MariaDB/MySQL)
-sudo mysql -e "CREATE DATABASE IF NOT EXISTS giftshop CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+### Windows (XAMPP / OpenServer)
+
+1. Установи [XAMPP](https://www.apachefriends.org/) или OpenServer.  
+2. Запусти **Apache** и **MySQL**.  
+3. Склонируй проект в папку сайта, например `C:\xampp\htdocs\UPNSK`.  
+4. Открой phpMyAdmin → создай БД `giftshop`.  
+5. В MySQL выполни (через phpMyAdmin → SQL или консоль):
+
+```sql
+CREATE DATABASE IF NOT EXISTS giftshop CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 CREATE USER IF NOT EXISTS 'giftuser'@'localhost' IDENTIFIED BY 'giftpass';
 GRANT ALL PRIVILEGES ON giftshop.* TO 'giftuser'@'localhost';
-FLUSH PRIVILEGES;"
+FLUSH PRIVILEGES;
+```
 
-# 2. Импортируйте схему и демо-данные
-php scripts/init_db.php
+6. В папке проекта дважды кликни `start.bat`  
+   или в терминале:
 
-# 3. Запустите встроенный сервер PHP
+```bat
+php scripts\init_db.php
 php -S 127.0.0.1:8765 -t .
 ```
 
-Откройте в браузере: `http://127.0.0.1:8765`
+7. Открой в браузере: http://127.0.0.1:8765
+
+Если PHP не находится, укажи полный путь, например:
+
+```bat
+C:\xampp\php\php.exe scripts\init_db.php
+C:\xampp\php\php.exe -S 127.0.0.1:8765 -t .
+```
+
+### Linux / macOS
+
+```bash
+chmod +x start.sh
+./start.sh
+```
+
+Или вручную:
+
+```bash
+php scripts/init_db.php
+php -S 127.0.0.1:8765 -t .
+```
 
 ### Демо-аккаунт
 
@@ -66,4 +89,5 @@ includes/             — bootstrap, header, footer, helpers
 assets/css|js|img     — стили, скрипты, SVG-дизайны
 sql/schema.sql        — схема MySQL
 scripts/init_db.php   — инициализация БД
+start.bat / start.sh  — запуск сайта
 ```
