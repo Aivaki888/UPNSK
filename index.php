@@ -14,22 +14,25 @@ require __DIR__ . '/includes/header.php';
 ?>
 
 <section class="hero">
-    <div class="container hero-inner">
+    <div class="hero-copy">
         <span class="eyebrow">Подарочные сертификаты</span>
         <h1>Дари</h1>
-        <p class="lead">Выберите дизайн, сумму и повод — оформите персональный сертификат за пару минут. Светлая и тёмная тема, личный кабинет и история покупок.</p>
+        <p class="lead">Персональный сертификат за несколько минут: дизайн, сумма, повод и короткое послание.</p>
         <div class="cta-row">
-            <a class="btn btn-primary" href="order.php">Оформить сертификат</a>
-            <a class="btn btn-secondary" href="catalog.php">Смотреть каталог</a>
+            <a class="btn btn-primary" href="order.php">Оформить</a>
+            <a class="btn btn-secondary" href="catalog.php">Каталог</a>
         </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+        <div class="hero-seal">Dari</div>
     </div>
 </section>
 
 <section class="section">
     <div class="container">
         <div class="section-head">
-            <h2 class="section-title">Дизайны для любого повода</h2>
-            <p class="section-text">Шесть визуальных направлений: от лесной классики до зимней сказки. Каждый дизайн можно дополнить суммой, цветовым акцентом и личным посланием.</p>
+            <h2 class="section-title">Шесть характеров</h2>
+            <p class="section-text">От спокойного минимала до зимнего пейзажа — выберите визуальный тон подарка.</p>
         </div>
         <div class="design-grid">
             <?php foreach ($designs as $design): ?>
@@ -55,21 +58,21 @@ require __DIR__ . '/includes/header.php';
 <section class="section section-alt">
     <div class="container">
         <div class="section-head">
-            <h2 class="section-title">Как это работает</h2>
-            <p class="section-text">Три шага от идеи подарка до готового сертификата.</p>
+            <h2 class="section-title">Три шага</h2>
+            <p class="section-text">Короткий путь от идеи до кода сертификата.</p>
         </div>
         <div class="feature-grid">
             <article class="feature-item">
-                <h3>1. Регистрация</h3>
-                <p>Создайте аккаунт, чтобы хранить профиль и историю сертификатов в одном месте.</p>
+                <h3>01 · Аккаунт</h3>
+                <p>Регистрация открывает профиль и историю оформлений.</p>
             </article>
             <article class="feature-item">
-                <h3>2. Выбор критериев</h3>
-                <p>Картинка, сумма, повод, получатель, акцент и способ доставки — всё настраивается.</p>
+                <h3>02 · Критерии</h3>
+                <p>Картинка, сумма, повод, получатель, акцент и доставка.</p>
             </article>
             <article class="feature-item">
-                <h3>3. Готовый код</h3>
-                <p>После оформления сертификат появится в разделе «Мои сертификаты» с уникальным кодом.</p>
+                <h3>03 · Код</h3>
+                <p>Готовый сертификат сохраняется в разделе «Мои сертификаты».</p>
             </article>
         </div>
     </div>

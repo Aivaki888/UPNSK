@@ -10,7 +10,7 @@ declare(strict_types=1);
                     <span class="brand-mark" aria-hidden="true"></span>
                     <span class="brand-text">Дари</span>
                 </div>
-                <p class="footer-copy">Подарочные сертификаты с выбором дизайна, суммы и повода. Учебный проект на HTML, CSS, JS, PHP и MySQL.</p>
+                <p class="footer-copy">Сертификаты с характером: дизайн, сумма, повод. Учебный проект на HTML, CSS, JS, PHP и MySQL.</p>
             </div>
             <div>
                 <h2 class="footer-title">Разделы</h2>
