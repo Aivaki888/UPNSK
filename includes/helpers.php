@@ -154,3 +154,69 @@ function render_media(?string $relativePath, string $alt = '', string $class = '
     }
     echo '</div>';
 }
+
+function ensure_extra_tables(): void
+{
+    static $ready = false;
+    if ($ready) {
+        return;
+    }
+
+    db()->exec(
+        'CREATE TABLE IF NOT EXISTS favorites (
+            user_id INT UNSIGNED NOT NULL,
+            design_id INT UNSIGNED NOT NULL,
+            created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            PRIMARY KEY (user_id, design_id)
+        ) ENGINE=InnoDB'
+    );
+
+    db()->exec(
+        'CREATE TABLE IF NOT EXISTS contact_messages (
+            id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            user_id INT UNSIGNED DEFAULT NULL,
+            name VARCHAR(120) NOT NULL,
+            email VARCHAR(190) NOT NULL,
+            subject VARCHAR(160) NOT NULL,
+            message TEXT NOT NULL,
+            created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+        ) ENGINE=InnoDB'
+    );
+
+    $ready = true;
+}
+
+function user_favorite_ids(int $userId): array
+{
+    ensure_extra_tables();
+    $stmt = db()->prepare('SELECT design_id FROM favorites WHERE user_id = ?');
+    $stmt->execute([$userId]);
+    return array_map('intval', $stmt->fetchAll(PDO::FETCH_COLUMN));
+}
+
+function is_favorite(int $userId, int $designId): bool
+{
+    ensure_extra_tables();
+    $stmt = db()->prepare('SELECT 1 FROM favorites WHERE user_id = ? AND design_id = ?');
+    $stmt->execute([$userId, $designId]);
+    return (bool) $stmt->fetchColumn();
+}
+
+function remember_recent_design(int $designId): void
+{
+    $recent = $_SESSION['recent_designs'] ?? [];
+    $recent = array_values(array_filter($recent, static fn($id) => (int) $id !== $designId));
+    array_unshift($recent, $designId);
+    $_SESSION['recent_designs'] = array_slice($recent, 0, 6);
+}
+
+function status_label(string $status): string
+{
+    return match ($status) {
+        'new' => 'Новый',
+        'paid' => 'Оплачен',
+        'sent' => 'Отправлен',
+        'used' => 'Использован',
+        default => $status,
+    };
+}

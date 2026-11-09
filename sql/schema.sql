@@ -45,6 +45,26 @@ CREATE TABLE IF NOT EXISTS certificates (
   CONSTRAINT fk_certificates_design FOREIGN KEY (design_id) REFERENCES designs(id)
 ) ENGINE=InnoDB;
 
+CREATE TABLE IF NOT EXISTS favorites (
+  user_id INT UNSIGNED NOT NULL,
+  design_id INT UNSIGNED NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (user_id, design_id),
+  CONSTRAINT fk_favorites_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  CONSTRAINT fk_favorites_design FOREIGN KEY (design_id) REFERENCES designs(id) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS contact_messages (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  user_id INT UNSIGNED DEFAULT NULL,
+  name VARCHAR(120) NOT NULL,
+  email VARCHAR(190) NOT NULL,
+  subject VARCHAR(160) NOT NULL,
+  message TEXT NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT fk_contact_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
+) ENGINE=InnoDB;
+
 INSERT INTO designs (title, slug, description, image_path, category, price_base, sort_order) VALUES
 ('Лесной рассвет', 'forest-dawn', 'Мягкий зелёный фон с золотой рамкой — универсальный дизайн для любого повода.', 'assets/img/designs/01.jpg', 'Классика', 0, 1),
 ('Ночной бархат', 'velvet-night', 'Глубокий тёмный фон с шампанским золотом — для торжественных подарков.', 'assets/img/designs/02.jpg', 'Премиум', 200, 2),

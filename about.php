@@ -43,4 +43,31 @@ require __DIR__ . '/includes/header.php';
     </div>
 </section>
 
+<section class="section section-alt">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">Частые вопросы</h2>
+            <p class="section-text">Короткие ответы по работе сайта.</p>
+        </div>
+        <div class="faq-list stagger-layout">
+            <details class="panel faq-item">
+                <summary>Как проверить сертификат?</summary>
+                <p class="muted">Откройте страницу «Проверка» и введите код. Там видно сумму, статус и получателя.</p>
+            </details>
+            <details class="panel faq-item">
+                <summary>Можно ли сохранить дизайн?</summary>
+                <p class="muted">Да, после входа добавляйте дизайны в избранное прямо из каталога.</p>
+            </details>
+            <details class="panel faq-item">
+                <summary>Как распечатать сертификат?</summary>
+                <p class="muted">В «Мои сертификаты» нажмите «Печать» — откроется отдельная страница для печати.</p>
+            </details>
+            <details class="panel faq-item">
+                <summary>Куда писать вопросы?</summary>
+                <p class="muted">Используйте форму на странице «Контакты» — сообщения сохраняются в MySQL.</p>
+            </details>
+        </div>
+    </div>
+</section>
+
 <?php require __DIR__ . '/includes/footer.php'; ?>

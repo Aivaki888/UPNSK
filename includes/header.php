@@ -51,8 +51,11 @@ $themePref = $user['theme_pref'] ?? ($_COOKIE['theme'] ?? 'system');
                 <a class="<?= $activeNav === 'home' ? 'is-active' : '' ?>" href="index.php">Главная</a>
                 <a class="<?= $activeNav === 'catalog' ? 'is-active' : '' ?>" href="catalog.php">Каталог</a>
                 <a class="<?= $activeNav === 'order' ? 'is-active' : '' ?>" href="order.php">Оформить</a>
+                <a class="<?= $activeNav === 'verify' ? 'is-active' : '' ?>" href="verify.php">Проверка</a>
+                <a class="<?= $activeNav === 'contact' ? 'is-active' : '' ?>" href="contact.php">Контакты</a>
                 <a class="<?= $activeNav === 'about' ? 'is-active' : '' ?>" href="about.php">О нас</a>
                 <?php if ($user): ?>
+                    <a class="<?= $activeNav === 'favorites' ? 'is-active' : '' ?>" href="favorites.php">Избранное</a>
                     <a class="<?= $activeNav === 'certificates' ? 'is-active' : '' ?>" href="certificates.php">Мои сертификаты</a>
                     <a class="<?= $activeNav === 'profile' ? 'is-active' : '' ?>" href="profile.php">Профиль</a>
                 <?php else: ?>
@@ -62,8 +65,7 @@ $themePref = $user['theme_pref'] ?? ($_COOKIE['theme'] ?? 'system');
             </nav>
             <div class="header-actions">
                 <button class="theme-toggle" type="button" data-theme-toggle aria-label="Переключить тему">
-                    <span class="theme-icon theme-icon-sun" aria-hidden="true"></span>
-                    <span class="theme-icon theme-icon-moon" aria-hidden="true"></span>
+                    <?php render_media('assets/img/theme-icon.png', 'Иконка темы', 'theme-slot', 'Иконка'); ?>
                 </button>
             </div>
         </div>

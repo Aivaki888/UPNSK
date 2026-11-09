@@ -114,6 +114,31 @@
 
   updateOrderPreview();
 
+  function showCopyToast(text) {
+    let toast = document.querySelector(".copy-toast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.className = "copy-toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = text;
+    toast.classList.add("is-on");
+    clearTimeout(showCopyToast._timer);
+    showCopyToast._timer = setTimeout(() => toast.classList.remove("is-on"), 1600);
+  }
+
+  document.querySelectorAll("[data-copy]").forEach((button) => {
+    button.addEventListener("click", async () => {
+      const value = button.getAttribute("data-copy") || "";
+      try {
+        await navigator.clipboard.writeText(value);
+        showCopyToast("Код скопирован");
+      } catch (err) {
+        showCopyToast("Не удалось скопировать");
+      }
+    });
+  });
+
   if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     const markStagger = (selector) => {
       document.querySelectorAll(selector).forEach((group) => {

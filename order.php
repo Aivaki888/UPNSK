@@ -93,6 +93,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 $currentDesign = $designMap[$form['design_id']] ?? $designs[0] ?? null;
 
+if ($currentDesign) {
+    remember_recent_design((int) $currentDesign['id']);
+}
+
 $pageTitle = 'Оформить сертификат — Дари';
 $activeNav = 'order';
 
