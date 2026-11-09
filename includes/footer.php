@@ -39,9 +39,13 @@ declare(strict_types=1);
                     <li><span>Email</span><a href="mailto:hello@dari.local">hello@dari.local</a></li>
                     <li><span>Время</span><span>Пн–Пт · 10:00–19:00</span></li>
                     <li><span>Связь</span><a href="contact.php">Написать нам</a></li>
-                    <li><span>© <?= date('Y') ?></span><span>Дари</span></li>
                 </ul>
             </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <span>© <?= date('Y') ?> Дари</span>
+            <span>Светлая и тёмная тема · безопасная авторизация</span>
         </div>
     </footer>
 </div>
