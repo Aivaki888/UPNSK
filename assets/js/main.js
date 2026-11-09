@@ -9,12 +9,17 @@
     return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
   }
 
+  let themeTimer = null;
+
   function applyTheme(pref) {
     const theme = resolveTheme(pref);
+    root.classList.add("theme-animating");
     root.setAttribute("data-theme", theme);
     root.setAttribute("data-theme-pref", pref === "dark" || pref === "light" ? pref : "system");
     localStorage.setItem("dari-theme", pref === "dark" || pref === "light" ? pref : "system");
     document.cookie = `theme=${encodeURIComponent(root.getAttribute("data-theme-pref"))};path=/;max-age=31536000;SameSite=Lax`;
+    if (themeTimer) clearTimeout(themeTimer);
+    themeTimer = setTimeout(() => root.classList.remove("theme-animating"), 600);
   }
 
   if (themeToggle) {
