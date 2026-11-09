@@ -46,10 +46,10 @@ CREATE TABLE IF NOT EXISTS certificates (
 ) ENGINE=InnoDB;
 
 INSERT INTO designs (title, slug, description, image_path, category, price_base, sort_order) VALUES
-('Лесной рассвет', 'forest-dawn', 'Мягкий зелёный фон с золотой рамкой — универсальный дизайн для любого повода.', 'assets/img/designs/forest.svg', 'Классика', 0, 1),
-('Ночной бархат', 'velvet-night', 'Глубокий тёмный фон с шампанским золотом — для торжественных подарков.', 'assets/img/designs/velvet.svg', 'Премиум', 200, 2),
-('Цветочный сад', 'bloom-garden', 'Живые ботанические мотивы на светлом фоне — идеально для дня рождения.', 'assets/img/designs/bloom.svg', 'Праздник', 100, 3),
-('Городские огни', 'city-lights', 'Геометрия и современный ритм — для друзей, коллег и городских впечатлений.', 'assets/img/designs/city.svg', 'Современный', 150, 4),
-('Зимняя сказка', 'winter-tale', 'Снежные узоры и тёплая типографика — новогодний и зимний выбор.', 'assets/img/designs/winter.svg', 'Сезон', 100, 5),
-('Минимал бумага', 'paper-minimal', 'Чистая композиция и акцентная линия — сдержанный вкус без лишнего декора.', 'assets/img/designs/minimal.svg', 'Минимализм', 0, 6)
-ON DUPLICATE KEY UPDATE title = VALUES(title);
+('Лесной рассвет', 'forest-dawn', 'Мягкий зелёный фон с золотой рамкой — универсальный дизайн для любого повода.', 'assets/img/designs/01.jpg', 'Классика', 0, 1),
+('Ночной бархат', 'velvet-night', 'Глубокий тёмный фон с шампанским золотом — для торжественных подарков.', 'assets/img/designs/02.jpg', 'Премиум', 200, 2),
+('Цветочный сад', 'bloom-garden', 'Живые ботанические мотивы на светлом фоне — идеально для дня рождения.', 'assets/img/designs/03.jpg', 'Праздник', 100, 3),
+('Городские огни', 'city-lights', 'Геометрия и современный ритм — для друзей, коллег и городских впечатлений.', 'assets/img/designs/04.jpg', 'Современный', 150, 4),
+('Зимняя сказка', 'winter-tale', 'Снежные узоры и тёплая типографика — новогодний и зимний выбор.', 'assets/img/designs/05.jpg', 'Сезон', 100, 5),
+('Минимал бумага', 'paper-minimal', 'Чистая композиция и акцентная линия — сдержанный вкус без лишнего декора.', 'assets/img/designs/06.jpg', 'Минимализм', 0, 6)
+ON DUPLICATE KEY UPDATE title = VALUES(title), image_path = VALUES(image_path);

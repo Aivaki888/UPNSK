@@ -68,8 +68,11 @@ require __DIR__ . '/includes/header.php';
 
 <section class="container auth-layout">
     <div class="auth-side">
-        <h2>Создайте профиль</h2>
-        <p>После регистрации можно оформлять сертификаты, сохранять данные получателей и смотреть историю заказов.</p>
+        <?php render_media('assets/img/auth.jpg', 'Регистрация', 'auth-media', 'Место для изображения'); ?>
+        <div class="auth-side-copy">
+            <h2>Создайте профиль</h2>
+            <p>После регистрации можно оформлять сертификаты, сохранять данные получателей и смотреть историю заказов.</p>
+        </div>
     </div>
     <div class="auth-card">
         <h1>Регистрация</h1>

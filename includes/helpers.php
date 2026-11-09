@@ -123,3 +123,34 @@ function amount_options(): array
 {
     return [1000, 2000, 3000, 5000, 7000, 10000];
 }
+
+function project_root(): string
+{
+    return dirname(__DIR__);
+}
+
+function media_exists(?string $relativePath): bool
+{
+    if ($relativePath === null || trim($relativePath) === '') {
+        return false;
+    }
+
+    $full = project_root() . '/' . ltrim($relativePath, '/');
+
+    return is_file($full);
+}
+
+function render_media(?string $relativePath, string $alt = '', string $class = 'media-frame', string $hint = 'Место для изображения'): void
+{
+    if (media_exists($relativePath)) {
+        echo '<img class="' . e($class) . '" src="' . e($relativePath) . '" alt="' . e($alt) . '">';
+        return;
+    }
+
+    echo '<div class="' . e($class) . ' media-placeholder" role="img" aria-label="' . e($alt !== '' ? $alt : $hint) . '">';
+    echo '<span>' . e($hint) . '</span>';
+    if ($relativePath) {
+        echo '<small>' . e($relativePath) . '</small>';
+    }
+    echo '</div>';
+}

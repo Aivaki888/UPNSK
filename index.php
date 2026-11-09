@@ -23,8 +23,8 @@ require __DIR__ . '/includes/header.php';
             <a class="btn btn-secondary" href="catalog.php">Смотреть каталог</a>
         </div>
     </div>
-    <div class="hero-visual" aria-hidden="true">
-        <div class="hero-seal">Dari</div>
+    <div class="hero-visual">
+        <?php render_media('assets/img/hero.jpg', 'Главный баннер', 'hero-media', 'Место для главного изображения'); ?>
     </div>
 </section>
 
@@ -38,7 +38,7 @@ require __DIR__ . '/includes/header.php';
             <?php foreach ($designs as $design): ?>
                 <article class="design-tile">
                     <div class="design-media">
-                        <img src="<?= e($design['image_path']) ?>" alt="<?= e($design['title']) ?>">
+                        <?php render_media($design['image_path'], $design['title'], 'design-image', 'Место для картинки дизайна'); ?>
                     </div>
                     <div class="design-body">
                         <span class="chip"><?= e($design['category']) ?></span>

@@ -41,7 +41,7 @@ $themePref = $user['theme_pref'] ?? ($_COOKIE['theme'] ?? 'system');
     <header class="site-header">
         <div class="container header-inner">
             <a class="brand" href="index.php" aria-label="Дари — на главную">
-                <span class="brand-mark" aria-hidden="true"></span>
+                <?php render_media('assets/img/logo.png', 'Логотип Дари', 'brand-logo', 'Лого'); ?>
                 <span class="brand-text">Дари</span>
             </a>
             <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>

@@ -7,7 +7,7 @@ declare(strict_types=1);
         <div class="container footer-grid">
             <div>
                 <div class="brand brand-footer">
-                    <span class="brand-mark" aria-hidden="true"></span>
+                    <?php render_media('assets/img/logo.png', 'Логотип Дари', 'brand-logo', 'Лого'); ?>
                     <span class="brand-text">Дари</span>
                 </div>
                 <p class="footer-copy">Сертификаты с характером: дизайн, сумма, повод. Учебный проект на HTML, CSS, JS, PHP и MySQL.</p>

@@ -37,7 +37,7 @@ require __DIR__ . '/includes/header.php';
                 </article>
             </div>
         </div>
-        <div class="about-visual" role="img" aria-label="Визуальный акцент проекта"></div>
+        <?php render_media('assets/img/about.jpg', 'О проекте', 'about-visual', 'Место для изображения'); ?>
     </div>
 </section>
 

@@ -49,7 +49,7 @@ require __DIR__ . '/includes/header.php';
                 <?php foreach ($designs as $design): ?>
                     <article class="design-tile">
                         <div class="design-media">
-                            <img src="<?= e($design['image_path']) ?>" alt="<?= e($design['title']) ?>">
+                            <?php render_media($design['image_path'], $design['title'], 'design-image', 'Место для картинки дизайна'); ?>
                         </div>
                         <div class="design-body">
                             <span class="chip"><?= e($design['category']) ?></span>

@@ -90,12 +90,24 @@ php -S 127.0.0.1:8765 -t .
 | `DB_USER` | `giftuser` |
 | `DB_PASS` | `giftpass` |
 
+## Картинки и логотип
+
+Все изображения вставляются вручную в `assets/img/`. Пока файлов нет, на сайте видны пустые области.
+
+| Файл | Куда попадает |
+|---|---|
+| `assets/img/logo.png` | логотип в шапке и подвале |
+| `assets/img/hero.jpg` | баннер на главной |
+| `assets/img/auth.jpg` | вход / регистрация |
+| `assets/img/about.jpg` | страница «О нас» |
+| `assets/img/designs/01.jpg` … `06.jpg` | дизайны сертификатов |
+
 ## Структура
 
 ```
 config/database.php   — PDO-подключение
 includes/             — bootstrap, header, footer, helpers
-assets/css|js|img     — стили, скрипты, SVG-дизайны
+assets/css|js|img     — стили, скрипты, места под картинки
 sql/schema.sql        — схема MySQL
 scripts/init_db.php   — инициализация БД
 start.bat / start.sh  — запуск сайта

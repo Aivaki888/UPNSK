@@ -132,8 +132,8 @@ require __DIR__ . '/includes/header.php';
                                 <?= (int) $form['design_id'] === (int) $design['id'] ? 'checked' : '' ?>
                             >
                             <label for="design_<?= (int) $design['id'] ?>">
-                                <div class="thumb">
-                                    <img src="<?= e($design['image_path']) ?>" alt="<?= e($design['title']) ?>">
+                                <div class="thumb" data-design-path="<?= e($design['image_path']) ?>">
+                                    <?php render_media($design['image_path'], $design['title'], 'design-image', 'Картинка'); ?>
                                 </div>
                                 <div class="caption"><?= e($design['title']) ?></div>
                             </label>
@@ -209,8 +209,8 @@ require __DIR__ . '/includes/header.php';
 
     <aside class="order-preview">
         <h2>Предпросмотр</h2>
-        <div class="preview-frame">
-            <img data-preview-image src="<?= e($currentDesign['image_path'] ?? 'assets/img/designs/forest.svg') ?>" alt="Предпросмотр дизайна">
+        <div class="preview-frame" data-preview-frame>
+            <?php render_media($currentDesign['image_path'] ?? null, 'Предпросмотр дизайна', 'design-image', 'Место для картинки'); ?>
         </div>
         <ul class="preview-list">
             <li><span>Дизайн</span><strong data-preview-design><?= e($currentDesign['title'] ?? '—') ?></strong></li>

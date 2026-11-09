@@ -44,7 +44,7 @@
     recipient: document.querySelector("[data-preview-recipient]"),
     accent: document.querySelector("[data-preview-accent]"),
     delivery: document.querySelector("[data-preview-delivery]"),
-    image: document.querySelector("[data-preview-image]"),
+    frame: document.querySelector("[data-preview-frame]"),
   };
 
   const occasionLabels = {
@@ -87,9 +87,11 @@
     if (designInput) {
       const card = designInput.closest(".design-choice");
       const title = card?.querySelector(".caption")?.textContent?.trim() || "Дизайн";
-      const src = card?.querySelector("img")?.getAttribute("src");
+      const thumb = card?.querySelector(".thumb");
       if (preview.design) preview.design.textContent = title;
-      if (preview.image && src) preview.image.setAttribute("src", src);
+      if (preview.frame && thumb) {
+        preview.frame.innerHTML = thumb.innerHTML;
+      }
     }
 
     if (amountInput && preview.amount) preview.amount.textContent = money(amountInput.value);
