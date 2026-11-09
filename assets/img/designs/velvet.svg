@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Velvet night">
-  <rect width="800" height="500" fill="#121212"/>
-  <rect x="48" y="48" width="704" height="404" fill="none" stroke="#f3f2ee" stroke-width="1.5"/>
-  <line x1="80" y1="160" x2="280" y2="160" stroke="#e23b1a" stroke-width="2"/>
-  <circle cx="650" cy="140" r="42" fill="none" stroke="#f3f2ee" stroke-width="1.5"/>
-  <circle cx="650" cy="140" r="10" fill="#e23b1a"/>
-  <text x="80" y="220" fill="#f3f2ee" font-family="Georgia, serif" font-size="46" font-weight="700">Dari</text>
-  <text x="80" y="262" fill="#9c9a93" font-family="Arial, sans-serif" font-size="18">Velvet night</text>
+  <rect width="800" height="500" rx="36" fill="#1d1d1f"/>
+  <rect x="40" y="40" width="720" height="420" rx="28" fill="none" stroke="#f5f5f7" stroke-width="1.5"/>
+  <line x1="80" y1="170" x2="260" y2="170" stroke="#0071e3" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="650" cy="150" r="40" fill="none" stroke="#f5f5f7" stroke-width="2"/>
+  <circle cx="650" cy="150" r="12" fill="#0071e3"/>
+  <text x="80" y="230" fill="#f5f5f7" font-family="Comfortaa, Arial, sans-serif" font-size="44" font-weight="700">Dari</text>
+  <text x="80" y="272" fill="#a1a1a6" font-family="Comfortaa, Arial, sans-serif" font-size="18">Velvet night</text>
 </svg>

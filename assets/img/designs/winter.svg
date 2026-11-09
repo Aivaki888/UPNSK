@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Winter tale">
-  <rect width="800" height="500" fill="#e9edf1"/>
-  <rect x="48" y="48" width="704" height="404" fill="none" stroke="#121212" stroke-width="1.5"/>
-  <path d="M120 380 L220 210 L320 380 Z" fill="none" stroke="#121212" stroke-width="1.5"/>
-  <path d="M280 380 L410 170 L540 380 Z" fill="none" stroke="#121212" stroke-width="1.5"/>
-  <path d="M480 380 L600 240 L720 380 Z" fill="none" stroke="#121212" stroke-width="1.5"/>
-  <circle cx="640" cy="120" r="8" fill="#e23b1a"/>
-  <text x="80" y="130" fill="#121212" font-family="Georgia, serif" font-size="42" font-weight="700">Dari</text>
-  <text x="80" y="168" fill="#6a6964" font-family="Arial, sans-serif" font-size="18">Winter tale</text>
+  <rect width="800" height="500" rx="36" fill="#e8eef5"/>
+  <rect x="40" y="40" width="720" height="420" rx="28" fill="#ffffff"/>
+  <path d="M120 380 L220 210 L320 380 Z" fill="none" stroke="#1d1d1f" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M280 380 L410 170 L540 380 Z" fill="none" stroke="#1d1d1f" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M480 380 L600 240 L720 380 Z" fill="none" stroke="#1d1d1f" stroke-width="2" stroke-linejoin="round"/>
+  <circle cx="640" cy="120" r="10" fill="#0071e3"/>
+  <text x="80" y="140" fill="#1d1d1f" font-family="Comfortaa, Arial, sans-serif" font-size="42" font-weight="700">Dari</text>
+  <text x="80" y="178" fill="#6e6e73" font-family="Comfortaa, Arial, sans-serif" font-size="18">Winter tale</text>
 </svg>

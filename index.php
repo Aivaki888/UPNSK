@@ -17,10 +17,10 @@ require __DIR__ . '/includes/header.php';
     <div class="hero-copy">
         <span class="eyebrow">Подарочные сертификаты</span>
         <h1>Дари</h1>
-        <p class="lead">Персональный сертификат за несколько минут: дизайн, сумма, повод и короткое послание.</p>
+        <p class="lead">Оформите персональный сертификат за пару минут — спокойно, просто и красиво.</p>
         <div class="cta-row">
             <a class="btn btn-primary" href="order.php">Оформить</a>
-            <a class="btn btn-secondary" href="catalog.php">Каталог</a>
+            <a class="btn btn-secondary" href="catalog.php">Смотреть каталог</a>
         </div>
     </div>
     <div class="hero-visual" aria-hidden="true">
@@ -31,8 +31,8 @@ require __DIR__ . '/includes/header.php';
 <section class="section">
     <div class="container">
         <div class="section-head">
-            <h2 class="section-title">Шесть характеров</h2>
-            <p class="section-text">От спокойного минимала до зимнего пейзажа — выберите визуальный тон подарка.</p>
+            <h2 class="section-title">Выберите настроение</h2>
+            <p class="section-text">Шесть аккуратных дизайнов для любого повода.</p>
         </div>
         <div class="design-grid">
             <?php foreach ($designs as $design): ?>
@@ -58,21 +58,21 @@ require __DIR__ . '/includes/header.php';
 <section class="section section-alt">
     <div class="container">
         <div class="section-head">
-            <h2 class="section-title">Три шага</h2>
-            <p class="section-text">Короткий путь от идеи до кода сертификата.</p>
+            <h2 class="section-title">Как это работает</h2>
+            <p class="section-text">Три коротких шага до готового сертификата.</p>
         </div>
         <div class="feature-grid">
             <article class="feature-item">
-                <h3>01 · Аккаунт</h3>
-                <p>Регистрация открывает профиль и историю оформлений.</p>
+                <h3>1. Аккаунт</h3>
+                <p>Создайте профиль, чтобы хранить заказы в одном месте.</p>
             </article>
             <article class="feature-item">
-                <h3>02 · Критерии</h3>
-                <p>Картинка, сумма, повод, получатель, акцент и доставка.</p>
+                <h3>2. Настройки</h3>
+                <p>Выберите дизайн, сумму, повод и получателя.</p>
             </article>
             <article class="feature-item">
-                <h3>03 · Код</h3>
-                <p>Готовый сертификат сохраняется в разделе «Мои сертификаты».</p>
+                <h3>3. Готово</h3>
+                <p>Сертификат появится в разделе «Мои сертификаты».</p>
             </article>
         </div>
     </div>

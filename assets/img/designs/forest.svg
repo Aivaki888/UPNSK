@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Forest dawn">
-  <rect width="800" height="500" fill="#eceae4"/>
-  <rect x="48" y="48" width="704" height="404" fill="none" stroke="#121212" stroke-width="1.5"/>
-  <path d="M120 390 C190 270 250 270 320 390" fill="none" stroke="#121212" stroke-width="1.5"/>
-  <path d="M280 390 C360 240 450 240 530 390" fill="none" stroke="#121212" stroke-width="1.5"/>
-  <path d="M470 390 C540 300 600 300 670 390" fill="none" stroke="#121212" stroke-width="1.5"/>
-  <circle cx="640" cy="140" r="36" fill="#e23b1a"/>
-  <text x="80" y="130" fill="#121212" font-family="Georgia, serif" font-size="42" font-weight="700">Dari</text>
-  <text x="80" y="168" fill="#6a6964" font-family="Arial, sans-serif" font-size="18">Forest dawn</text>
+  <rect width="800" height="500" rx="36" fill="#ececef"/>
+  <rect x="40" y="40" width="720" height="420" rx="28" fill="#ffffff"/>
+  <path d="M120 390 C190 270 250 270 320 390" fill="none" stroke="#1d1d1f" stroke-width="2" stroke-linecap="round"/>
+  <path d="M280 390 C360 240 450 240 530 390" fill="none" stroke="#1d1d1f" stroke-width="2" stroke-linecap="round"/>
+  <path d="M470 390 C540 300 600 300 670 390" fill="none" stroke="#1d1d1f" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="640" cy="140" r="34" fill="#0071e3"/>
+  <text x="80" y="140" fill="#1d1d1f" font-family="Comfortaa, Arial, sans-serif" font-size="40" font-weight="700">Dari</text>
+  <text x="80" y="178" fill="#6e6e73" font-family="Comfortaa, Arial, sans-serif" font-size="18">Forest dawn</text>
 </svg>
