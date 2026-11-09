@@ -114,16 +114,28 @@
 
   updateOrderPreview();
 
-  const revealItems = document.querySelectorAll(
-    ".design-tile, .feature-item, .cert-item, .auth-card, .panel, .section-head, .order-preview, .profile-summary"
-  );
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const staggerGroups = document.querySelectorAll(
+      ".design-grid, .feature-grid, .choice-grid, .cert-list, .cta-row, .form-grid, .stack-sm, .footer-grid, .footer-links, .preview-list, .site-nav"
+    );
 
-  if (revealItems.length && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    revealItems.forEach((el, index) => {
-      el.classList.add("reveal");
-      el.classList.add(`reveal-delay-${(index % 6) + 1}`);
+    staggerGroups.forEach((group) => {
+      if (group.children.length > 1) {
+        group.classList.add("stagger");
+      }
     });
 
+    const soloReveal = document.querySelectorAll(
+      ".section-head, .page-hero, .auth-card, .auth-side, .panel, .order-preview, .profile-summary, .hero-copy, .hero-visual, .empty-state"
+    );
+
+    soloReveal.forEach((el) => {
+      if (!el.closest(".stagger")) {
+        el.classList.add("reveal");
+      }
+    });
+
+    const animated = document.querySelectorAll(".stagger, .reveal");
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -133,9 +145,16 @@
           }
         });
       },
-      { threshold: 0.14, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.12, rootMargin: "0px 0px -30px 0px" }
     );
 
-    revealItems.forEach((el) => observer.observe(el));
+    animated.forEach((el) => observer.observe(el));
+
+    // Above-the-fold groups should animate in immediately.
+    requestAnimationFrame(() => {
+      document.querySelectorAll(".hero .stagger, .hero .reveal, .site-nav.stagger").forEach((el) => {
+        el.classList.add("is-visible");
+      });
+    });
   }
 })();
