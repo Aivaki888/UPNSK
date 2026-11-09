@@ -113,4 +113,29 @@
     .forEach((el) => el.addEventListener("change", updateOrderPreview));
 
   updateOrderPreview();
+
+  const revealItems = document.querySelectorAll(
+    ".design-tile, .feature-item, .cert-item, .auth-card, .panel, .section-head, .order-preview, .profile-summary"
+  );
+
+  if (revealItems.length && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    revealItems.forEach((el, index) => {
+      el.classList.add("reveal");
+      el.classList.add(`reveal-delay-${(index % 6) + 1}`);
+    });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.14, rootMargin: "0px 0px -40px 0px" }
+    );
+
+    revealItems.forEach((el) => observer.observe(el));
+  }
 })();
