@@ -64,57 +64,65 @@ require __DIR__ . '/includes/header.php';
     </div>
 </section>
 
-<section class="container auth-layout stagger-layout">
-    <div class="panel">
-        <div class="stagger-copy">
-            <h2>Связаться с нами</h2>
-            <p class="muted">Обычно отвечаем в рабочие дни. Учебный проект сохраняет сообщения в MySQL.</p>
+<section class="section" style="padding-top: 0;">
+    <div class="container contact-page">
+        <div class="contact-info stagger-layout">
+            <article class="panel contact-card">
+                <h2>Email</h2>
+                <p class="muted">Пишите напрямую или через форму справа.</p>
+                <a class="contact-link" href="mailto:hello@dari.local">hello@dari.local</a>
+            </article>
+            <article class="panel contact-card">
+                <h2>Время ответа</h2>
+                <p class="muted">Отвечаем в рабочие дни.</p>
+                <p class="contact-link">Пн–Пт · 10:00–19:00</p>
+            </article>
+            <article class="panel contact-card">
+                <h2>Быстрые ссылки</h2>
+                <div class="contact-actions">
+                    <a class="btn btn-secondary" href="verify.php">Проверить код</a>
+                    <a class="btn btn-ghost" href="about.php">О проекте</a>
+                </div>
+            </article>
         </div>
-        <div class="feature-grid" style="margin-top: 1.25rem;">
-            <article class="feature-item">
-                <h3>Email</h3>
-                <p>hello@dari.local</p>
-            </article>
-            <article class="feature-item">
-                <h3>Время</h3>
-                <p>Пн–Пт · 10:00–19:00</p>
-            </article>
-            <article class="feature-item">
-                <h3>Проверка</h3>
-                <p><a href="verify.php">Проверить код сертификата</a></p>
-            </article>
+
+        <div class="auth-card contact-form-card">
+            <div class="stagger-copy">
+                <h2>Написать сообщение</h2>
+                <p class="muted">Сообщение сохранится в базе MySQL учебного проекта.</p>
+            </div>
+
+            <?php if ($errors): ?>
+                <div class="flash flash-error">
+                    <?php foreach ($errors as $error): ?>
+                        <div><?= e($error) ?></div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+
+            <form class="form-grid stagger-form" method="post" action="contact.php">
+                <input type="hidden" name="csrf_token" value="<?= e(csrf_token()) ?>">
+                <div class="form-row two">
+                    <div class="form-row">
+                        <label for="name">Имя</label>
+                        <input id="name" name="name" type="text" required value="<?= e($name) ?>">
+                    </div>
+                    <div class="form-row">
+                        <label for="email">Email</label>
+                        <input id="email" name="email" type="email" required value="<?= e($email) ?>">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label for="subject">Тема</label>
+                    <input id="subject" name="subject" type="text" required value="<?= e($subject) ?>" placeholder="Вопрос по сертификату">
+                </div>
+                <div class="form-row">
+                    <label for="message">Сообщение</label>
+                    <textarea id="message" name="message" required><?= e($message) ?></textarea>
+                </div>
+                <button class="btn btn-primary" type="submit">Отправить</button>
+            </form>
         </div>
-    </div>
-
-    <div class="auth-card">
-        <?php if ($errors): ?>
-            <div class="flash flash-error" style="margin-bottom: 1rem;">
-                <?php foreach ($errors as $error): ?>
-                    <div><?= e($error) ?></div>
-                <?php endforeach; ?>
-            </div>
-        <?php endif; ?>
-
-        <form class="form-grid stagger-form" method="post" action="contact.php">
-            <input type="hidden" name="csrf_token" value="<?= e(csrf_token()) ?>">
-            <div class="form-row">
-                <label for="name">Имя</label>
-                <input id="name" name="name" type="text" required value="<?= e($name) ?>">
-            </div>
-            <div class="form-row">
-                <label for="email">Email</label>
-                <input id="email" name="email" type="email" required value="<?= e($email) ?>">
-            </div>
-            <div class="form-row">
-                <label for="subject">Тема</label>
-                <input id="subject" name="subject" type="text" required value="<?= e($subject) ?>" placeholder="Вопрос по сертификату">
-            </div>
-            <div class="form-row">
-                <label for="message">Сообщение</label>
-                <textarea id="message" name="message" required><?= e($message) ?></textarea>
-            </div>
-            <button class="btn btn-primary" type="submit">Отправить</button>
-        </form>
     </div>
 </section>
 

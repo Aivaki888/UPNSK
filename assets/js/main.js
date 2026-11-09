@@ -156,7 +156,7 @@
       });
     };
 
-    markStagger(".design-grid, .feature-grid, .choice-grid, .cert-list, .cta-row, .footer-grid, .footer-links, .preview-list, .site-nav, .stagger-layout, .stagger-form, .stagger-copy, .stack-sm, .profile-layout");
+    markStagger(".design-grid, .feature-grid, .choice-grid, .cert-list, .cta-row, .footer-grid, .footer-links, .footer-contacts, .preview-list, .site-nav, .stagger-layout, .stagger-form, .stagger-copy, .stack-sm, .profile-layout, .contact-info, .contact-actions");
 
     const soloReveal = document.querySelectorAll(
       ".section-head, .page-hero, .auth-card, .auth-side, .panel, .order-preview, .profile-summary, .hero-copy, .hero-visual, .empty-state, .about-visual"

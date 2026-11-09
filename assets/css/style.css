@@ -1055,36 +1055,71 @@ textarea {
 .site-footer {
   margin-top: auto;
   border-top: 1px solid var(--line);
-  padding: 2.75rem 0 1.6rem;
+  padding: 3rem 0 1.6rem;
   background: var(--bg-elevated);
 }
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr;
-  gap: 2rem;
-  margin-bottom: 1.8rem;
+  grid-template-columns: 1.45fr 0.85fr 0.85fr 1fr;
+  gap: 2rem 2.25rem;
+  margin-bottom: 2rem;
+  align-items: start;
 }
 
-.footer-links {
-  gap: 0.65rem !important;
+.footer-brand {
+  display: grid;
+  gap: 1rem;
+  max-width: 22rem;
+}
+
+.brand-footer {
+  margin-bottom: 0.15rem;
+}
+
+.footer-col {
+  display: grid;
+  gap: 0.95rem;
+  align-content: start;
 }
 
 .footer-title {
-  margin: 0 0 0.75rem;
+  margin: 0;
   font-size: 0.78rem;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--muted);
   font-weight: 600;
 }
 
-.footer-links {
+.footer-links,
+.footer-contacts {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 0.45rem;
+  gap: 0.7rem;
+}
+
+.footer-links a,
+.footer-contacts a {
+  color: var(--ink);
+  transition: color 0.2s var(--ease);
+}
+
+.footer-links a:hover,
+.footer-contacts a:hover {
+  color: var(--accent);
+}
+
+.footer-contacts li {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.footer-contacts li > span:first-child {
+  color: var(--muted);
+  font-size: 0.82rem;
 }
 
 .footer-copy,
@@ -1093,14 +1128,59 @@ textarea {
   color: var(--muted);
 }
 
+.footer-copy {
+  margin: 0;
+  line-height: 1.6;
+}
+
 .footer-bottom {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
   flex-wrap: wrap;
-  padding-top: 1rem;
+  padding-top: 1.25rem;
   border-top: 1px solid var(--line);
   font-size: 0.86rem;
+}
+
+.contact-page {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 1.75rem;
+  align-items: start;
+  padding-bottom: 3.5rem;
+}
+
+.contact-info {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.contact-card {
+  gap: 0.65rem;
+}
+
+.contact-card h2 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.contact-link {
+  color: var(--accent);
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.35rem;
+}
+
+.contact-form-card {
+  position: sticky;
+  top: calc(var(--header-h) + 1rem);
 }
 
 @keyframes rise {
@@ -1143,8 +1223,13 @@ textarea {
   .order-layout,
   .profile-layout,
   .about-story,
-  .footer-grid {
+  .footer-grid,
+  .contact-page {
     grid-template-columns: 1fr;
+  }
+
+  .contact-form-card {
+    position: static;
   }
 
   .choice-grid {
