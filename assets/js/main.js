@@ -115,46 +115,63 @@
   updateOrderPreview();
 
   if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    const staggerGroups = document.querySelectorAll(
-      ".design-grid, .feature-grid, .choice-grid, .cert-list, .cta-row, .form-grid, .stack-sm, .footer-grid, .footer-links, .preview-list, .site-nav"
-    );
+    const markStagger = (selector) => {
+      document.querySelectorAll(selector).forEach((group) => {
+        const kids = [...group.children].filter((child) => {
+          if (child.matches("input[type='hidden']")) return false;
+          const style = window.getComputedStyle(child);
+          return style.display !== "none";
+        });
+        if (kids.length > 1) {
+          group.classList.add("stagger");
+          kids.forEach((child, index) => {
+            child.style.setProperty("--stagger-index", String(index));
+          });
+        }
+      });
+    };
 
-    staggerGroups.forEach((group) => {
-      if (group.children.length > 1) {
-        group.classList.add("stagger");
-      }
-    });
+    markStagger(".design-grid, .feature-grid, .choice-grid, .cert-list, .cta-row, .footer-grid, .footer-links, .preview-list, .site-nav, .stagger-layout, .stagger-form, .stagger-copy, .stack-sm, .profile-layout");
 
     const soloReveal = document.querySelectorAll(
-      ".section-head, .page-hero, .auth-card, .auth-side, .panel, .order-preview, .profile-summary, .hero-copy, .hero-visual, .empty-state"
+      ".section-head, .page-hero, .auth-card, .auth-side, .panel, .order-preview, .profile-summary, .hero-copy, .hero-visual, .empty-state, .about-visual"
     );
 
     soloReveal.forEach((el) => {
-      if (!el.closest(".stagger")) {
+      if (!el.classList.contains("stagger") && !el.parentElement?.classList.contains("stagger")) {
         el.classList.add("reveal");
       }
     });
 
+    // Nested stagger inside reveal parents: observe nested groups too.
     const animated = document.querySelectorAll(".stagger, .reveal");
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("is-visible");
+            entry.target.querySelectorAll(".stagger").forEach((nested) => {
+              nested.classList.add("is-visible");
+            });
             observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -30px 0px" }
+      { threshold: 0.08, rootMargin: "0px 0px -20px 0px" }
     );
 
     animated.forEach((el) => observer.observe(el));
 
-    // Above-the-fold groups should animate in immediately.
-    requestAnimationFrame(() => {
-      document.querySelectorAll(".hero .stagger, .hero .reveal, .site-nav.stagger").forEach((el) => {
+    const showNow = () => {
+      document.querySelectorAll(
+        ".hero .stagger, .hero .reveal, .site-nav.stagger, .auth-layout.stagger, .auth-layout .stagger, .auth-layout .reveal, .order-layout.stagger, .order-layout .stagger, .order-layout .reveal, .about-story.stagger, .about-story .stagger, .page-hero.stagger, .page-hero.reveal, .page-hero.stagger-copy"
+      ).forEach((el) => {
         el.classList.add("is-visible");
+        el.querySelectorAll(".stagger").forEach((nested) => nested.classList.add("is-visible"));
       });
-    });
+    };
+
+    requestAnimationFrame(showNow);
+    setTimeout(showNow, 50);
   }
 })();

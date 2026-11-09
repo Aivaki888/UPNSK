@@ -10,7 +10,7 @@ $activeNav = 'about';
 require __DIR__ . '/includes/header.php';
 ?>
 
-<section class="page-hero">
+<section class="page-hero stagger-copy">
     <div class="container">
         <h1>О проекте Дари</h1>
         <p>Учебный сайт подарочных сертификатов: регистрация, профиль, темы оформления и полноценный сценарий покупки.</p>
@@ -18,10 +18,12 @@ require __DIR__ . '/includes/header.php';
 </section>
 
 <section class="section" style="padding-top: 0;">
-    <div class="container about-story">
+    <div class="container about-story stagger-layout">
         <div class="panel">
-            <h2>Зачем этот сайт</h2>
-            <p class="muted">«Дари» показывает полный цикл небольшого интернет-магазина без лишней сложности: пользователь регистрируется, выбирает дизайн и критерии сертификата, сохраняет заказ в MySQL и видит его в личном кабинете.</p>
+            <div class="stagger-copy">
+                <h2>Зачем этот сайт</h2>
+                <p class="muted">«Дари» показывает полный цикл небольшого интернет-магазина без лишней сложности: пользователь регистрируется, выбирает дизайн и критерии сертификата, сохраняет заказ в MySQL и видит его в личном кабинете.</p>
+            </div>
             <div class="feature-grid" style="margin-top: 1.5rem;">
                 <article class="feature-item">
                     <h3>Стек</h3>

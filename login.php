@@ -44,17 +44,19 @@ $activeNav = 'login';
 require __DIR__ . '/includes/header.php';
 ?>
 
-<section class="container auth-layout">
+<section class="container auth-layout stagger-layout">
     <div class="auth-side">
         <?php render_media('assets/img/auth.jpg', 'Авторизация', 'auth-media', 'Место для изображения'); ?>
-        <div class="auth-side-copy">
+        <div class="auth-side-copy stagger-copy">
             <h2>С возвращением</h2>
             <p>Войдите, чтобы открыть профиль, историю сертификатов и быстрое оформление подарка.</p>
         </div>
     </div>
     <div class="auth-card">
-        <h1>Вход</h1>
-        <p class="muted">Используйте email и пароль, указанные при регистрации.</p>
+        <div class="stagger-copy">
+            <h1>Вход</h1>
+            <p class="muted">Используйте email и пароль, указанные при регистрации.</p>
+        </div>
 
         <?php if ($errors): ?>
             <div class="flash flash-error" style="margin: 1rem 0;">
@@ -64,7 +66,7 @@ require __DIR__ . '/includes/header.php';
             </div>
         <?php endif; ?>
 
-        <form class="form-grid" method="post" action="login.php" novalidate>
+        <form class="form-grid stagger-form" method="post" action="login.php" novalidate>
             <input type="hidden" name="csrf_token" value="<?= e(csrf_token()) ?>">
             <div class="form-row">
                 <label for="email">Email</label>
@@ -75,8 +77,8 @@ require __DIR__ . '/includes/header.php';
                 <input id="password" name="password" type="password" required autocomplete="current-password">
             </div>
             <button class="btn btn-primary" type="submit">Войти</button>
+            <p class="muted form-note">Нет аккаунта? <a href="register.php">Зарегистрироваться</a></p>
         </form>
-        <p class="muted" style="margin-top: 1rem;">Нет аккаунта? <a href="register.php">Зарегистрироваться</a></p>
     </div>
 </section>
 

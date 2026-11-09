@@ -66,17 +66,19 @@ $activeNav = 'register';
 require __DIR__ . '/includes/header.php';
 ?>
 
-<section class="container auth-layout">
+<section class="container auth-layout stagger-layout">
     <div class="auth-side">
         <?php render_media('assets/img/auth.jpg', 'Регистрация', 'auth-media', 'Место для изображения'); ?>
-        <div class="auth-side-copy">
+        <div class="auth-side-copy stagger-copy">
             <h2>Создайте профиль</h2>
             <p>После регистрации можно оформлять сертификаты, сохранять данные получателей и смотреть историю заказов.</p>
         </div>
     </div>
     <div class="auth-card">
-        <h1>Регистрация</h1>
-        <p class="muted">Заполните форму — вход и профиль появятся сразу после создания аккаунта.</p>
+        <div class="stagger-copy">
+            <h1>Регистрация</h1>
+            <p class="muted">Заполните форму — вход и профиль появятся сразу после создания аккаунта.</p>
+        </div>
 
         <?php if ($errors): ?>
             <div class="flash flash-error" style="margin: 1rem 0;">
@@ -86,7 +88,7 @@ require __DIR__ . '/includes/header.php';
             </div>
         <?php endif; ?>
 
-        <form class="form-grid" method="post" action="register.php" novalidate>
+        <form class="form-grid stagger-form" method="post" action="register.php" novalidate>
             <input type="hidden" name="csrf_token" value="<?= e(csrf_token()) ?>">
             <div class="form-row">
                 <label for="name">Имя</label>
@@ -111,8 +113,8 @@ require __DIR__ . '/includes/header.php';
                 </div>
             </div>
             <button class="btn btn-primary" type="submit">Зарегистрироваться</button>
+            <p class="muted form-note">Уже есть аккаунт? <a href="login.php">Войти</a></p>
         </form>
-        <p class="muted" style="margin-top: 1rem;">Уже есть аккаунт? <a href="login.php">Войти</a></p>
     </div>
 </section>
 

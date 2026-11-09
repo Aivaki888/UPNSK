@@ -99,14 +99,14 @@ $activeNav = 'order';
 require __DIR__ . '/includes/header.php';
 ?>
 
-<section class="page-hero">
+<section class="page-hero stagger-copy">
     <div class="container">
         <h1>Оформление сертификата</h1>
         <p>Выберите картинку и критерии: сумму, повод, получателя, акцент и способ доставки. Справа — живой предпросмотр.</p>
     </div>
 </section>
 
-<section class="container order-layout">
+<section class="container order-layout stagger-layout">
     <div class="panel">
         <?php if ($errors): ?>
             <div class="flash flash-error" style="margin-bottom: 1rem;">
@@ -116,7 +116,7 @@ require __DIR__ . '/includes/header.php';
             </div>
         <?php endif; ?>
 
-        <form class="form-grid" method="post" action="order.php" data-order-form>
+        <form class="form-grid stagger-form" method="post" action="order.php" data-order-form>
             <input type="hidden" name="csrf_token" value="<?= e(csrf_token()) ?>">
 
             <div class="form-row">
