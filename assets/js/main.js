@@ -50,9 +50,31 @@
   });
 
   if (navToggle && siteNav) {
-    navToggle.addEventListener("click", () => {
-      const open = siteNav.classList.toggle("is-open");
+    const setNavOpen = (open) => {
+      siteNav.classList.toggle("is-open", open);
       navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      document.body.classList.toggle("nav-open", open);
+    };
+
+    navToggle.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      setNavOpen(!siteNav.classList.contains("is-open"));
+    });
+
+    siteNav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => setNavOpen(false));
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!siteNav.classList.contains("is-open")) return;
+      const target = event.target;
+      if (target instanceof Node && (siteNav.contains(target) || navToggle.contains(target))) return;
+      setNavOpen(false);
+    });
+
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") setNavOpen(false);
     });
   }
 

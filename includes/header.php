@@ -46,9 +46,6 @@ $themePref = $user['theme_pref'] ?? ($_COOKIE['theme'] ?? 'system');
                 <?php render_media('assets/img/logo.png', 'Логотип PlayGift', 'brand-logo', 'Лого'); ?>
                 <span class="brand-text">PlayGift</span>
             </a>
-            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
-                <span></span><span></span>
-            </button>
             <nav class="site-nav" id="site-nav" data-site-nav>
                 <a class="<?= $activeNav === 'home' ? 'is-active' : '' ?>" href="index.php">Главная</a>
                 <a class="<?= $activeNav === 'catalog' ? 'is-active' : '' ?>" href="catalog.php">Каталог</a>
@@ -74,6 +71,11 @@ $themePref = $user['theme_pref'] ?? ($_COOKIE['theme'] ?? 'system');
                 </div>
                 <button class="theme-toggle" type="button" data-theme-toggle aria-label="Переключить тему">
                     <?php render_media('assets/img/theme-icon.png', 'Иконка темы', 'theme-slot', 'Иконка'); ?>
+                </button>
+                <button class="nav-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </button>
             </div>
         </div>
