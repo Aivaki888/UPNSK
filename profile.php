@@ -71,9 +71,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-$countStmt = db()->prepare('SELECT COUNT(*) FROM certificates WHERE user_id = ?');
-$countStmt->execute([(int) $user['id']]);
-$certCount = (int) $countStmt->fetchColumn();
+$giftStats = user_gift_stats((int) $user['id']);
+$certCount = $giftStats['count'];
 
 $pageTitle = 'Профиль — PlayGift';
 $activeNav = 'profile';
@@ -84,7 +83,7 @@ require __DIR__ . '/includes/header.php';
 <section class="page-hero">
     <div class="container">
         <h1>Профиль</h1>
-        <p>Управляйте данными аккаунта, предпочтением темы и паролем.</p>
+        <p>Данные аккаунта, статистика подарков, тема и пароль.</p>
     </div>
 </section>
 
@@ -98,6 +97,10 @@ require __DIR__ . '/includes/header.php';
                 <dd><?= $certCount ?></dd>
             </div>
             <div>
+                <dt>Подарено на сумму</dt>
+                <dd><?= e(format_money($giftStats['total'])) ?></dd>
+            </div>
+            <div>
                 <dt>Дата регистрации</dt>
                 <dd><?= e(date('d.m.Y', strtotime((string) $user['created_at']))) ?></dd>
             </div>
@@ -106,9 +109,21 @@ require __DIR__ . '/includes/header.php';
                 <dd><?= e(['light' => 'Светлая', 'dark' => 'Тёмная', 'system' => 'Как в системе'][$user['theme_pref']] ?? $user['theme_pref']) ?></dd>
             </div>
         </dl>
+        <?php if ($giftStats['platforms']): ?>
+            <div class="profile-platforms">
+                <h3>По платформам</h3>
+                <?php foreach ($giftStats['platforms'] as $row): ?>
+                    <div class="pulse-head">
+                        <?php render_platform_icon($row['platform'], 'platform-icon platform-icon-xs'); ?>
+                        <span><?= e(platform_label($row['platform'])) ?> · <?= (int) $row['cnt'] ?> · <?= e(format_money((float) $row['total'])) ?></span>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
         <div class="cta-row" style="margin-top: 1.5rem;">
             <a class="btn btn-primary" href="certificates.php">Мои сертификаты</a>
-            <a class="btn btn-secondary" href="logout.php">Выйти</a>
+            <a class="btn btn-secondary" href="quiz.php">Квиз</a>
+            <a class="btn btn-ghost" href="logout.php">Выйти</a>
         </div>
     </aside>
 

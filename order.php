@@ -11,12 +11,26 @@ foreach ($designs as $design) {
     $designMap[(int) $design['id']] = $design;
 }
 
+$platformHint = trim((string) ($_GET['platform'] ?? ''));
+if ($platformHint !== '' && !isset($_GET['design']) && !isset($_POST['design_id'])) {
+    foreach ($designs as $design) {
+        if (strcasecmp((string) $design['category'], $platformHint) === 0) {
+            $_GET['design'] = (string) $design['id'];
+            break;
+        }
+    }
+}
+
 $selectedDesignId = (int) ($_GET['design'] ?? $_POST['design_id'] ?? ($designs[0]['id'] ?? 0));
 $errors = [];
+$requestedAmount = (string) ($_POST['amount'] ?? $_GET['amount'] ?? '1500');
+if (!in_array((int) $requestedAmount, amount_options(), true)) {
+    $requestedAmount = '1500';
+}
 
 $form = [
     'design_id' => $selectedDesignId,
-    'amount' => (string) ($_POST['amount'] ?? '1500'),
+    'amount' => $requestedAmount,
     'recipient_name' => trim((string) ($_POST['recipient_name'] ?? '')),
     'recipient_email' => trim((string) ($_POST['recipient_email'] ?? '')),
     'occasion' => (string) ($_POST['occasion'] ?? 'birthday'),
@@ -124,7 +138,10 @@ require __DIR__ . '/includes/header.php';
             <input type="hidden" name="csrf_token" value="<?= e(csrf_token()) ?>">
 
             <div class="form-row">
-                <label>Кошелёк / оформление</label>
+                <div class="label-row">
+                    <label>Кошелёк / оформление</label>
+                    <button class="btn btn-ghost" type="button" data-surprise-design>Сюрприз</button>
+                </div>
                 <div class="choice-grid">
                     <?php foreach ($designs as $design): ?>
                         <div class="design-choice">
@@ -135,7 +152,7 @@ require __DIR__ . '/includes/header.php';
                                 value="<?= (int) $design['id'] ?>"
                                 <?= (int) $form['design_id'] === (int) $design['id'] ? 'checked' : '' ?>
                             >
-                            <label for="design_<?= (int) $design['id'] ?>">
+                            <label for="design_<?= (int) $design['id'] ?>" data-platform="<?= e(platform_label($design['category'])) ?>" data-accent-hint="<?= e(match (platform_slug($design['category'])) { 'playstation' => 'ps_blue', 'xbox' => 'xbox_green', default => 'pc_cyan' }) ?>">
                                 <div class="thumb" data-design-path="<?= e($design['image_path']) ?>">
                                     <?php render_media($design['image_path'], $design['title'], 'design-image', 'Картинка'); ?>
                                 </div>
@@ -207,26 +224,38 @@ require __DIR__ . '/includes/header.php';
 
             <div class="form-row">
                 <label for="message">Личное сообщение</label>
-                <textarea id="message" name="message" maxlength="500" placeholder="Пусть баланс пригодится на новую игру!"><?= e($form['message']) ?></textarea>
+                <div class="template-row" data-message-templates>
+                    <?php foreach (message_templates() as $template): ?>
+                        <button class="btn btn-ghost template-chip" type="button" data-template="<?= e($template) ?>"><?= e(mb_strimwidth($template, 0, 42, '…')) ?></button>
+                    <?php endforeach; ?>
+                </div>
+                <textarea id="message" name="message" maxlength="500" placeholder="Пусть баланс пригодится на новую игру!" data-message-field><?= e($form['message']) ?></textarea>
             </div>
 
             <button class="btn btn-primary" type="submit">Купить сертификат на кошелёк</button>
         </form>
     </div>
 
-    <aside class="order-preview">
-        <h2>Предпросмотр</h2>
-        <div class="preview-frame" data-preview-frame>
-            <?php render_media($currentDesign['image_path'] ?? null, 'Предпросмотр дизайна', 'design-image', 'Место для картинки'); ?>
+    <aside class="order-preview voucher-preview">
+        <h2>Живой ваучер</h2>
+        <div class="voucher-card accent-<?= e($form['accent_color']) ?>" data-voucher-card>
+            <div class="voucher-shine" aria-hidden="true"></div>
+            <div class="voucher-top">
+                <span class="voucher-brand">PlayGift</span>
+                <span class="voucher-platform" data-preview-platform><?= e(platform_label($currentDesign['category'] ?? 'PC')) ?></span>
+            </div>
+            <div class="preview-frame" data-preview-frame>
+                <?php render_media($currentDesign['image_path'] ?? null, 'Предпросмотр дизайна', 'design-image', 'Место для картинки'); ?>
+            </div>
+            <div class="voucher-amount" data-preview-amount><?= format_money((float) $form['amount']) ?></div>
+            <div class="voucher-recipient">для <strong data-preview-recipient><?= e($form['recipient_name'] !== '' ? $form['recipient_name'] : 'получателя') ?></strong></div>
+            <ul class="preview-list">
+                <li><span>Дизайн</span><strong data-preview-design><?= e($currentDesign['title'] ?? '—') ?></strong></li>
+                <li><span>Повод</span><strong data-preview-occasion><?= e(occasion_label($form['occasion'])) ?></strong></li>
+                <li><span>Стиль</span><strong data-preview-accent><?= e(accent_label($form['accent_color'])) ?></strong></li>
+                <li><span>Доставка</span><strong data-preview-delivery><?= $form['delivery_method'] === 'print' ? 'Для печати' : 'На email' ?></strong></li>
+            </ul>
         </div>
-        <ul class="preview-list">
-            <li><span>Дизайн</span><strong data-preview-design><?= e($currentDesign['title'] ?? '—') ?></strong></li>
-            <li><span>Сумма</span><strong data-preview-amount><?= format_money((float) $form['amount']) ?></strong></li>
-            <li><span>Повод</span><strong data-preview-occasion><?= e(occasion_label($form['occasion'])) ?></strong></li>
-            <li><span>Получатель</span><strong data-preview-recipient><?= e($form['recipient_name'] !== '' ? $form['recipient_name'] : '—') ?></strong></li>
-            <li><span>Стиль</span><strong data-preview-accent><?= e(accent_label($form['accent_color'])) ?></strong></li>
-            <li><span>Доставка</span><strong data-preview-delivery><?= $form['delivery_method'] === 'print' ? 'Для печати' : 'На email' ?></strong></li>
-        </ul>
     </aside>
 </section>
 

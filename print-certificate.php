@@ -67,6 +67,10 @@ if (!$cert) {
                 <div><strong>Сообщение:</strong> <?= e($cert['message']) ?></div>
             <?php endif; ?>
         </div>
+        <?php
+        $verifyLink = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? 'localhost') . '/verify.php?code=' . rawurlencode($cert['certificate_code']);
+        ?>
+        <img src="<?= e(qr_image_url($verifyLink, 140)) ?>" alt="QR" width="140" height="140" style="margin-top:1rem;border-radius:12px;">
         <div class="actions">
             <button class="btn" type="button" onclick="window.print()">Печать</button>
             <a class="btn secondary" href="certificates.php">Назад</a>

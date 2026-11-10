@@ -58,12 +58,26 @@ declare(strict_types=1);
             </div>
         </div>
 
+        <div class="container footer-newsletter panel">
+            <div>
+                <h2 class="footer-title">Рассылка идей</h2>
+                <p class="footer-copy">Короткие подсказки по подаркам на кошельки — без спама.</p>
+            </div>
+            <form class="newsletter-form" method="post" action="newsletter.php">
+                <input type="hidden" name="csrf_token" value="<?= e(csrf_token()) ?>">
+                <input type="hidden" name="redirect" value="<?= e($_SERVER['REQUEST_URI'] ?? 'index.php') ?>">
+                <input type="email" name="email" required placeholder="you@email.com" aria-label="Email для рассылки">
+                <button class="btn btn-primary" type="submit">Подписаться</button>
+            </form>
+        </div>
+
         <div class="container footer-bottom">
             <span>© <?= date('Y') ?> PlayGift</span>
             <span>Только кошельки · PS · Xbox · Steam</span>
         </div>
     </footer>
 </div>
+<canvas id="confetti-canvas" aria-hidden="true"></canvas>
 <script src="assets/js/main.js" defer></script>
 </body>
 </html>

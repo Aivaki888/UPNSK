@@ -5,15 +5,17 @@
 ## Страницы
 
 1. `index.php` — главная  
-2. `catalog.php` — каталог платформ  
+2. `catalog.php` — каталог кошельков  
 3. `order.php` — оформление / покупка сертификата  
-4. `about.php` — о проекте  
-5. `login.php` — вход  
-6. `register.php` — регистрация  
-7. `profile.php` — профиль  
-8. `certificates.php` — мои сертификаты  
-9. `verify.php` — проверка кода  
-10. `contact.php` — контакты  
+4. `quiz.php` — подбор кошелька  
+5. `guide.php` — гид по подаркам  
+6. `about.php` — о проекте  
+7. `login.php` — вход  
+8. `register.php` — регистрация  
+9. `profile.php` — профиль и статистика  
+10. `certificates.php` — мои сертификаты  
+11. `verify.php` — проверка кода + QR  
+12. `contact.php` — контакты  
 
 ## Требования
 

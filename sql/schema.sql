@@ -65,6 +65,21 @@ CREATE TABLE IF NOT EXISTS contact_messages (
   CONSTRAINT fk_contact_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
 ) ENGINE=InnoDB;
 
+CREATE TABLE IF NOT EXISTS newsletter_subscribers (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  email VARCHAR(190) NOT NULL UNIQUE,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS gift_ideas (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(160) NOT NULL,
+  platform VARCHAR(40) NOT NULL,
+  amount INT UNSIGNED NOT NULL,
+  tip TEXT NOT NULL,
+  sort_order INT NOT NULL DEFAULT 0
+) ENGINE=InnoDB;
+
 INSERT INTO designs (title, slug, description, image_path, category, price_base, sort_order) VALUES
 ('PS Pulse Blue', 'ps-pulse-blue', 'Синий pulse-дизайн — сертификат на пополнение кошелька PlayStation Network.', 'assets/img/designs/01.jpg', 'PlayStation', 0, 1),
 ('PS Midnight', 'ps-midnight', 'Тёмный стиль DualSense — ваучер для баланса PSN без привязки к конкретной игре.', 'assets/img/designs/02.jpg', 'PlayStation', 150, 2),

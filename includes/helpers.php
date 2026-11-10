@@ -183,7 +183,108 @@ function ensure_extra_tables(): void
         ) ENGINE=InnoDB'
     );
 
+    db()->exec(
+        'CREATE TABLE IF NOT EXISTS newsletter_subscribers (
+            id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            email VARCHAR(190) NOT NULL UNIQUE,
+            created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+        ) ENGINE=InnoDB'
+    );
+
+    db()->exec(
+        'CREATE TABLE IF NOT EXISTS gift_ideas (
+            id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            title VARCHAR(160) NOT NULL,
+            platform VARCHAR(40) NOT NULL,
+            amount INT UNSIGNED NOT NULL,
+            tip TEXT NOT NULL,
+            sort_order INT NOT NULL DEFAULT 0
+        ) ENGINE=InnoDB'
+    );
+
+    $ideaCount = (int) db()->query('SELECT COUNT(*) FROM gift_ideas')->fetchColumn();
+    if ($ideaCount === 0) {
+        $seed = db()->prepare('INSERT INTO gift_ideas (title, platform, amount, tip, sort_order) VALUES (?, ?, ?, ?, ?)');
+        foreach ([
+            ['Ночной рейд', 'PlayStation', 1500, 'Идеально, если друг завис на PS5 и копит на DLC.', 1],
+            ['Game night kit', 'Xbox', 2500, 'Пополнение Xbox перед совместным вечером в мультиплеер.', 2],
+            ['Steam wishlist boost', 'PC', 1000, 'Лёгкий толчок к покупке из вишлиста в распродажу.', 3],
+            ['Турнирный буст', 'PlayStation', 5000, 'Крупный номинал к дню рождения или финалу сезона.', 4],
+            ['Семейный кошелёк', 'Xbox', 1000, 'Небольшой баланс «просто так» — без повода, но с теплом.', 5],
+            ['Indie surprise', 'PC', 500, 'Мини-пополнение: хватит на пару indie-игр в Steam.', 6],
+        ] as $row) {
+            $seed->execute($row);
+        }
+    }
+
     $ready = true;
+}
+
+function message_templates(): array
+{
+    return [
+        'С днём рождения! Пусть баланс пригодится на топ-игру.',
+        'За победу в нашем турнире — пополнение на твой кошелёк.',
+        'Спасибо за кооператив. Это тебе на следующий рейд.',
+        'Просто так. Выбери сам, во что вложишь баланс.',
+        'К релизу! Надеюсь, хватит и на игру, и на сезонник.',
+        'Удачных матчей и красивых трофеев.',
+    ];
+}
+
+function platform_stats(): array
+{
+    $rows = db()->query(
+        'SELECT d.category AS platform, COUNT(c.id) AS orders, COALESCE(SUM(c.amount), 0) AS total
+         FROM designs d
+         LEFT JOIN certificates c ON c.design_id = d.id
+         WHERE d.is_active = 1
+         GROUP BY d.category
+         ORDER BY orders DESC, total DESC'
+    )->fetchAll();
+
+    return $rows ?: [];
+}
+
+function site_counters(): array
+{
+    return [
+        'designs' => (int) db()->query('SELECT COUNT(*) FROM designs WHERE is_active = 1')->fetchColumn(),
+        'certificates' => (int) db()->query('SELECT COUNT(*) FROM certificates')->fetchColumn(),
+        'users' => (int) db()->query('SELECT COUNT(*) FROM users')->fetchColumn(),
+        'favorites' => (int) db()->query('SELECT COUNT(*) FROM favorites')->fetchColumn(),
+    ];
+}
+
+function user_gift_stats(int $userId): array
+{
+    $stmt = db()->prepare(
+        'SELECT COUNT(*) AS cnt, COALESCE(SUM(amount), 0) AS total
+         FROM certificates WHERE user_id = ?'
+    );
+    $stmt->execute([$userId]);
+    $base = $stmt->fetch() ?: ['cnt' => 0, 'total' => 0];
+
+    $byPlatform = db()->prepare(
+        'SELECT d.category AS platform, COUNT(*) AS cnt, COALESCE(SUM(c.amount), 0) AS total
+         FROM certificates c
+         INNER JOIN designs d ON d.id = c.design_id
+         WHERE c.user_id = ?
+         GROUP BY d.category
+         ORDER BY total DESC'
+    );
+    $byPlatform->execute([$userId]);
+
+    return [
+        'count' => (int) $base['cnt'],
+        'total' => (float) $base['total'],
+        'platforms' => $byPlatform->fetchAll(),
+    ];
+}
+
+function qr_image_url(string $data, int $size = 180): string
+{
+    return 'https://api.qrserver.com/v1/create-qr-code/?size=' . $size . 'x' . $size . '&data=' . rawurlencode($data);
 }
 
 function user_favorite_ids(int $userId): array

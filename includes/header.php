@@ -32,6 +32,8 @@ $themePref = $user['theme_pref'] ?? ($_COOKIE['theme'] ?? 'system');
           }
           document.documentElement.setAttribute('data-theme', theme);
           document.documentElement.setAttribute('data-theme-pref', pref);
+          var accent = localStorage.getItem('playgift-accent') || 'ps';
+          document.documentElement.setAttribute('data-accent', accent);
         } catch (e) {}
       })();
     </script>
@@ -51,8 +53,9 @@ $themePref = $user['theme_pref'] ?? ($_COOKIE['theme'] ?? 'system');
                 <a class="<?= $activeNav === 'home' ? 'is-active' : '' ?>" href="index.php">Главная</a>
                 <a class="<?= $activeNav === 'catalog' ? 'is-active' : '' ?>" href="catalog.php">Каталог</a>
                 <a class="<?= $activeNav === 'order' ? 'is-active' : '' ?>" href="order.php">Оформить</a>
+                <a class="<?= $activeNav === 'quiz' ? 'is-active' : '' ?>" href="quiz.php">Квиз</a>
+                <a class="<?= $activeNav === 'guide' ? 'is-active' : '' ?>" href="guide.php">Гид</a>
                 <a class="<?= $activeNav === 'verify' ? 'is-active' : '' ?>" href="verify.php">Проверка</a>
-                <a class="<?= $activeNav === 'contact' ? 'is-active' : '' ?>" href="contact.php">Контакты</a>
                 <a class="<?= $activeNav === 'about' ? 'is-active' : '' ?>" href="about.php">О нас</a>
                 <?php if ($user): ?>
                     <a class="<?= $activeNav === 'favorites' ? 'is-active' : '' ?>" href="favorites.php">Избранное</a>
@@ -64,6 +67,11 @@ $themePref = $user['theme_pref'] ?? ($_COOKIE['theme'] ?? 'system');
                 <?php endif; ?>
             </nav>
             <div class="header-actions">
+                <div class="accent-switch" data-accent-switch aria-label="Акцент платформы">
+                    <button type="button" data-accent="ps" title="Акцент PlayStation">PS</button>
+                    <button type="button" data-accent="xbox" title="Акцент Xbox">XB</button>
+                    <button type="button" data-accent="steam" title="Акцент Steam">ST</button>
+                </div>
                 <button class="theme-toggle" type="button" data-theme-toggle aria-label="Переключить тему">
                     <?php render_media('assets/img/theme-icon.png', 'Иконка темы', 'theme-slot', 'Иконка'); ?>
                 </button>
