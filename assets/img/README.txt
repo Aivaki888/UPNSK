@@ -16,5 +16,5 @@ designs/05.jpg — PC / Steam · PC RGB Arena
 designs/06.jpg — PC / Steam · PC Clean Deck
 
 platforms/playstation.jpg — иконка кошелька PlayStation
-platforms/xbox.svg        — иконка кошелька Xbox
+platforms/xbox.png        — иконка кошелька Xbox
 platforms/pc.svg          — иконка кошелька Steam
