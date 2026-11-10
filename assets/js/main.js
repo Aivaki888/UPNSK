@@ -11,6 +11,14 @@
 
   let themeTimer = null;
 
+  function syncThemeToggleLabel(theme) {
+    if (!themeToggle) return;
+    themeToggle.setAttribute(
+      "aria-label",
+      theme === "dark" ? "Включить светлую тему" : "Включить тёмную тему"
+    );
+  }
+
   function applyTheme(pref) {
     const theme = resolveTheme(pref);
     root.classList.add("theme-animating");
@@ -18,9 +26,12 @@
     root.setAttribute("data-theme-pref", pref === "dark" || pref === "light" ? pref : "system");
     localStorage.setItem("playgift-theme", pref === "dark" || pref === "light" ? pref : "system");
     document.cookie = `theme=${encodeURIComponent(root.getAttribute("data-theme-pref"))};path=/;max-age=31536000;SameSite=Lax`;
+    syncThemeToggleLabel(theme);
     if (themeTimer) clearTimeout(themeTimer);
     themeTimer = setTimeout(() => root.classList.remove("theme-animating"), 600);
   }
+
+  syncThemeToggleLabel(root.getAttribute("data-theme") === "dark" ? "dark" : "light");
 
   if (themeToggle) {
     themeToggle.addEventListener("click", (event) => {

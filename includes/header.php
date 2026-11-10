@@ -70,7 +70,13 @@ $themePref = $user['theme_pref'] ?? ($_COOKIE['theme'] ?? 'system');
                     <button type="button" data-accent="steam" title="Акцент Steam">ST</button>
                 </div>
                 <button class="theme-toggle" type="button" data-theme-toggle aria-label="Переключить тему">
-                    <?php render_media('assets/img/theme-icon.png', 'Иконка темы', 'theme-slot', 'Иконка'); ?>
+                    <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <circle cx="12" cy="12" r="4.2" fill="currentColor"/>
+                        <path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.05 5.05l1.56 1.56M17.39 17.39l1.56 1.56M5.05 18.95l1.56-1.56M17.39 6.61l1.56-1.56" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                    </svg>
+                    <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path fill="currentColor" d="M16.8 14.8A7.2 7.2 0 0 1 9.2 7.2c0-.5.05-1 .14-1.48A7.8 7.8 0 1 0 18.28 15.9c-.47.1-.96.15-1.48.15z"/>
+                    </svg>
                 </button>
                 <button class="nav-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
                     <span></span>
