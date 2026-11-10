@@ -17,4 +17,4 @@ designs/06.jpg — PC / Steam · PC Clean Deck
 
 platforms/playstation.jpg — иконка кошелька PlayStation
 platforms/xbox.png        — иконка кошелька Xbox
-platforms/pc.svg          — иконка кошелька Steam
+platforms/pc.png          — иконка кошелька Steam
