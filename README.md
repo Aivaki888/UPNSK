@@ -80,15 +80,16 @@ chmod +x start.sh
 
 ## Картинки и логотип
 
-Все изображения вставляются вручную в `assets/img/`. Пока файлов нет, на сайте видны пустые области.
+Папка с фото: **`assets/img/`** (уже в git). Сейчас там плейсхолдеры — замени своими файлами с теми же именами.
 
 | Файл | Куда попадает |
 |---|---|
 | `assets/img/logo.png` | логотип в шапке и подвале |
+| `assets/img/theme-icon.png` | иконка смены темы |
 | `assets/img/hero.jpg` | баннер на главной |
 | `assets/img/auth.jpg` | вход / регистрация |
 | `assets/img/about.jpg` | страница «О нас» |
-| `assets/img/designs/01.jpg` … `06.jpg` | дизайны PS / Xbox / PC |
+| `assets/img/designs/01.jpg` … `06.jpg` | дизайны PS / Xbox / Steam |
 
 ## Структура
 
