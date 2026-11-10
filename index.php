@@ -48,11 +48,6 @@ require __DIR__ . '/includes/header.php';
             <a class="btn btn-secondary" href="quiz.php">Подобрать кошелёк</a>
             <a class="btn btn-ghost" href="guide.php">Гид подарков</a>
         </div>
-        <div class="hero-trust">
-            <span>Без ключей игр</span>
-            <span>QR-проверка</span>
-            <span>Светлая и тёмная тема</span>
-        </div>
     </div>
     <div class="hero-visual">
         <?php render_media('assets/img/hero.jpg', 'Главный баннер', 'hero-media', 'Место для главного изображения'); ?>
