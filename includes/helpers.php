@@ -242,7 +242,15 @@ function platform_label(string $category): string
 
 function platform_icon_path(string $category): string
 {
-    return 'assets/img/platforms/' . platform_slug($category) . '.svg';
+    $slug = platform_slug($category);
+    foreach (['png', 'jpg', 'jpeg', 'webp', 'svg'] as $ext) {
+        $path = 'assets/img/platforms/' . $slug . '.' . $ext;
+        if (media_exists($path)) {
+            return $path;
+        }
+    }
+
+    return 'assets/img/platforms/' . $slug . '.svg';
 }
 
 function render_platform_icon(string $category, string $class = 'platform-icon'): void
