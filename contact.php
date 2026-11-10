@@ -60,7 +60,7 @@ require __DIR__ . '/includes/header.php';
 <section class="page-hero stagger-copy">
     <div class="container">
         <h1>Контакты</h1>
-        <p>Вопросы по сертификатам PlayStation, Xbox и PC, дизайнам или аккаунту.</p>
+        <p>Вопросы по пополнению кошельков PlayStation, Xbox и Steam, дизайнам или аккаунту.</p>
     </div>
 </section>
 

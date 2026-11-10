@@ -23,7 +23,7 @@ if ($recentIds) {
     }
 }
 
-$pageTitle = 'PlayGift — игровые сертификаты PS · Xbox · PC';
+$pageTitle = 'PlayGift — пополнение кошельков PS · Xbox · PC';
 $activeNav = 'home';
 $bodyClass = 'page-home';
 
@@ -32,12 +32,12 @@ require __DIR__ . '/includes/header.php';
 
 <section class="hero">
     <div class="hero-copy">
-        <span class="eyebrow">PlayStation · Xbox · PC</span>
+        <span class="eyebrow">Только пополнение кошельков</span>
         <h1>PlayGift</h1>
-        <p class="lead">Подарочные сертификаты для игровых платформ — выберите консоль или PC, сумму и оформление за пару минут.</p>
+        <p class="lead">Цифровые сертификаты для баланса PlayStation, Xbox и Steam. Без ключей игр — только сумма на кошелёк.</p>
         <div class="cta-row">
-            <a class="btn btn-primary" href="order.php">Оформить</a>
-            <a class="btn btn-secondary" href="catalog.php">Каталог платформ</a>
+            <a class="btn btn-primary" href="order.php">Оформить пополнение</a>
+            <a class="btn btn-secondary" href="catalog.php">Каталог кошельков</a>
             <a class="btn btn-ghost" href="verify.php">Проверить код</a>
         </div>
     </div>
@@ -51,15 +51,15 @@ require __DIR__ . '/includes/header.php';
         <div class="feature-grid">
             <a class="feature-item" href="catalog.php?category=PlayStation">
                 <h3>PlayStation</h3>
-                <p>Дизайны под PSN, PS Plus и игры для PS5 / PS4.</p>
+                <p>Сертификат на пополнение кошелька PSN.</p>
             </a>
             <a class="feature-item" href="catalog.php?category=Xbox">
                 <h3>Xbox</h3>
-                <p>Сертификаты на Game Pass, Microsoft Store и Series X|S.</p>
+                <p>Сертификат на пополнение баланса Microsoft / Xbox.</p>
             </a>
             <a class="feature-item" href="catalog.php?category=PC">
                 <h3>PC</h3>
-                <p>Ваучеры для Steam, Epic Games Store и других лаунчеров.</p>
+                <p>Сертификат на пополнение кошелька Steam.</p>
             </a>
         </div>
     </div>
@@ -68,8 +68,8 @@ require __DIR__ . '/includes/header.php';
 <section class="section">
     <div class="container">
         <div class="section-head">
-            <h2 class="section-title">Выберите платформу</h2>
-            <p class="section-text">Шесть дизайнов под PlayStation, Xbox и PC — картинки вставите сами.</p>
+            <h2 class="section-title">Выберите кошелёк</h2>
+            <p class="section-text">Шесть оформлений под PlayStation, Xbox и Steam — картинки вставите сами.</p>
         </div>
         <div class="design-grid">
             <?php foreach ($designs as $design): ?>
@@ -96,7 +96,7 @@ require __DIR__ . '/includes/header.php';
     <div class="container">
         <div class="section-head">
             <h2 class="section-title">Как это работает</h2>
-            <p class="section-text">Три шага до готового игрового сертификата.</p>
+            <p class="section-text">Три шага до сертификата на пополнение кошелька.</p>
         </div>
         <div class="feature-grid">
             <article class="feature-item">
@@ -104,8 +104,8 @@ require __DIR__ . '/includes/header.php';
                 <p>Зарегистрируйтесь, чтобы хранить заказы и избранные дизайны.</p>
             </article>
             <article class="feature-item">
-                <h3>2. Платформа</h3>
-                <p>Выберите PS, Xbox или PC, сумму, повод и получателя.</p>
+                <h3>2. Кошелёк</h3>
+                <p>Выберите PS, Xbox или Steam, сумму, повод и получателя.</p>
             </article>
             <article class="feature-item">
                 <h3>3. Код готов</h3>
@@ -120,7 +120,7 @@ require __DIR__ . '/includes/header.php';
     <div class="container">
         <div class="section-head">
             <h2 class="section-title">Недавно смотрели</h2>
-            <p class="section-text">Дизайны платформ, к которым вы возвращались в этой сессии.</p>
+            <p class="section-text">Оформления кошельков, к которым вы возвращались в этой сессии.</p>
         </div>
         <div class="design-grid">
             <?php foreach ($recentDesigns as $design): ?>

@@ -55,7 +55,7 @@ if (!$cert) {
                 <span>Место для картинки</span>
             <?php endif; ?>
         </div>
-        <div class="eyebrow">PlayGift · игровой сертификат</div>
+        <div class="eyebrow">PlayGift · пополнение кошелька</div>
         <h1><?= e($cert['design_title']) ?></h1>
         <div class="meta">
             <div><strong>Код:</strong> <?= e($cert['certificate_code']) ?></div>

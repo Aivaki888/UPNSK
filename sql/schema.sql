@@ -66,12 +66,12 @@ CREATE TABLE IF NOT EXISTS contact_messages (
 ) ENGINE=InnoDB;
 
 INSERT INTO designs (title, slug, description, image_path, category, price_base, sort_order) VALUES
-('PS Pulse Blue', 'ps-pulse-blue', 'Синий pulse-дизайн в духе PlayStation — для баланса PSN и подписок.', 'assets/img/designs/01.jpg', 'PlayStation', 0, 1),
-('PS Midnight', 'ps-midnight', 'Тёмный карточный стиль DualSense — строгий подарок для консоли PS5.', 'assets/img/designs/02.jpg', 'PlayStation', 150, 2),
-('Xbox Green Core', 'xbox-green-core', 'Зелёный акцент Xbox — сертификат на игры, Game Pass и дополнения.', 'assets/img/designs/03.jpg', 'Xbox', 0, 3),
-('Xbox Carbon', 'xbox-carbon', 'Матовый карбон с зелёной линией — премиальный вид для Series X|S.', 'assets/img/designs/04.jpg', 'Xbox', 150, 4),
-('PC RGB Arena', 'pc-rgb-arena', 'RGB-подсветка и HUD-сетка — для Steam, Epic и любых PC-ключей.', 'assets/img/designs/05.jpg', 'PC', 100, 5),
-('PC Clean Deck', 'pc-clean-deck', 'Минималистичный PC-дизайн без лишнего шума — чистый цифровой ваучер.', 'assets/img/designs/06.jpg', 'PC', 0, 6)
+('PS Pulse Blue', 'ps-pulse-blue', 'Синий pulse-дизайн — сертификат на пополнение кошелька PlayStation Network.', 'assets/img/designs/01.jpg', 'PlayStation', 0, 1),
+('PS Midnight', 'ps-midnight', 'Тёмный стиль DualSense — ваучер для баланса PSN без привязки к конкретной игре.', 'assets/img/designs/02.jpg', 'PlayStation', 150, 2),
+('Xbox Green Core', 'xbox-green-core', 'Зелёный акцент Xbox — сертификат только на пополнение баланса Microsoft / Xbox.', 'assets/img/designs/03.jpg', 'Xbox', 0, 3),
+('Xbox Carbon', 'xbox-carbon', 'Матовый карбон — оформление ваучера для кошелька Xbox Series X|S.', 'assets/img/designs/04.jpg', 'Xbox', 150, 4),
+('PC RGB Arena', 'pc-rgb-arena', 'RGB-оформление — сертификат на пополнение кошелька Steam.', 'assets/img/designs/05.jpg', 'PC', 100, 5),
+('PC Clean Deck', 'pc-clean-deck', 'Минималистичный PC-дизайн — чистый ваучер для баланса Steam Wallet.', 'assets/img/designs/06.jpg', 'PC', 0, 6)
 ON DUPLICATE KEY UPDATE
   title = VALUES(title),
   description = VALUES(description),

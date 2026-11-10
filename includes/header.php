@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 $user = current_user();
 $flash = take_flash();
-$pageTitle = $pageTitle ?? 'PlayGift — игровые сертификаты';
+$pageTitle = $pageTitle ?? 'PlayGift — пополнение кошельков';
 $bodyClass = $bodyClass ?? '';
 $activeNav = $activeNav ?? '';
 $themePref = $user['theme_pref'] ?? ($_COOKIE['theme'] ?? 'system');
@@ -15,7 +15,7 @@ $themePref = $user['theme_pref'] ?? ($_COOKIE['theme'] ?? 'system');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= e($pageTitle) ?></title>
-    <meta name="description" content="PlayGift — подарочные сертификаты для PlayStation, Xbox и PC с выбором платформы, суммы и дизайна.">
+    <meta name="description" content="PlayGift — сертификаты только на пополнение кошельков PlayStation, Xbox и Steam.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&display=swap" rel="stylesheet">

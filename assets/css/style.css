@@ -800,6 +800,85 @@ textarea {
   align-items: start;
 }
 
+.about-timeline {
+  padding-bottom: 3.5rem;
+}
+
+.timeline-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem 1.25rem;
+  align-items: start;
+}
+
+.timeline-step {
+  display: inline-grid;
+  place-items: center;
+  min-width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-pill);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.timeline-item h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+}
+
+.about-reasons {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 1.25rem;
+}
+
+.reason-card h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1.05rem;
+}
+
+.about-values {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 1.25rem;
+  padding-bottom: 3.5rem;
+  align-items: start;
+}
+
+.value-list {
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.value-list li {
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-sm);
+  background: var(--bg-soft);
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.value-list strong {
+  color: var(--ink);
+}
+
+.about-note h3 {
+  margin: 0 0 0.55rem;
+}
+
 .auth-side {
   min-height: 28rem;
   border-radius: var(--radius);
@@ -1252,6 +1331,8 @@ textarea {
   .order-layout,
   .profile-layout,
   .about-story,
+  .about-reasons,
+  .about-values,
   .footer-grid,
   .contact-page {
     grid-template-columns: 1fr;

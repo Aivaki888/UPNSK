@@ -26,7 +26,7 @@ require __DIR__ . '/includes/header.php';
 <section class="page-hero stagger-copy">
     <div class="container">
         <h1>Избранное</h1>
-        <p>Дизайны PlayStation, Xbox и PC, которые вы сохранили для быстрого оформления.</p>
+        <p>Оформления ваучеров на кошельки PlayStation, Xbox и Steam, которые вы сохранили.</p>
     </div>
 </section>
 

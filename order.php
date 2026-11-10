@@ -97,7 +97,7 @@ if ($currentDesign) {
     remember_recent_design((int) $currentDesign['id']);
 }
 
-$pageTitle = 'Оформить сертификат — PlayGift';
+$pageTitle = 'Оформить пополнение — PlayGift';
 $activeNav = 'order';
 
 require __DIR__ . '/includes/header.php';
@@ -105,8 +105,8 @@ require __DIR__ . '/includes/header.php';
 
 <section class="page-hero stagger-copy">
     <div class="container">
-        <h1>Оформление сертификата</h1>
-        <p>Выберите платформу и дизайн, сумму, повод, получателя и способ доставки. Справа — живой предпросмотр.</p>
+        <h1>Пополнение кошелька</h1>
+        <p>Сертификат только на баланс платформы. Выберите кошелёк, сумму, повод и получателя — справа живой предпросмотр.</p>
     </div>
 </section>
 
@@ -124,7 +124,7 @@ require __DIR__ . '/includes/header.php';
             <input type="hidden" name="csrf_token" value="<?= e(csrf_token()) ?>">
 
             <div class="form-row">
-                <label>Платформа / дизайн</label>
+                <label>Кошелёк / оформление</label>
                 <div class="choice-grid">
                     <?php foreach ($designs as $design): ?>
                         <div class="design-choice">
@@ -147,7 +147,7 @@ require __DIR__ . '/includes/header.php';
             </div>
 
             <div class="form-row">
-                <label>Сумма сертификата</label>
+                <label>Сумма пополнения</label>
                 <div class="choice-grid">
                     <?php foreach (amount_options() as $amount): ?>
                         <div class="choice">
@@ -204,10 +204,10 @@ require __DIR__ . '/includes/header.php';
 
             <div class="form-row">
                 <label for="message">Личное сообщение</label>
-                <textarea id="message" name="message" maxlength="500" placeholder="Удачных матчей и новых трофеев!"><?= e($form['message']) ?></textarea>
+                <textarea id="message" name="message" maxlength="500" placeholder="Пусть баланс пригодится на новую игру!"><?= e($form['message']) ?></textarea>
             </div>
 
-            <button class="btn btn-primary" type="submit">Купить игровой сертификат</button>
+            <button class="btn btn-primary" type="submit">Купить сертификат на кошелёк</button>
         </form>
     </div>
 

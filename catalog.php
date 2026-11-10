@@ -46,7 +46,7 @@ $designs = $stmt->fetchAll();
 $categories = db()->query('SELECT DISTINCT category FROM designs WHERE is_active = 1 ORDER BY category')->fetchAll(PDO::FETCH_COLUMN);
 $favoriteIds = $user ? user_favorite_ids((int) $user['id']) : [];
 
-$pageTitle = 'Каталог платформ — PlayGift';
+$pageTitle = 'Каталог кошельков — PlayGift';
 $activeNav = 'catalog';
 
 require __DIR__ . '/includes/header.php';
@@ -54,8 +54,8 @@ require __DIR__ . '/includes/header.php';
 
 <section class="page-hero stagger-copy">
     <div class="container">
-        <h1>Каталог платформ</h1>
-        <p>Фильтруйте по PlayStation, Xbox и PC, ищите по названию и сохраняйте избранное.</p>
+        <h1>Каталог кошельков</h1>
+        <p>Только пополнение баланса: PlayStation, Xbox и Steam. Фильтруйте платформу и сохраняйте избранное.</p>
     </div>
 </section>
 

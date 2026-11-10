@@ -10,15 +10,15 @@ declare(strict_types=1);
                     <?php render_media('assets/img/logo.png', 'Логотип PlayGift', 'brand-logo', 'Лого'); ?>
                     <span class="brand-text">PlayGift</span>
                 </div>
-                <p class="footer-copy">Игровые сертификаты для PlayStation, Xbox и PC. Выберите платформу, сумму и дизайн — учебный проект на HTML, CSS, JS, PHP и MySQL.</p>
+                <p class="footer-copy">Сертификаты только на пополнение кошельков PlayStation, Xbox и Steam. Учебный проект на HTML, CSS, JS, PHP и MySQL.</p>
             </div>
 
             <div class="footer-col">
-                <h2 class="footer-title">Платформы</h2>
+                <h2 class="footer-title">Кошельки</h2>
                 <ul class="footer-links">
-                    <li><a href="catalog.php?category=PlayStation">PlayStation</a></li>
-                    <li><a href="catalog.php?category=Xbox">Xbox</a></li>
-                    <li><a href="catalog.php?category=PC">PC</a></li>
+                    <li><a href="catalog.php?category=PlayStation">PSN Wallet</a></li>
+                    <li><a href="catalog.php?category=Xbox">Xbox Balance</a></li>
+                    <li><a href="catalog.php?category=PC">Steam Wallet</a></li>
                     <li><a href="order.php">Оформить</a></li>
                 </ul>
             </div>
@@ -45,7 +45,7 @@ declare(strict_types=1);
 
         <div class="container footer-bottom">
             <span>© <?= date('Y') ?> PlayGift</span>
-            <span>PS · Xbox · PC · светлая и тёмная тема</span>
+            <span>Только кошельки · PS · Xbox · Steam</span>
         </div>
     </footer>
 </div>

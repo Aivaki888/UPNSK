@@ -42,7 +42,7 @@ require __DIR__ . '/includes/header.php';
 <section class="page-hero stagger-copy">
     <div class="container">
         <h1>Мои сертификаты</h1>
-        <p>Копируйте код, печатайте сертификат и отмечайте использование.</p>
+        <p>Сертификаты на пополнение кошельков: копируйте код, печатайте и отмечайте использование.</p>
     </div>
 </section>
 
