@@ -45,7 +45,7 @@ require __DIR__ . '/includes/header.php';
                             <?php render_media($design['image_path'], $design['title'], 'design-image', 'Место для картинки дизайна'); ?>
                         </div>
                         <div class="design-body">
-                            <span class="chip chip-<?= e(strtolower($design['category'])) ?>"><?= e($design['category']) ?></span>
+                            <?php render_platform_chip($design['category']); ?>
                             <h3><?= e($design['title']) ?></h3>
                             <p class="muted"><?= e($design['description']) ?></p>
                             <div class="design-meta">

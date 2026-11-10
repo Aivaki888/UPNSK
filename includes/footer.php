@@ -15,10 +15,25 @@ declare(strict_types=1);
 
             <div class="footer-col">
                 <h2 class="footer-title">Кошельки</h2>
-                <ul class="footer-links">
-                    <li><a href="catalog.php?category=PlayStation">PSN Wallet</a></li>
-                    <li><a href="catalog.php?category=Xbox">Xbox Balance</a></li>
-                    <li><a href="catalog.php?category=PC">Steam Wallet</a></li>
+                <ul class="footer-links footer-wallet-links">
+                    <li>
+                        <a href="catalog.php?category=PlayStation">
+                            <?php render_platform_icon('PlayStation', 'platform-icon platform-icon-xs'); ?>
+                            <span>PSN Wallet</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="catalog.php?category=Xbox">
+                            <?php render_platform_icon('Xbox', 'platform-icon platform-icon-xs'); ?>
+                            <span>Xbox Balance</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="catalog.php?category=PC">
+                            <?php render_platform_icon('PC', 'platform-icon platform-icon-xs'); ?>
+                            <span>Steam Wallet</span>
+                        </a>
+                    </li>
                     <li><a href="order.php">Оформить</a></li>
                 </ul>
             </div>

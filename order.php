@@ -139,7 +139,10 @@ require __DIR__ . '/includes/header.php';
                                 <div class="thumb" data-design-path="<?= e($design['image_path']) ?>">
                                     <?php render_media($design['image_path'], $design['title'], 'design-image', 'Картинка'); ?>
                                 </div>
-                                <div class="caption"><?= e($design['title']) ?></div>
+                                <div class="caption">
+                                    <?php render_platform_icon($design['category'], 'platform-icon platform-icon-xs'); ?>
+                                    <span><?= e($design['title']) ?></span>
+                                </div>
                             </label>
                         </div>
                     <?php endforeach; ?>

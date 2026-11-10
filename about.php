@@ -52,18 +52,21 @@ require __DIR__ . '/includes/header.php';
             <p class="section-text">Один продукт — баланс. Получатель сам решает, на что его потратить.</p>
         </div>
         <div class="feature-grid stagger-layout">
-            <article class="feature-item">
-                <span class="chip chip-playstation">PlayStation</span>
+            <article class="feature-item wallet-card">
+                <?php render_platform_icon('PlayStation', 'platform-icon platform-icon-lg'); ?>
+                <?php render_platform_chip('PlayStation'); ?>
                 <h3>Кошелёк PSN</h3>
                 <p>Сертификат добавляет сумму на баланс аккаунта PlayStation Network. Дальше — игры, дополнения или то, что выберет получатель в магазине.</p>
             </article>
-            <article class="feature-item">
-                <span class="chip chip-xbox">Xbox</span>
+            <article class="feature-item wallet-card">
+                <?php render_platform_icon('Xbox', 'platform-icon platform-icon-lg'); ?>
+                <?php render_platform_chip('Xbox'); ?>
                 <h3>Баланс Microsoft</h3>
                 <p>Пополнение счёта Xbox / Microsoft. Деньги остаются в кошельке платформы и тратятся там, где удобно получателю.</p>
             </article>
-            <article class="feature-item">
-                <span class="chip chip-pc">PC</span>
+            <article class="feature-item wallet-card">
+                <?php render_platform_icon('PC', 'platform-icon platform-icon-lg'); ?>
+                <?php render_platform_chip('PC'); ?>
                 <h3>Кошелёк Steam</h3>
                 <p>Цифровой сертификат на пополнение Steam Wallet. Без привязки к конкретной игре — только сумма на счёте.</p>
             </article>

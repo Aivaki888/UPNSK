@@ -48,17 +48,20 @@ require __DIR__ . '/includes/header.php';
 
 <section class="section" style="padding-bottom: 0;">
     <div class="container">
-        <div class="feature-grid">
-            <a class="feature-item" href="catalog.php?category=PlayStation">
+        <div class="feature-grid wallet-grid">
+            <a class="feature-item wallet-card" href="catalog.php?category=PlayStation">
+                <?php render_platform_icon('PlayStation', 'platform-icon platform-icon-lg'); ?>
                 <h3>PlayStation</h3>
                 <p>Сертификат на пополнение кошелька PSN.</p>
             </a>
-            <a class="feature-item" href="catalog.php?category=Xbox">
+            <a class="feature-item wallet-card" href="catalog.php?category=Xbox">
+                <?php render_platform_icon('Xbox', 'platform-icon platform-icon-lg'); ?>
                 <h3>Xbox</h3>
                 <p>Сертификат на пополнение баланса Microsoft / Xbox.</p>
             </a>
-            <a class="feature-item" href="catalog.php?category=PC">
-                <h3>PC</h3>
+            <a class="feature-item wallet-card" href="catalog.php?category=PC">
+                <?php render_platform_icon('PC', 'platform-icon platform-icon-lg'); ?>
+                <h3>Steam</h3>
                 <p>Сертификат на пополнение кошелька Steam.</p>
             </a>
         </div>
@@ -78,7 +81,7 @@ require __DIR__ . '/includes/header.php';
                         <?php render_media($design['image_path'], $design['title'], 'design-image', 'Место для картинки дизайна'); ?>
                     </div>
                     <div class="design-body">
-                        <span class="chip chip-<?= e(strtolower($design['category'])) ?>"><?= e($design['category']) ?></span>
+                        <?php render_platform_chip($design['category']); ?>
                         <h3><?= e($design['title']) ?></h3>
                         <p class="muted"><?= e($design['description']) ?></p>
                         <div class="design-meta">
@@ -129,7 +132,7 @@ require __DIR__ . '/includes/header.php';
                         <?php render_media($design['image_path'], $design['title'], 'design-image', 'Место для картинки дизайна'); ?>
                     </div>
                     <div class="design-body">
-                        <span class="chip chip-<?= e(strtolower($design['category'])) ?>"><?= e($design['category']) ?></span>
+                        <?php render_platform_chip($design['category']); ?>
                         <h3><?= e($design['title']) ?></h3>
                         <div class="design-meta">
                             <a href="order.php?design=<?= (int) $design['id'] ?>">Оформить снова</a>

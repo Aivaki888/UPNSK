@@ -722,6 +722,85 @@ textarea {
   color: var(--pc);
 }
 
+.chip-platform {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.28rem 0.7rem 0.28rem 0.3rem;
+}
+
+.platform-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.85rem;
+  object-fit: cover;
+  flex-shrink: 0;
+  display: block;
+  box-shadow: var(--shadow-sm);
+}
+
+.platform-icon-lg {
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 1rem;
+}
+
+.platform-icon-sm {
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 0.45rem;
+  box-shadow: none;
+}
+
+.platform-icon-xs {
+  width: 1.15rem;
+  height: 1.15rem;
+  border-radius: 0.35rem;
+  box-shadow: none;
+}
+
+.platform-icon-fallback {
+  display: inline-grid;
+  place-items: center;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.wallet-card {
+  display: grid;
+  gap: 0.75rem;
+  justify-items: start;
+}
+
+.wallet-card .platform-icon-lg {
+  margin-bottom: 0.15rem;
+}
+
+.platform-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.platform-filter-row {
+  flex-wrap: wrap;
+}
+
+.footer-wallet-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.design-choice .caption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
 .design-meta {
   display: flex;
   justify-content: space-between;

@@ -220,3 +220,50 @@ function status_label(string $status): string
         default => $status,
     };
 }
+
+function platform_slug(string $category): string
+{
+    return match (mb_strtolower(trim($category))) {
+        'playstation', 'ps', 'psn' => 'playstation',
+        'xbox' => 'xbox',
+        'pc', 'steam' => 'pc',
+        default => 'pc',
+    };
+}
+
+function platform_label(string $category): string
+{
+    return match (platform_slug($category)) {
+        'playstation' => 'PlayStation',
+        'xbox' => 'Xbox',
+        default => 'Steam',
+    };
+}
+
+function platform_icon_path(string $category): string
+{
+    return 'assets/img/platforms/' . platform_slug($category) . '.svg';
+}
+
+function render_platform_icon(string $category, string $class = 'platform-icon'): void
+{
+    $path = platform_icon_path($category);
+    $label = platform_label($category);
+    if (media_exists($path)) {
+        echo '<img class="' . e($class) . '" src="' . e($path) . '" alt="' . e($label) . '" width="40" height="40" loading="lazy">';
+        return;
+    }
+
+    echo '<span class="' . e($class) . ' platform-icon-fallback" aria-hidden="true">' . e(mb_substr($label, 0, 1)) . '</span>';
+}
+
+function render_platform_chip(string $category, string $extraClass = ''): void
+{
+    $slug = platform_slug($category);
+    $label = platform_label($category);
+    $class = trim('chip chip-' . $slug . ' chip-platform ' . $extraClass);
+    echo '<span class="' . e($class) . '">';
+    render_platform_icon($category, 'platform-icon platform-icon-sm');
+    echo '<span>' . e($label) . '</span>';
+    echo '</span>';
+}

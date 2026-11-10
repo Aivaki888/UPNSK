@@ -92,10 +92,13 @@ require __DIR__ . '/includes/header.php';
             </div>
         </form>
 
-        <div class="cta-row">
+        <div class="cta-row platform-filter-row">
             <a class="btn <?= $category === '' && !$onlyFavorites ? 'btn-primary' : 'btn-secondary' ?>" href="catalog.php">Все</a>
             <?php foreach ($categories as $cat): ?>
-                <a class="btn <?= $category === $cat ? 'btn-primary' : 'btn-secondary' ?>" href="catalog.php?category=<?= urlencode($cat) ?>"><?= e($cat) ?></a>
+                <a class="btn platform-filter-btn <?= $category === $cat ? 'btn-primary' : 'btn-secondary' ?>" href="catalog.php?category=<?= urlencode($cat) ?>">
+                    <?php render_platform_icon($cat, 'platform-icon platform-icon-sm'); ?>
+                    <span><?= e(platform_label($cat)) ?></span>
+                </a>
             <?php endforeach; ?>
         </div>
 
@@ -110,7 +113,7 @@ require __DIR__ . '/includes/header.php';
                             <?php render_media($design['image_path'], $design['title'], 'design-image', 'Место для картинки дизайна'); ?>
                         </div>
                         <div class="design-body">
-                            <span class="chip chip-<?= e(strtolower($design['category'])) ?>"><?= e($design['category']) ?></span>
+                            <?php render_platform_chip($design['category']); ?>
                             <h3><?= e($design['title']) ?></h3>
                             <p class="muted"><?= e($design['description']) ?></p>
                             <div class="design-meta">
