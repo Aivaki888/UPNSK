@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS certificates (
   recipient_email VARCHAR(190) DEFAULT NULL,
   occasion VARCHAR(80) NOT NULL,
   message VARCHAR(500) DEFAULT NULL,
-  accent_color VARCHAR(32) NOT NULL DEFAULT 'forest',
+  accent_color VARCHAR(32) NOT NULL DEFAULT 'ps_blue',
   delivery_method ENUM('email', 'print') NOT NULL DEFAULT 'email',
   status ENUM('new', 'paid', 'sent', 'used') NOT NULL DEFAULT 'paid',
   certificate_code VARCHAR(24) NOT NULL UNIQUE,
@@ -66,10 +66,16 @@ CREATE TABLE IF NOT EXISTS contact_messages (
 ) ENGINE=InnoDB;
 
 INSERT INTO designs (title, slug, description, image_path, category, price_base, sort_order) VALUES
-('Лесной рассвет', 'forest-dawn', 'Мягкий зелёный фон с золотой рамкой — универсальный дизайн для любого повода.', 'assets/img/designs/01.jpg', 'Классика', 0, 1),
-('Ночной бархат', 'velvet-night', 'Глубокий тёмный фон с шампанским золотом — для торжественных подарков.', 'assets/img/designs/02.jpg', 'Премиум', 200, 2),
-('Цветочный сад', 'bloom-garden', 'Живые ботанические мотивы на светлом фоне — идеально для дня рождения.', 'assets/img/designs/03.jpg', 'Праздник', 100, 3),
-('Городские огни', 'city-lights', 'Геометрия и современный ритм — для друзей, коллег и городских впечатлений.', 'assets/img/designs/04.jpg', 'Современный', 150, 4),
-('Зимняя сказка', 'winter-tale', 'Снежные узоры и тёплая типографика — новогодний и зимний выбор.', 'assets/img/designs/05.jpg', 'Сезон', 100, 5),
-('Минимал бумага', 'paper-minimal', 'Чистая композиция и акцентная линия — сдержанный вкус без лишнего декора.', 'assets/img/designs/06.jpg', 'Минимализм', 0, 6)
-ON DUPLICATE KEY UPDATE title = VALUES(title), image_path = VALUES(image_path);
+('PS Pulse Blue', 'ps-pulse-blue', 'Синий pulse-дизайн в духе PlayStation — для баланса PSN и подписок.', 'assets/img/designs/01.jpg', 'PlayStation', 0, 1),
+('PS Midnight', 'ps-midnight', 'Тёмный карточный стиль DualSense — строгий подарок для консоли PS5.', 'assets/img/designs/02.jpg', 'PlayStation', 150, 2),
+('Xbox Green Core', 'xbox-green-core', 'Зелёный акцент Xbox — сертификат на игры, Game Pass и дополнения.', 'assets/img/designs/03.jpg', 'Xbox', 0, 3),
+('Xbox Carbon', 'xbox-carbon', 'Матовый карбон с зелёной линией — премиальный вид для Series X|S.', 'assets/img/designs/04.jpg', 'Xbox', 150, 4),
+('PC RGB Arena', 'pc-rgb-arena', 'RGB-подсветка и HUD-сетка — для Steam, Epic и любых PC-ключей.', 'assets/img/designs/05.jpg', 'PC', 100, 5),
+('PC Clean Deck', 'pc-clean-deck', 'Минималистичный PC-дизайн без лишнего шума — чистый цифровой ваучер.', 'assets/img/designs/06.jpg', 'PC', 0, 6)
+ON DUPLICATE KEY UPDATE
+  title = VALUES(title),
+  description = VALUES(description),
+  image_path = VALUES(image_path),
+  category = VALUES(category),
+  price_base = VALUES(price_base),
+  sort_order = VALUES(sort_order);

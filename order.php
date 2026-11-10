@@ -16,12 +16,12 @@ $errors = [];
 
 $form = [
     'design_id' => $selectedDesignId,
-    'amount' => (string) ($_POST['amount'] ?? '3000'),
+    'amount' => (string) ($_POST['amount'] ?? '1500'),
     'recipient_name' => trim((string) ($_POST['recipient_name'] ?? '')),
     'recipient_email' => trim((string) ($_POST['recipient_email'] ?? '')),
     'occasion' => (string) ($_POST['occasion'] ?? 'birthday'),
     'message' => trim((string) ($_POST['message'] ?? '')),
-    'accent_color' => (string) ($_POST['accent_color'] ?? 'forest'),
+    'accent_color' => (string) ($_POST['accent_color'] ?? 'ps_blue'),
     'delivery_method' => (string) ($_POST['delivery_method'] ?? 'email'),
 ];
 
@@ -33,8 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $designId = (int) $form['design_id'];
     $amount = (float) $form['amount'];
     $allowedAmounts = amount_options();
-    $allowedOccasions = ['birthday', 'wedding', 'newyear', 'corporate', 'thankyou', 'justbecause'];
-    $allowedAccents = ['forest', 'champagne', 'ink', 'berry', 'sky'];
+    $allowedOccasions = ['birthday', 'new_release', 'tournament', 'friend_gift', 'thankyou', 'justbecause'];
+    $allowedAccents = ['ps_blue', 'xbox_green', 'pc_cyan', 'neon', 'carbon'];
     $allowedDelivery = ['email', 'print'];
 
     if (!isset($designMap[$designId])) {
@@ -97,7 +97,7 @@ if ($currentDesign) {
     remember_recent_design((int) $currentDesign['id']);
 }
 
-$pageTitle = 'Оформить сертификат — Дари';
+$pageTitle = 'Оформить сертификат — PlayGift';
 $activeNav = 'order';
 
 require __DIR__ . '/includes/header.php';
@@ -106,7 +106,7 @@ require __DIR__ . '/includes/header.php';
 <section class="page-hero stagger-copy">
     <div class="container">
         <h1>Оформление сертификата</h1>
-        <p>Выберите картинку и критерии: сумму, повод, получателя, акцент и способ доставки. Справа — живой предпросмотр.</p>
+        <p>Выберите платформу и дизайн, сумму, повод, получателя и способ доставки. Справа — живой предпросмотр.</p>
     </div>
 </section>
 
@@ -124,7 +124,7 @@ require __DIR__ . '/includes/header.php';
             <input type="hidden" name="csrf_token" value="<?= e(csrf_token()) ?>">
 
             <div class="form-row">
-                <label>Картинка / дизайн</label>
+                <label>Платформа / дизайн</label>
                 <div class="choice-grid">
                     <?php foreach ($designs as $design): ?>
                         <div class="design-choice">
@@ -173,15 +173,15 @@ require __DIR__ . '/includes/header.php';
                 <div class="form-row">
                     <label for="occasion">Повод</label>
                     <select id="occasion" name="occasion">
-                        <?php foreach (['birthday', 'wedding', 'newyear', 'corporate', 'thankyou', 'justbecause'] as $key): ?>
+                        <?php foreach (['birthday', 'new_release', 'tournament', 'friend_gift', 'thankyou', 'justbecause'] as $key): ?>
                             <option value="<?= $key ?>" <?= $form['occasion'] === $key ? 'selected' : '' ?>><?= e(occasion_label($key)) ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
                 <div class="form-row">
-                    <label for="accent_color">Цветовой акцент</label>
+                    <label for="accent_color">Стиль платформы</label>
                     <select id="accent_color" name="accent_color">
-                        <?php foreach (['forest', 'champagne', 'ink', 'berry', 'sky'] as $key): ?>
+                        <?php foreach (['ps_blue', 'xbox_green', 'pc_cyan', 'neon', 'carbon'] as $key): ?>
                             <option value="<?= $key ?>" <?= $form['accent_color'] === $key ? 'selected' : '' ?>><?= e(accent_label($key)) ?></option>
                         <?php endforeach; ?>
                     </select>
@@ -204,10 +204,10 @@ require __DIR__ . '/includes/header.php';
 
             <div class="form-row">
                 <label for="message">Личное сообщение</label>
-                <textarea id="message" name="message" maxlength="500" placeholder="Пусть этот подарок подарит тёплый вечер..."><?= e($form['message']) ?></textarea>
+                <textarea id="message" name="message" maxlength="500" placeholder="Удачных матчей и новых трофеев!"><?= e($form['message']) ?></textarea>
             </div>
 
-            <button class="btn btn-primary" type="submit">Купить сертификат</button>
+            <button class="btn btn-primary" type="submit">Купить игровой сертификат</button>
         </form>
     </div>
 
@@ -221,7 +221,7 @@ require __DIR__ . '/includes/header.php';
             <li><span>Сумма</span><strong data-preview-amount><?= format_money((float) $form['amount']) ?></strong></li>
             <li><span>Повод</span><strong data-preview-occasion><?= e(occasion_label($form['occasion'])) ?></strong></li>
             <li><span>Получатель</span><strong data-preview-recipient><?= e($form['recipient_name'] !== '' ? $form['recipient_name'] : '—') ?></strong></li>
-            <li><span>Акцент</span><strong data-preview-accent><?= e(accent_label($form['accent_color'])) ?></strong></li>
+            <li><span>Стиль</span><strong data-preview-accent><?= e(accent_label($form['accent_color'])) ?></strong></li>
             <li><span>Доставка</span><strong data-preview-delivery><?= $form['delivery_method'] === 'print' ? 'Для печати' : 'На email' ?></strong></li>
         </ul>
     </aside>

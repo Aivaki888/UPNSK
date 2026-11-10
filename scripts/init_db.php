@@ -34,7 +34,7 @@ try {
         $pdo->exec($statement);
     }
 
-    $demoEmail = 'demo@dari.local';
+    $demoEmail = 'demo@playgift.local';
     $check = $pdo->prepare('SELECT id FROM users WHERE email = ?');
     $check->execute([$demoEmail]);
 

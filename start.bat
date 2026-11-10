@@ -107,7 +107,7 @@ echo.
 echo ========================================
 echo   Сайт запущен!
 echo   Открой: http://127.0.0.1:%PORT%
-echo   Демо: demo@dari.local / demo123
+echo   Демо: demo@playgift.local / demo123
 echo   Остановка: Ctrl+C
 echo ========================================
 echo.

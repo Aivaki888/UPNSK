@@ -75,7 +75,7 @@ $countStmt = db()->prepare('SELECT COUNT(*) FROM certificates WHERE user_id = ?'
 $countStmt->execute([(int) $user['id']]);
 $certCount = (int) $countStmt->fetchColumn();
 
-$pageTitle = 'Профиль — Дари';
+$pageTitle = 'Профиль — PlayGift';
 $activeNav = 'profile';
 
 require __DIR__ . '/includes/header.php';

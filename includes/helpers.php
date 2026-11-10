@@ -60,10 +60,10 @@ function occasion_label(string $key): string
 {
     $map = [
         'birthday' => 'День рождения',
-        'wedding' => 'Свадьба',
-        'newyear' => 'Новый год',
-        'corporate' => 'Корпоратив',
-        'thankyou' => 'Благодарность',
+        'new_release' => 'Релиз игры',
+        'tournament' => 'Турнир / победа',
+        'friend_gift' => 'Подарок другу',
+        'thankyou' => 'Спасибо за кооператив',
         'justbecause' => 'Просто так',
     ];
 
@@ -73,11 +73,11 @@ function occasion_label(string $key): string
 function accent_label(string $key): string
 {
     $map = [
-        'forest' => 'Лесной',
-        'champagne' => 'Шампань',
-        'ink' => 'Чернила',
-        'berry' => 'Ягодный',
-        'sky' => 'Небесный',
+        'ps_blue' => 'PlayStation',
+        'xbox_green' => 'Xbox',
+        'pc_cyan' => 'PC',
+        'neon' => 'Неон',
+        'carbon' => 'Карбон',
     ];
 
     return $map[$key] ?? $key;
@@ -121,7 +121,7 @@ function require_login(): array
 
 function amount_options(): array
 {
-    return [1000, 2000, 3000, 5000, 7000, 10000];
+    return [500, 1000, 1500, 2500, 5000, 10000];
 }
 
 function project_root(): string

@@ -17,7 +17,7 @@ $stmt = db()->prepare(
 $stmt->execute([(int) $user['id']]);
 $designs = $stmt->fetchAll();
 
-$pageTitle = 'Избранное — Дари';
+$pageTitle = 'Избранное — PlayGift';
 $activeNav = 'favorites';
 
 require __DIR__ . '/includes/header.php';
@@ -26,7 +26,7 @@ require __DIR__ . '/includes/header.php';
 <section class="page-hero stagger-copy">
     <div class="container">
         <h1>Избранное</h1>
-        <p>Дизайны, которые вы сохранили для быстрого оформления.</p>
+        <p>Дизайны PlayStation, Xbox и PC, которые вы сохранили для быстрого оформления.</p>
     </div>
 </section>
 
@@ -45,7 +45,7 @@ require __DIR__ . '/includes/header.php';
                             <?php render_media($design['image_path'], $design['title'], 'design-image', 'Место для картинки дизайна'); ?>
                         </div>
                         <div class="design-body">
-                            <span class="chip"><?= e($design['category']) ?></span>
+                            <span class="chip chip-<?= e(strtolower($design['category'])) ?>"><?= e($design['category']) ?></span>
                             <h3><?= e($design['title']) ?></h3>
                             <p class="muted"><?= e($design['description']) ?></p>
                             <div class="design-meta">

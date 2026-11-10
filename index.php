@@ -23,7 +23,7 @@ if ($recentIds) {
     }
 }
 
-$pageTitle = 'Дари — подарочные сертификаты';
+$pageTitle = 'PlayGift — игровые сертификаты PS · Xbox · PC';
 $activeNav = 'home';
 $bodyClass = 'page-home';
 
@@ -32,12 +32,12 @@ require __DIR__ . '/includes/header.php';
 
 <section class="hero">
     <div class="hero-copy">
-        <span class="eyebrow">Подарочные сертификаты</span>
-        <h1>Дари</h1>
-        <p class="lead">Оформите персональный сертификат за пару минут — спокойно, просто и красиво.</p>
+        <span class="eyebrow">PlayStation · Xbox · PC</span>
+        <h1>PlayGift</h1>
+        <p class="lead">Подарочные сертификаты для игровых платформ — выберите консоль или PC, сумму и оформление за пару минут.</p>
         <div class="cta-row">
             <a class="btn btn-primary" href="order.php">Оформить</a>
-            <a class="btn btn-secondary" href="catalog.php">Смотреть каталог</a>
+            <a class="btn btn-secondary" href="catalog.php">Каталог платформ</a>
             <a class="btn btn-ghost" href="verify.php">Проверить код</a>
         </div>
     </div>
@@ -49,17 +49,17 @@ require __DIR__ . '/includes/header.php';
 <section class="section" style="padding-bottom: 0;">
     <div class="container">
         <div class="feature-grid">
-            <a class="feature-item" href="catalog.php">
-                <h3>Поиск в каталоге</h3>
-                <p>Фильтры, сортировка и избранные дизайны.</p>
+            <a class="feature-item" href="catalog.php?category=PlayStation">
+                <h3>PlayStation</h3>
+                <p>Дизайны под PSN, PS Plus и игры для PS5 / PS4.</p>
             </a>
-            <a class="feature-item" href="verify.php">
-                <h3>Проверка кода</h3>
-                <p>Узнайте сумму и статус любого сертификата.</p>
+            <a class="feature-item" href="catalog.php?category=Xbox">
+                <h3>Xbox</h3>
+                <p>Сертификаты на Game Pass, Microsoft Store и Series X|S.</p>
             </a>
-            <a class="feature-item" href="contact.php">
-                <h3>Поддержка</h3>
-                <p>Напишите вопрос — сообщение сохранится в базе.</p>
+            <a class="feature-item" href="catalog.php?category=PC">
+                <h3>PC</h3>
+                <p>Ваучеры для Steam, Epic Games Store и других лаунчеров.</p>
             </a>
         </div>
     </div>
@@ -68,8 +68,8 @@ require __DIR__ . '/includes/header.php';
 <section class="section">
     <div class="container">
         <div class="section-head">
-            <h2 class="section-title">Выберите настроение</h2>
-            <p class="section-text">Шесть аккуратных дизайнов для любого повода.</p>
+            <h2 class="section-title">Выберите платформу</h2>
+            <p class="section-text">Шесть дизайнов под PlayStation, Xbox и PC — картинки вставите сами.</p>
         </div>
         <div class="design-grid">
             <?php foreach ($designs as $design): ?>
@@ -78,7 +78,7 @@ require __DIR__ . '/includes/header.php';
                         <?php render_media($design['image_path'], $design['title'], 'design-image', 'Место для картинки дизайна'); ?>
                     </div>
                     <div class="design-body">
-                        <span class="chip"><?= e($design['category']) ?></span>
+                        <span class="chip chip-<?= e(strtolower($design['category'])) ?>"><?= e($design['category']) ?></span>
                         <h3><?= e($design['title']) ?></h3>
                         <p class="muted"><?= e($design['description']) ?></p>
                         <div class="design-meta">
@@ -96,20 +96,20 @@ require __DIR__ . '/includes/header.php';
     <div class="container">
         <div class="section-head">
             <h2 class="section-title">Как это работает</h2>
-            <p class="section-text">Три коротких шага до готового сертификата.</p>
+            <p class="section-text">Три шага до готового игрового сертификата.</p>
         </div>
         <div class="feature-grid">
             <article class="feature-item">
                 <h3>1. Аккаунт</h3>
-                <p>Создайте профиль, чтобы хранить заказы в одном месте.</p>
+                <p>Зарегистрируйтесь, чтобы хранить заказы и избранные дизайны.</p>
             </article>
             <article class="feature-item">
-                <h3>2. Настройки</h3>
-                <p>Выберите дизайн, сумму, повод и получателя.</p>
+                <h3>2. Платформа</h3>
+                <p>Выберите PS, Xbox или PC, сумму, повод и получателя.</p>
             </article>
             <article class="feature-item">
-                <h3>3. Готово</h3>
-                <p>Сертификат появится в разделе «Мои сертификаты».</p>
+                <h3>3. Код готов</h3>
+                <p>Сертификат появится в «Мои сертификаты» — можно проверить и распечатать.</p>
             </article>
         </div>
     </div>
@@ -120,7 +120,7 @@ require __DIR__ . '/includes/header.php';
     <div class="container">
         <div class="section-head">
             <h2 class="section-title">Недавно смотрели</h2>
-            <p class="section-text">Дизайны, к которым вы возвращались в этой сессии.</p>
+            <p class="section-text">Дизайны платформ, к которым вы возвращались в этой сессии.</p>
         </div>
         <div class="design-grid">
             <?php foreach ($recentDesigns as $design): ?>
@@ -129,7 +129,7 @@ require __DIR__ . '/includes/header.php';
                         <?php render_media($design['image_path'], $design['title'], 'design-image', 'Место для картинки дизайна'); ?>
                     </div>
                     <div class="design-body">
-                        <span class="chip"><?= e($design['category']) ?></span>
+                        <span class="chip chip-<?= e(strtolower($design['category'])) ?>"><?= e($design['category']) ?></span>
                         <h3><?= e($design['title']) ?></h3>
                         <div class="design-meta">
                             <a href="order.php?design=<?= (int) $design['id'] ?>">Оформить снова</a>

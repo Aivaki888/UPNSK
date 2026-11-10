@@ -33,7 +33,7 @@ $stmt = db()->prepare($sql);
 $stmt->execute($params);
 $certificates = $stmt->fetchAll();
 
-$pageTitle = 'Мои сертификаты — Дари';
+$pageTitle = 'Мои сертификаты — PlayGift';
 $activeNav = 'certificates';
 
 require __DIR__ . '/includes/header.php';
@@ -89,7 +89,7 @@ require __DIR__ . '/includes/header.php';
                                 <div><strong>Статус:</strong> <?= e(status_label($cert['status'])) ?></div>
                                 <div><strong>Получатель:</strong> <?= e($cert['recipient_name']) ?></div>
                                 <div><strong>Повод:</strong> <?= e(occasion_label($cert['occasion'])) ?></div>
-                                <div><strong>Акцент:</strong> <?= e(accent_label($cert['accent_color'])) ?></div>
+                                <div><strong>Стиль:</strong> <?= e(accent_label($cert['accent_color'])) ?></div>
                                 <div><strong>Доставка:</strong> <?= $cert['delivery_method'] === 'print' ? 'Для печати' : 'На email' ?></div>
                                 <div><strong>Дата:</strong> <?= e(date('d.m.Y H:i', strtotime((string) $cert['created_at']))) ?></div>
                                 <?php if (!empty($cert['message'])): ?>

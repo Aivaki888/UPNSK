@@ -25,5 +25,5 @@ php scripts/init_db.php || {
 
 PORT="${PORT:-8765}"
 echo "Сайт: http://127.0.0.1:${PORT}"
-echo "Демо: demo@dari.local / demo123"
+echo "Демо: demo@playgift.local / demo123"
 exec php -S "127.0.0.1:${PORT}" -t .

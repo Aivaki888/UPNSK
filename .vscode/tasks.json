@@ -2,7 +2,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Dari: Init database",
+      "label": "PlayGift: Init database",
       "type": "shell",
       "command": "php scripts/init_db.php",
       "windows": {
@@ -24,7 +24,7 @@
       }
     },
     {
-      "label": "Dari: Start website",
+      "label": "PlayGift: Start website",
       "type": "shell",
       "command": "php -S 127.0.0.1:8765 -t .",
       "windows": {
@@ -58,7 +58,7 @@
       }
     },
     {
-      "label": "Dari: Start via start.bat (Windows)",
+      "label": "PlayGift: Start via start.bat (Windows)",
       "type": "shell",
       "windows": {
         "command": "cmd /c start.bat"
@@ -74,11 +74,11 @@
       }
     },
     {
-      "label": "Dari: Init DB and start website",
+      "label": "PlayGift: Init DB and start website",
       "dependsOrder": "sequence",
       "dependsOn": [
-        "Dari: Init database",
-        "Dari: Start website"
+        "PlayGift: Init database",
+        "PlayGift: Start website"
       ],
       "problemMatcher": [],
       "group": {

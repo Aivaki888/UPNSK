@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-$pageTitle = 'Вход — Дари';
+$pageTitle = 'Вход — PlayGift';
 $activeNav = 'login';
 
 require __DIR__ . '/includes/header.php';
@@ -49,7 +49,7 @@ require __DIR__ . '/includes/header.php';
         <?php render_media('assets/img/auth.jpg', 'Авторизация', 'auth-media', 'Место для изображения'); ?>
         <div class="auth-side-copy stagger-copy">
             <h2>С возвращением</h2>
-            <p>Войдите, чтобы открыть профиль, историю сертификатов и быстрое оформление подарка.</p>
+            <p>Войдите, чтобы открыть профиль, историю игровых сертификатов и быстрое оформление.</p>
         </div>
     </div>
     <div class="auth-card">

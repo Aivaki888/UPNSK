@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 $user = current_user();
 $flash = take_flash();
-$pageTitle = $pageTitle ?? 'Дари — подарочные сертификаты';
+$pageTitle = $pageTitle ?? 'PlayGift — игровые сертификаты';
 $bodyClass = $bodyClass ?? '';
 $activeNav = $activeNav ?? '';
 $themePref = $user['theme_pref'] ?? ($_COOKIE['theme'] ?? 'system');
@@ -15,7 +15,7 @@ $themePref = $user['theme_pref'] ?? ($_COOKIE['theme'] ?? 'system');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= e($pageTitle) ?></title>
-    <meta name="description" content="Дари — онлайн-магазин подарочных сертификатов с выбором дизайна, суммы и повода.">
+    <meta name="description" content="PlayGift — подарочные сертификаты для PlayStation, Xbox и PC с выбором платформы, суммы и дизайна.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -23,7 +23,7 @@ $themePref = $user['theme_pref'] ?? ($_COOKIE['theme'] ?? 'system');
     <script>
       (function () {
         try {
-          var stored = localStorage.getItem('dari-theme');
+          var stored = localStorage.getItem('playgift-theme') || localStorage.getItem('dari-theme');
           var pref = stored || document.documentElement.getAttribute('data-theme-pref') || 'system';
           var theme = pref;
           if (pref !== 'dark' && pref !== 'light') {
@@ -40,9 +40,9 @@ $themePref = $user['theme_pref'] ?? ($_COOKIE['theme'] ?? 'system');
 <div class="page-shell">
     <header class="site-header">
         <div class="container header-inner">
-            <a class="brand" href="index.php" aria-label="Дари — на главную">
-                <?php render_media('assets/img/logo.png', 'Логотип Дари', 'brand-logo', 'Лого'); ?>
-                <span class="brand-text">Дари</span>
+            <a class="brand" href="index.php" aria-label="PlayGift — на главную">
+                <?php render_media('assets/img/logo.png', 'Логотип PlayGift', 'brand-logo', 'Лого'); ?>
+                <span class="brand-text">PlayGift</span>
             </a>
             <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
                 <span></span><span></span>

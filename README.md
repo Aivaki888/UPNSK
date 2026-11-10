@@ -1,17 +1,19 @@
-# Дари — подарочные сертификаты
+# PlayGift — игровые сертификаты
 
-Учебный сайт на **HTML, CSS, JavaScript, PHP и MySQL**: регистрация и авторизация, профиль, светлая/тёмная тема и покупка подарочного сертификата с выбором дизайна и критериев.
+Учебный сайт на **HTML, CSS, JavaScript, PHP и MySQL**: регистрация и авторизация, профиль, светлая/тёмная тема и покупка игровых сертификатов для **PlayStation**, **Xbox** и **PC**.
 
 ## Страницы
 
 1. `index.php` — главная  
-2. `catalog.php` — каталог дизайнов  
+2. `catalog.php` — каталог платформ  
 3. `order.php` — оформление / покупка сертификата  
 4. `about.php` — о проекте  
 5. `login.php` — вход  
 6. `register.php` — регистрация  
 7. `profile.php` — профиль  
 8. `certificates.php` — мои сертификаты  
+9. `verify.php` — проверка кода  
+10. `contact.php` — контакты  
 
 ## Требования
 
@@ -24,10 +26,10 @@
 
 1. Открой папку проекта в VS Code.  
 2. Убедись, что установлены PHP и MySQL, БД создана (см. ниже).  
-3. `Terminal` → `Run Task…` → **Dari: Init DB and start website**  
+3. `Terminal` → `Run Task…` → **PlayGift: Init DB and start website**  
    или нажми `Ctrl+Shift+B` (задача по умолчанию).  
 4. Открой http://127.0.0.1:8765 в браузере  
-   или `Run and Debug` → **Dari: Open in browser** (нужен Chrome).
+   или `Run and Debug` → **PlayGift: Open in browser** (нужен Chrome).
 
 ### Windows (XAMPP / OpenServer)
 
@@ -35,7 +37,7 @@
 2. Запусти **Apache** и **MySQL**.  
 3. Склонируй проект в папку сайта, например `C:\xampp\htdocs\UPNSK`.  
 4. Открой phpMyAdmin → создай БД `giftshop`.  
-5. В MySQL выполни (через phpMyAdmin → SQL или консоль):
+5. В MySQL выполни:
 
 ```sql
 CREATE DATABASE IF NOT EXISTS giftshop CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -54,13 +56,6 @@ php -S 127.0.0.1:8765 -t .
 
 7. Открой в браузере: http://127.0.0.1:8765
 
-Если PHP не находится, укажи полный путь, например:
-
-```bat
-C:\xampp\php\php.exe scripts\init_db.php
-C:\xampp\php\php.exe -S 127.0.0.1:8765 -t .
-```
-
 ### Linux / macOS
 
 ```bash
@@ -68,16 +63,9 @@ chmod +x start.sh
 ./start.sh
 ```
 
-Или вручную:
-
-```bash
-php scripts/init_db.php
-php -S 127.0.0.1:8765 -t .
-```
-
 ### Демо-аккаунт
 
-- Email: `demo@dari.local`  
+- Email: `demo@playgift.local`  
 - Пароль: `demo123`
 
 ## Переменные окружения (опционально)
@@ -100,7 +88,7 @@ php -S 127.0.0.1:8765 -t .
 | `assets/img/hero.jpg` | баннер на главной |
 | `assets/img/auth.jpg` | вход / регистрация |
 | `assets/img/about.jpg` | страница «О нас» |
-| `assets/img/designs/01.jpg` … `06.jpg` | дизайны сертификатов |
+| `assets/img/designs/01.jpg` … `06.jpg` | дизайны PS / Xbox / PC |
 
 ## Структура
 

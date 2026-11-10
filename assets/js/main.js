@@ -16,7 +16,7 @@
     root.classList.add("theme-animating");
     root.setAttribute("data-theme", theme);
     root.setAttribute("data-theme-pref", pref === "dark" || pref === "light" ? pref : "system");
-    localStorage.setItem("dari-theme", pref === "dark" || pref === "light" ? pref : "system");
+    localStorage.setItem("playgift-theme", pref === "dark" || pref === "light" ? pref : "system");
     document.cookie = `theme=${encodeURIComponent(root.getAttribute("data-theme-pref"))};path=/;max-age=31536000;SameSite=Lax`;
     if (themeTimer) clearTimeout(themeTimer);
     themeTimer = setTimeout(() => root.classList.remove("theme-animating"), 600);
@@ -31,7 +31,7 @@
   }
 
   window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
-    const pref = root.getAttribute("data-theme-pref") || localStorage.getItem("dari-theme") || "system";
+    const pref = root.getAttribute("data-theme-pref") || localStorage.getItem("playgift-theme") || localStorage.getItem("dari-theme") || "system";
     if (pref === "system") applyTheme("system");
   });
 
@@ -54,19 +54,19 @@
 
   const occasionLabels = {
     birthday: "День рождения",
-    wedding: "Свадьба",
-    newyear: "Новый год",
-    corporate: "Корпоратив",
-    thankyou: "Благодарность",
+    new_release: "Релиз игры",
+    tournament: "Турнир / победа",
+    friend_gift: "Подарок другу",
+    thankyou: "Спасибо за кооператив",
     justbecause: "Просто так",
   };
 
   const accentLabels = {
-    forest: "Лесной",
-    champagne: "Шампань",
-    ink: "Чернила",
-    berry: "Ягодный",
-    sky: "Небесный",
+    ps_blue: "PlayStation",
+    xbox_green: "Xbox",
+    pc_cyan: "PC",
+    neon: "Неон",
+    carbon: "Карбон",
   };
 
   const deliveryLabels = {

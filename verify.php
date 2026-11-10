@@ -23,7 +23,7 @@ if ($code !== '') {
     }
 }
 
-$pageTitle = 'Проверка сертификата — Дари';
+$pageTitle = 'Проверка сертификата — PlayGift';
 $activeNav = 'verify';
 
 require __DIR__ . '/includes/header.php';
@@ -32,7 +32,7 @@ require __DIR__ . '/includes/header.php';
 <section class="page-hero stagger-copy">
     <div class="container">
         <h1>Проверка кода</h1>
-        <p>Введите код сертификата, чтобы узнать сумму, статус и получателя.</p>
+        <p>Введите код игрового сертификата, чтобы узнать сумму, статус и получателя.</p>
     </div>
 </section>
 

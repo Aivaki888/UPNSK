@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-$pageTitle = 'Регистрация — Дари';
+$pageTitle = 'Регистрация — PlayGift';
 $activeNav = 'register';
 
 require __DIR__ . '/includes/header.php';

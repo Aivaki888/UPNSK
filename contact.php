@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-$pageTitle = 'Контакты — Дари';
+$pageTitle = 'Контакты — PlayGift';
 $activeNav = 'contact';
 
 require __DIR__ . '/includes/header.php';
@@ -60,7 +60,7 @@ require __DIR__ . '/includes/header.php';
 <section class="page-hero stagger-copy">
     <div class="container">
         <h1>Контакты</h1>
-        <p>Напишите нам по вопросам сертификатов, дизайнов или аккаунта.</p>
+        <p>Вопросы по сертификатам PlayStation, Xbox и PC, дизайнам или аккаунту.</p>
     </div>
 </section>
 
@@ -70,7 +70,7 @@ require __DIR__ . '/includes/header.php';
             <article class="panel contact-card">
                 <h2>Email</h2>
                 <p class="muted">Пишите напрямую или через форму справа.</p>
-                <a class="contact-link" href="mailto:hello@dari.local">hello@dari.local</a>
+                <a class="contact-link" href="mailto:hello@playgift.local">hello@playgift.local</a>
             </article>
             <article class="panel contact-card">
                 <h2>Время ответа</h2>

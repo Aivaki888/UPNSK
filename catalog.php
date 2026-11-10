@@ -46,7 +46,7 @@ $designs = $stmt->fetchAll();
 $categories = db()->query('SELECT DISTINCT category FROM designs WHERE is_active = 1 ORDER BY category')->fetchAll(PDO::FETCH_COLUMN);
 $favoriteIds = $user ? user_favorite_ids((int) $user['id']) : [];
 
-$pageTitle = 'Каталог дизайнов — Дари';
+$pageTitle = 'Каталог платформ — PlayGift';
 $activeNav = 'catalog';
 
 require __DIR__ . '/includes/header.php';
@@ -54,8 +54,8 @@ require __DIR__ . '/includes/header.php';
 
 <section class="page-hero stagger-copy">
     <div class="container">
-        <h1>Каталог дизайнов</h1>
-        <p>Ищите по названию, фильтруйте по категории и сохраняйте понравившиеся варианты.</p>
+        <h1>Каталог платформ</h1>
+        <p>Фильтруйте по PlayStation, Xbox и PC, ищите по названию и сохраняйте избранное.</p>
     </div>
 </section>
 
@@ -110,7 +110,7 @@ require __DIR__ . '/includes/header.php';
                             <?php render_media($design['image_path'], $design['title'], 'design-image', 'Место для картинки дизайна'); ?>
                         </div>
                         <div class="design-body">
-                            <span class="chip"><?= e($design['category']) ?></span>
+                            <span class="chip chip-<?= e(strtolower($design['category'])) ?>"><?= e($design['category']) ?></span>
                             <h3><?= e($design['title']) ?></h3>
                             <p class="muted"><?= e($design['description']) ?></p>
                             <div class="design-meta">
