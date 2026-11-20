@@ -70,8 +70,13 @@ $themePref = $user['theme_pref'] ?? ($_COOKIE['theme'] ?? 'system');
                     <button type="button" data-accent="steam" title="Акцент Steam">ST</button>
                 </div>
                 <button class="theme-toggle" type="button" data-theme-toggle aria-label="Переключить тему">
-                    <img class="theme-slider theme-slider-light" src="assets/img/theme-light.png" alt="" width="228" height="97" decoding="async">
-                    <img class="theme-slider theme-slider-dark" src="assets/img/theme-dark.png" alt="" width="228" height="97" decoding="async">
+                    <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                        <path d="M12 2.8v2M12 19.2v2M2.8 12h2M19.2 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                    </svg>
+                    <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M16.6 14.7A7 7 0 0 1 9.3 7.4c0-.4 0-.8.1-1.2A7.5 7.5 0 1 0 17.8 15.8c-.4.1-.8.1-1.2.1z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                    </svg>
                 </button>
                 <button class="nav-toggle" type="button" aria-label="Меню" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
                     <span></span>
