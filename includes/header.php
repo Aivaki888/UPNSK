@@ -74,14 +74,10 @@ $themePref = $user['theme_pref'] ?? ($_COOKIE['theme'] ?? 'system');
                     <span></span>
                     <span></span>
                 </button>
-                <button class="theme-toggle" type="button" data-theme-toggle aria-label="Переключить тему">
-                    <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                        <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/>
-                        <path d="M12 2.8v2M12 19.2v2M2.8 12h2M19.2 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                    </svg>
-                    <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                        <path d="M16.6 14.7A7 7 0 0 1 9.3 7.4c0-.4 0-.8.1-1.2A7.5 7.5 0 1 0 17.8 15.8c-.4.1-.8.1-1.2.1z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-                    </svg>
+                <button class="theme-toggle" type="button" data-theme-toggle aria-label="Переключить тему" role="switch" aria-checked="false">
+                    <span class="theme-switch" aria-hidden="true">
+                        <span class="theme-switch-knob"></span>
+                    </span>
                 </button>
             </div>
         </div>

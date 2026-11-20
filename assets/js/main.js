@@ -13,10 +13,12 @@
 
   function syncThemeToggleLabel(theme) {
     if (!themeToggle) return;
+    const isDark = theme === "dark";
     themeToggle.setAttribute(
       "aria-label",
-      theme === "dark" ? "Включить светлую тему" : "Включить тёмную тему"
+      isDark ? "Включить светлую тему" : "Включить тёмную тему"
     );
+    themeToggle.setAttribute("aria-checked", isDark ? "true" : "false");
   }
 
   function applyTheme(pref) {

@@ -210,59 +210,66 @@ textarea {
 
 .theme-toggle {
   order: 3;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: auto;
+  height: auto;
   border: none;
   border-radius: var(--radius-pill);
-  background: var(--bg-soft);
+  background: transparent;
   color: var(--ink);
   cursor: pointer;
-  display: inline-grid;
-  place-items: center;
+  display: inline-flex;
+  align-items: center;
   position: relative;
   touch-action: manipulation;
-  transition: background 0.2s var(--ease), transform 0.2s var(--ease-spring);
+  transition: transform 0.2s var(--ease);
   padding: 0;
-  overflow: hidden;
+  overflow: visible;
   flex-shrink: 0;
 }
 
 .theme-toggle:hover {
-  background: color-mix(in srgb, var(--bg-soft) 70%, var(--ink) 8%);
-  transform: scale(1.04);
+  transform: none;
+  background: transparent;
 }
 
 .theme-toggle:focus-visible {
   outline: 2px solid var(--accent);
-  outline-offset: 2px;
+  outline-offset: 3px;
+  border-radius: var(--radius-pill);
 }
 
-.theme-icon {
+.theme-switch {
+  width: 2.75rem;
+  height: 1.55rem;
+  border-radius: var(--radius-pill);
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  display: block;
+  position: relative;
+  transition: background 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+
+.theme-switch-knob {
+  position: absolute;
+  top: 50%;
+  left: 0.18rem;
   width: 1.15rem;
   height: 1.15rem;
-  grid-area: 1 / 1;
-  pointer-events: none;
-  transition: opacity 0.25s var(--ease), transform 0.3s var(--ease-spring);
+  border-radius: 50%;
+  background: var(--bg-elevated);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-50%);
+  transition: left 0.25s var(--ease), background 0.25s var(--ease);
 }
 
-.theme-icon-sun {
-  opacity: 0;
-  transform: scale(0.7) rotate(-20deg);
+html[data-theme="dark"] .theme-switch {
+  background: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 70%, var(--line));
 }
 
-.theme-icon-moon {
-  opacity: 1;
-  transform: scale(1) rotate(0deg);
-}
-
-html[data-theme="dark"] .theme-icon-sun {
-  opacity: 1;
-  transform: scale(1) rotate(0deg);
-}
-
-html[data-theme="dark"] .theme-icon-moon {
-  opacity: 0;
-  transform: scale(0.7) rotate(20deg);
+html[data-theme="dark"] .theme-switch-knob {
+  left: calc(100% - 1.33rem);
+  background: #fff;
 }
 
 .nav-toggle {
