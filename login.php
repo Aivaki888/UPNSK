@@ -48,8 +48,8 @@ require __DIR__ . '/includes/header.php';
     <div class="auth-side">
         <?php render_media('assets/img/auth.jpg', 'Авторизация', 'auth-media', 'Нет изображения'); ?>
         <div class="auth-side-copy stagger-copy">
-            <h2>С возвращением</h2>
-            <p>Войдите, чтобы открыть профиль, историю пополнений кошельков и быстрое оформление.</p>
+            <h2>Вход в аккаунт</h2>
+            <p>После входа доступны профиль, история заказов и оформление сертификатов.</p>
         </div>
     </div>
     <div class="auth-card">

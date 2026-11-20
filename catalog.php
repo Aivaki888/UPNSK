@@ -55,7 +55,7 @@ require __DIR__ . '/includes/header.php';
 <section class="page-hero stagger-copy">
     <div class="container">
         <h1>Каталог кошельков</h1>
-        <p>Только пополнение баланса: PlayStation, Xbox и Steam. Фильтруйте платформу и сохраняйте избранное.</p>
+        <p>Дизайны для пополнения PlayStation, Xbox и Steam. Можно фильтровать и добавлять в избранное.</p>
     </div>
 </section>
 
