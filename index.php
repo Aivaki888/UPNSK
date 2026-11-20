@@ -10,6 +10,7 @@ $allDesigns = db()->query('SELECT * FROM designs WHERE is_active = 1 ORDER BY so
 $counters = site_counters();
 $stats = platform_stats();
 $ideas = db()->query('SELECT * FROM gift_ideas ORDER BY sort_order ASC LIMIT 3')->fetchAll();
+$activity = recent_activity(6);
 
 $recentIds = array_map('intval', $_SESSION['recent_designs'] ?? []);
 $recentDesigns = [];
@@ -45,8 +46,8 @@ require __DIR__ . '/includes/header.php';
         <p class="lead">Цифровые сертификаты для баланса PlayStation, Xbox и Steam. Красиво оформить, мгновенно проверить, легко подарить.</p>
         <div class="cta-row">
             <a class="btn btn-primary" href="order.php">Оформить пополнение</a>
-            <a class="btn btn-secondary" href="quiz.php">Подобрать кошелёк</a>
-            <a class="btn btn-ghost" href="guide.php">Гид подарков</a>
+            <a class="btn btn-secondary" href="spin.php">Колесо удачи</a>
+            <a class="btn btn-ghost" href="quiz.php">Подобрать кошелёк</a>
         </div>
     </div>
     <div class="hero-visual">
@@ -187,6 +188,56 @@ require __DIR__ . '/includes/header.php';
         </div>
     </div>
 </section>
+
+<section class="section section-alt">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">Ещё больше PlayGift</h2>
+            <p class="section-text">Новые режимы выбора подарка и витрина сертификатов.</p>
+        </div>
+        <div class="feature-grid">
+            <a class="feature-item wallet-card" href="spin.php">
+                <h3>Колесо удачи</h3>
+                <p>Случайный номинал и платформа за один спин.</p>
+            </a>
+            <a class="feature-item wallet-card" href="wall.php">
+                <h3>Стена сертификатов</h3>
+                <p>Живая витрина последних оформленных ваучеров.</p>
+            </a>
+            <a class="feature-item wallet-card" href="leaderboard.php">
+                <h3>Рейтинг дарителей</h3>
+                <p>Кто чаще пополняет чужие кошельки.</p>
+            </a>
+            <a class="feature-item wallet-card" href="compare.php">
+                <h3>Сравнение кошельков</h3>
+                <p>PSN vs Xbox vs Steam — коротко и по делу.</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+<?php if ($activity): ?>
+<section class="section">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">Живая лента</h2>
+            <p class="section-text">Последние подарки на сайте — имена слегка скрыты.</p>
+        </div>
+        <ul class="activity-list activity-home panel stagger-layout">
+            <?php foreach ($activity as $item): ?>
+                <li>
+                    <?php render_platform_icon($item['category'], 'platform-icon platform-icon-sm'); ?>
+                    <div>
+                        <strong><?= e(mask_name((string) $item['giver'])) ?></strong>
+                        <span class="muted">подарил <?= e(format_money((float) $item['amount'])) ?> на <?= e(platform_label($item['category'])) ?></span>
+                    </div>
+                    <time class="muted"><?= e(date('d.m H:i', strtotime((string) $item['created_at']))) ?></time>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+</section>
+<?php endif; ?>
 
 <section class="section section-alt">
     <div class="container">

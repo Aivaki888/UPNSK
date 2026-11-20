@@ -73,6 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 $giftStats = user_gift_stats((int) $user['id']);
 $certCount = $giftStats['count'];
+$achievements = user_achievements((int) $user['id']);
 
 $pageTitle = 'Профиль — PlayGift';
 $activeNav = 'profile';
@@ -120,9 +121,20 @@ require __DIR__ . '/includes/header.php';
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
+        <div class="profile-platforms">
+            <h3>Достижения</h3>
+            <div class="badge-grid">
+                <?php foreach ($achievements as $badge): ?>
+                    <div class="achievement-badge tone-<?= e($badge['tone']) ?>">
+                        <strong><?= e($badge['title']) ?></strong>
+                        <span><?= e($badge['hint']) ?></span>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
         <div class="cta-row" style="margin-top: 1.5rem;">
             <a class="btn btn-primary" href="certificates.php">Мои сертификаты</a>
-            <a class="btn btn-secondary" href="quiz.php">Квиз</a>
+            <a class="btn btn-secondary" href="spin.php">Колесо</a>
             <a class="btn btn-ghost" href="logout.php">Выйти</a>
         </div>
     </aside>

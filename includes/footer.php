@@ -41,10 +41,11 @@ declare(strict_types=1);
             <div class="footer-col">
                 <h2 class="footer-title">Сервис</h2>
                 <ul class="footer-links">
+                    <li><a href="spin.php">Колесо удачи</a></li>
+                    <li><a href="wall.php">Стена сертификатов</a></li>
+                    <li><a href="leaderboard.php">Рейтинг</a></li>
+                    <li><a href="compare.php">Сравнение</a></li>
                     <li><a href="verify.php">Проверка кода</a></li>
-                    <li><a href="favorites.php">Избранное</a></li>
-                    <li><a href="certificates.php">Мои сертификаты</a></li>
-                    <li><a href="profile.php">Профиль</a></li>
                 </ul>
             </div>
 
@@ -76,6 +77,28 @@ declare(strict_types=1);
             <span>Только кошельки · PS · Xbox · Steam</span>
         </div>
     </footer>
+</div>
+<div class="scroll-progress" data-scroll-progress aria-hidden="true"><span></span></div>
+<button class="back-top" type="button" data-back-top aria-label="Наверх">↑</button>
+<div class="cmdk" data-cmdk hidden>
+    <div class="cmdk-panel" role="dialog" aria-modal="true" aria-label="Быстрый поиск">
+        <input type="search" placeholder="Куда перейти? Каталог, колесо, рейтинг…" data-cmdk-input>
+        <ul data-cmdk-list>
+            <li><a href="index.php">Главная</a></li>
+            <li><a href="catalog.php">Каталог</a></li>
+            <li><a href="order.php">Оформить</a></li>
+            <li><a href="spin.php">Колесо удачи</a></li>
+            <li><a href="quiz.php">Квиз</a></li>
+            <li><a href="wall.php">Стена сертификатов</a></li>
+            <li><a href="leaderboard.php">Рейтинг</a></li>
+            <li><a href="compare.php">Сравнение кошельков</a></li>
+            <li><a href="guide.php">Гид</a></li>
+            <li><a href="verify.php">Проверка кода</a></li>
+            <li><a href="about.php">О нас</a></li>
+            <li><a href="contact.php">Контакты</a></li>
+        </ul>
+        <p class="cmdk-hint muted">Ctrl/⌘ + K · Esc закрыть</p>
+    </div>
 </div>
 <canvas id="confetti-canvas" aria-hidden="true"></canvas>
 <script src="assets/js/main.js" defer></script>

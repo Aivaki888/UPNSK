@@ -376,3 +376,90 @@ function render_platform_chip(string $category, string $extraClass = ''): void
     echo '<span>' . e($label) . '</span>';
     echo '</span>';
 }
+
+function recent_activity(int $limit = 8): array
+{
+    $stmt = db()->prepare(
+        'SELECT c.amount, c.created_at, c.recipient_name, d.category, d.title AS design_title, u.name AS giver
+         FROM certificates c
+         INNER JOIN designs d ON d.id = c.design_id
+         INNER JOIN users u ON u.id = c.user_id
+         ORDER BY c.created_at DESC
+         LIMIT ?'
+    );
+    $stmt->bindValue(1, $limit, PDO::PARAM_INT);
+    $stmt->execute();
+    return $stmt->fetchAll();
+}
+
+function leaderboard_rows(int $limit = 10): array
+{
+    $stmt = db()->prepare(
+        'SELECT u.name, COUNT(c.id) AS gifts, COALESCE(SUM(c.amount), 0) AS total
+         FROM users u
+         INNER JOIN certificates c ON c.user_id = u.id
+         GROUP BY u.id, u.name
+         ORDER BY total DESC, gifts DESC
+         LIMIT ?'
+    );
+    $stmt->bindValue(1, $limit, PDO::PARAM_INT);
+    $stmt->execute();
+    return $stmt->fetchAll();
+}
+
+function wall_certificates(int $limit = 12): array
+{
+    $stmt = db()->prepare(
+        'SELECT c.certificate_code, c.amount, c.occasion, c.created_at, c.accent_color,
+                d.title AS design_title, d.image_path, d.category
+         FROM certificates c
+         INNER JOIN designs d ON d.id = c.design_id
+         WHERE c.status IN ("paid", "sent", "used")
+         ORDER BY c.created_at DESC
+         LIMIT ?'
+    );
+    $stmt->bindValue(1, $limit, PDO::PARAM_INT);
+    $stmt->execute();
+    return $stmt->fetchAll();
+}
+
+function user_achievements(int $userId): array
+{
+    $stats = user_gift_stats($userId);
+    $favCount = count(user_favorite_ids($userId));
+    $badges = [];
+
+    if ($stats['count'] >= 1) {
+        $badges[] = ['title' => 'Первый подарок', 'hint' => 'Оформили хотя бы один сертификат', 'tone' => 'ps'];
+    }
+    if ($stats['count'] >= 3) {
+        $badges[] = ['title' => 'Щедрый друг', 'hint' => '3+ сертификата', 'tone' => 'xbox'];
+    }
+    if ($stats['total'] >= 5000) {
+        $badges[] = ['title' => 'High Roller', 'hint' => 'Подарено на 5000 ₽ и больше', 'tone' => 'pc'];
+    }
+    if (count($stats['platforms']) >= 2) {
+        $badges[] = ['title' => 'Мультиплатформа', 'hint' => 'Подарки на разные кошельки', 'tone' => 'ps'];
+    }
+    if ($favCount >= 2) {
+        $badges[] = ['title' => 'Коллекционер', 'hint' => '2+ дизайна в избранном', 'tone' => 'xbox'];
+    }
+    if (!$badges) {
+        $badges[] = ['title' => 'Новичок PlayGift', 'hint' => 'Откройте заказ или квиз', 'tone' => 'pc'];
+    }
+
+    return $badges;
+}
+
+function mask_name(string $name): string
+{
+    $name = trim($name);
+    if ($name === '') {
+        return 'Игрок';
+    }
+    $len = mb_strlen($name);
+    if ($len <= 2) {
+        return mb_substr($name, 0, 1) . '•';
+    }
+    return mb_substr($name, 0, 1) . str_repeat('•', min(4, $len - 1)) . mb_substr($name, -1);
+}

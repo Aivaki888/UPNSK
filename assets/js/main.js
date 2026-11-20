@@ -305,6 +305,108 @@
     }
   });
 
+  const progressBar = document.querySelector("[data-scroll-progress] span");
+  const backTop = document.querySelector("[data-back-top]");
+  const updateChrome = () => {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const ratio = max > 0 ? Math.min(1, window.scrollY / max) : 0;
+    if (progressBar) progressBar.style.width = `${ratio * 100}%`;
+    if (backTop) backTop.classList.toggle("is-on", window.scrollY > 480);
+  };
+  window.addEventListener("scroll", updateChrome, { passive: true });
+  updateChrome();
+  backTop?.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+  const cmdk = document.querySelector("[data-cmdk]");
+  const cmdkInput = document.querySelector("[data-cmdk-input]");
+  const cmdkList = document.querySelector("[data-cmdk-list]");
+  const openCmdk = () => {
+    if (!cmdk) return;
+    cmdk.hidden = false;
+    cmdkInput?.focus();
+    cmdkInput && (cmdkInput.value = "");
+    filterCmdk("");
+  };
+  const closeCmdk = () => {
+    if (!cmdk) return;
+    cmdk.hidden = true;
+  };
+  const filterCmdk = (query) => {
+    if (!cmdkList) return;
+    const q = query.trim().toLowerCase();
+    [...cmdkList.children].forEach((li) => {
+      const text = (li.textContent || "").toLowerCase();
+      li.hidden = Boolean(q) && !text.includes(q);
+      li.classList.remove("is-active");
+    });
+    const first = [...cmdkList.children].find((li) => !li.hidden);
+    first?.classList.add("is-active");
+  };
+  window.addEventListener("keydown", (event) => {
+    if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+      event.preventDefault();
+      if (cmdk && !cmdk.hidden) closeCmdk();
+      else openCmdk();
+    }
+    if (event.key === "Escape" && cmdk && !cmdk.hidden) {
+      event.preventDefault();
+      closeCmdk();
+    }
+  });
+  cmdk?.addEventListener("click", (event) => {
+    if (event.target === cmdk) closeCmdk();
+  });
+  cmdkInput?.addEventListener("input", () => filterCmdk(cmdkInput.value));
+  cmdkInput?.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" || !cmdkList) return;
+    const active = cmdkList.querySelector("li.is-active:not([hidden]) a")
+      || cmdkList.querySelector("li:not([hidden]) a");
+    if (active) {
+      event.preventDefault();
+      window.location.href = active.getAttribute("href") || "index.php";
+    }
+  });
+
+  const spinWheel = document.querySelector("[data-spin-wheel]");
+  const spinBtn = document.querySelector("[data-spin-btn]");
+  const spinCard = document.querySelector("[data-spin-card]");
+  const spinAmount = document.querySelector("[data-spin-amount]");
+  const spinPlatform = document.querySelector("[data-spin-platform]");
+  const spinOrder = document.querySelector("[data-spin-order]");
+  let spinning = false;
+  let spinRotation = 0;
+  const platformQuery = { PlayStation: "PlayStation", Xbox: "Xbox", PC: "PC" };
+  spinBtn?.addEventListener("click", () => {
+    const segments = window.__PLAYGIFT_SPIN__ || [];
+    if (!spinWheel || !segments.length || spinning) return;
+    spinning = true;
+    spinBtn.disabled = true;
+    const index = Math.floor(Math.random() * segments.length);
+    const seg = segments[index];
+    const slice = 360 / segments.length;
+    const extra = 5 + Math.floor(Math.random() * 3);
+    const target = extra * 360 + (360 - (index * slice + slice / 2));
+    spinRotation += target;
+    spinWheel.style.transform = `rotate(${spinRotation}deg)`;
+    window.setTimeout(() => {
+      spinning = false;
+      spinBtn.disabled = false;
+      spinCard?.classList.remove("is-empty");
+      spinCard?.classList.add("is-win");
+      if (spinAmount) spinAmount.textContent = `${Number(seg.amount).toLocaleString("ru-RU")} ₽`;
+      if (spinPlatform) {
+        const labels = { PlayStation: "PlayStation Wallet", Xbox: "Xbox Balance", PC: "Steam Wallet" };
+        spinPlatform.textContent = labels[seg.platform] || seg.platform;
+      }
+      if (spinOrder) {
+        spinOrder.hidden = false;
+        const cat = platformQuery[seg.platform] || "PC";
+        spinOrder.href = `order.php?platform=${encodeURIComponent(cat)}&amount=${encodeURIComponent(seg.amount)}`;
+      }
+      burstConfetti(70);
+    }, 4300);
+  });
+
   if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     const markStagger = (selector) => {
       document.querySelectorAll(selector).forEach((group) => {
@@ -322,7 +424,7 @@
       });
     };
 
-    markStagger(".design-grid, .feature-grid, .choice-grid, .cert-list, .cta-row, .footer-grid, .footer-links, .footer-contacts, .preview-list, .site-nav, .stagger-layout, .stagger-form, .stagger-copy, .stack-sm, .profile-layout, .contact-info, .contact-actions, .counter-grid, .pulse-grid, .idea-grid, .quiz-layout");
+    markStagger(".design-grid, .feature-grid, .choice-grid, .cert-list, .cta-row, .footer-grid, .footer-links, .footer-contacts, .preview-list, .site-nav, .stagger-layout, .stagger-form, .stagger-copy, .stack-sm, .profile-layout, .contact-info, .contact-actions, .counter-grid, .pulse-grid, .idea-grid, .quiz-layout, .wall-grid, .activity-list, .leaderboard-list, .badge-grid, .spin-layout, .board-layout");
 
     const soloReveal = document.querySelectorAll(
       ".section-head, .page-hero, .auth-card, .auth-side, .panel, .order-preview, .profile-summary, .hero-copy, .hero-visual, .empty-state, .about-visual, .voucher-card, .quiz-result"

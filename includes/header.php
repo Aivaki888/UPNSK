@@ -50,10 +50,11 @@ $themePref = $user['theme_pref'] ?? ($_COOKIE['theme'] ?? 'system');
                 <a class="<?= $activeNav === 'home' ? 'is-active' : '' ?>" href="index.php">Главная</a>
                 <a class="<?= $activeNav === 'catalog' ? 'is-active' : '' ?>" href="catalog.php">Каталог</a>
                 <a class="<?= $activeNav === 'order' ? 'is-active' : '' ?>" href="order.php">Оформить</a>
+                <a class="<?= $activeNav === 'spin' ? 'is-active' : '' ?>" href="spin.php">Колесо</a>
                 <a class="<?= $activeNav === 'quiz' ? 'is-active' : '' ?>" href="quiz.php">Квиз</a>
-                <a class="<?= $activeNav === 'guide' ? 'is-active' : '' ?>" href="guide.php">Гид</a>
+                <a class="<?= $activeNav === 'wall' ? 'is-active' : '' ?>" href="wall.php">Стена</a>
+                <a class="<?= $activeNav === 'leaderboard' ? 'is-active' : '' ?>" href="leaderboard.php">Рейтинг</a>
                 <a class="<?= $activeNav === 'verify' ? 'is-active' : '' ?>" href="verify.php">Проверка</a>
-                <a class="<?= $activeNav === 'about' ? 'is-active' : '' ?>" href="about.php">О нас</a>
                 <?php if ($user): ?>
                     <a class="<?= $activeNav === 'favorites' ? 'is-active' : '' ?>" href="favorites.php">Избранное</a>
                     <a class="<?= $activeNav === 'certificates' ? 'is-active' : '' ?>" href="certificates.php">Мои сертификаты</a>

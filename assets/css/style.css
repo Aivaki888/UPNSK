@@ -2011,3 +2011,393 @@ html[data-accent="steam"] {
     grid-template-columns: 1fr;
   }
 }
+
+/* --- Grand upgrade: spin, wall, board, compare, cmdk --- */
+
+.spin-layout,
+.board-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.spin-stage {
+  display: grid;
+  justify-items: center;
+  gap: 1.25rem;
+  padding: 1.75rem 1.4rem 1.6rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.spin-pointer {
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 18px solid var(--accent);
+  z-index: 3;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
+}
+
+.spin-wheel {
+  --segments: 8;
+  position: relative;
+  width: min(320px, 78vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 6px solid color-mix(in srgb, var(--text) 12%, transparent);
+  box-shadow:
+    0 0 0 10px color-mix(in srgb, var(--accent) 18%, transparent),
+    0 28px 60px rgba(0, 0, 0, 0.28),
+    inset 0 0 40px rgba(0, 0, 0, 0.18);
+  background:
+    conic-gradient(
+      from -22.5deg,
+      #0068d9 0 45deg,
+      #107c10 45deg 90deg,
+      #0f8f9f 90deg 135deg,
+      #1b2838 135deg 180deg,
+      #3aa0ff 180deg 225deg,
+      #54d168 225deg 270deg,
+      #0f8f9f 270deg 315deg,
+      #0068d9 315deg 360deg
+    );
+  transition: transform 4.2s cubic-bezier(0.12, 0.75, 0.08, 1);
+  will-change: transform;
+}
+
+.spin-slice {
+  display: none;
+}
+
+.spin-center {
+  position: absolute;
+  inset: 38%;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(160deg, var(--bg), var(--bg-soft));
+  border: 2px solid var(--line);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  z-index: 2;
+}
+
+.spin-result {
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+}
+
+.spin-result-card {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1.2rem 1.25rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(circle at 20% 0%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 55%),
+    var(--bg-soft);
+  min-height: 5.5rem;
+}
+
+.spin-result-card strong {
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  letter-spacing: -0.03em;
+}
+
+.spin-result-card.is-empty {
+  opacity: 0.72;
+}
+
+.spin-result-card.is-win {
+  animation: spin-pop 0.55s var(--ease-spring);
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--line));
+}
+
+@keyframes spin-pop {
+  0% { transform: scale(0.94); }
+  60% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+.activity-list,
+.leaderboard-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.activity-list li,
+.leaderboard-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.85rem 0.95rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: var(--bg-soft);
+}
+
+.activity-home {
+  padding: 0.85rem;
+}
+
+.activity-list li > div,
+.leaderboard-row > div {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.lb-rank {
+  width: 2.2rem;
+  height: 2.2rem;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: color-mix(in srgb, var(--accent) 16%, var(--bg));
+  color: var(--accent);
+}
+
+.leaderboard-row:nth-child(1) .lb-rank {
+  background: color-mix(in srgb, #f5c542 28%, var(--bg));
+  color: #b8860b;
+}
+
+.leaderboard-row:nth-child(2) .lb-rank {
+  background: color-mix(in srgb, #9aa4b2 28%, var(--bg));
+  color: #5b6572;
+}
+
+.leaderboard-row:nth-child(3) .lb-rank {
+  background: color-mix(in srgb, #cd7f32 28%, var(--bg));
+  color: #8b5a2b;
+}
+
+.wall-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.1rem;
+}
+
+.wall-card {
+  display: grid;
+  gap: 0.7rem;
+  padding: 1rem;
+}
+
+.wall-card .design-image,
+.wall-card .media-fallback {
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.compare-table-wrap {
+  overflow-x: auto;
+  padding: 0;
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 640px;
+}
+
+.compare-table th,
+.compare-table td {
+  padding: 1rem 1.1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+}
+
+.compare-table th {
+  background: var(--bg-soft);
+  font-weight: 700;
+}
+
+.compare-table th .platform-icon {
+  margin-right: 0.35rem;
+  vertical-align: middle;
+}
+
+.compare-table tbody tr:hover td {
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+}
+
+.badge-grid {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.achievement-badge {
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.75rem 0.85rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: var(--bg-soft);
+}
+
+.achievement-badge strong {
+  font-size: 0.92rem;
+}
+
+.achievement-badge span {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.achievement-badge.tone-ps {
+  border-color: color-mix(in srgb, #0068d9 40%, var(--line));
+  background: color-mix(in srgb, #0068d9 10%, var(--bg-soft));
+}
+
+.achievement-badge.tone-xbox {
+  border-color: color-mix(in srgb, #107c10 40%, var(--line));
+  background: color-mix(in srgb, #107c10 10%, var(--bg-soft));
+}
+
+.achievement-badge.tone-pc {
+  border-color: color-mix(in srgb, #0f8f9f 40%, var(--line));
+  background: color-mix(in srgb, #0f8f9f 10%, var(--bg-soft));
+}
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 90;
+  pointer-events: none;
+  background: transparent;
+}
+
+.scroll-progress span {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 40%, #fff));
+  transition: width 0.08s linear;
+}
+
+.back-top {
+  position: fixed;
+  right: 1.1rem;
+  bottom: 1.1rem;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg) 86%, transparent);
+  backdrop-filter: blur(10px);
+  color: var(--text);
+  font-size: 1.1rem;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition: opacity 0.2s var(--ease), transform 0.2s var(--ease), border-color 0.2s var(--ease);
+  z-index: 70;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
+}
+
+.back-top.is-on {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.back-top:hover {
+  border-color: var(--accent);
+}
+
+.cmdk {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: start center;
+  padding: 12vh 1rem 1rem;
+  background: rgba(8, 10, 14, 0.55);
+  backdrop-filter: blur(8px);
+}
+
+.cmdk[hidden] {
+  display: none !important;
+}
+
+.cmdk-panel {
+  width: min(520px, 100%);
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--bg);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  animation: cmdk-in 0.22s var(--ease-spring);
+}
+
+@keyframes cmdk-in {
+  from { opacity: 0; transform: translateY(-10px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.cmdk-panel input {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  padding: 1rem 1.1rem;
+  font: inherit;
+  color: var(--text);
+  outline: none;
+}
+
+.cmdk-panel ul {
+  list-style: none;
+  margin: 0;
+  padding: 0.45rem;
+  max-height: 320px;
+  overflow: auto;
+}
+
+.cmdk-panel li a {
+  display: block;
+  padding: 0.7rem 0.85rem;
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.cmdk-panel li a:hover,
+.cmdk-panel li.is-active a {
+  background: color-mix(in srgb, var(--accent) 14%, var(--bg-soft));
+}
+
+.cmdk-panel li[hidden] {
+  display: none;
+}
+
+.cmdk-hint {
+  margin: 0;
+  padding: 0.55rem 1rem 0.85rem;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 960px) {
+  .spin-layout,
+  .board-layout,
+  .wall-grid {
+    grid-template-columns: 1fr;
+  }
+}
