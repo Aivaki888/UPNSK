@@ -23,5 +23,5 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 ensure_extra_tables();
 $stmt = db()->prepare('INSERT IGNORE INTO newsletter_subscribers (email) VALUES (?)');
 $stmt->execute([$email]);
-flash('success', 'Вы в списке PlayGift — пришлём учебные новости о кошельках и идеях подарков.');
+flash('success', 'Подписка оформлена.');
 redirect($redirect);

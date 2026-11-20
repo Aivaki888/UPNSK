@@ -35,9 +35,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $winner = array_key_first($score) ?: 'PC';
     $amounts = ['PlayStation' => 2500, 'Xbox' => 1500, 'PC' => 1000];
     $blurbs = [
-        'PlayStation' => 'Ему ближе эксклюзивы и вечера на диване — бери пополнение PSN.',
-        'Xbox' => 'Ставка на совместные сессии и экосистему Microsoft — пополняй Xbox.',
-        'PC' => 'Любит вишлисты, распродажи и гибкость — идеальный Steam Wallet.',
+        'PlayStation' => 'По ответам ближе PlayStation — пополнение PSN.',
+        'Xbox' => 'По ответам ближе Xbox — пополнение баланса Microsoft.',
+        'PC' => 'По ответам ближе ПК — пополнение Steam Wallet.',
     ];
 
     $designStmt = db()->prepare('SELECT * FROM designs WHERE is_active = 1 AND category = ? ORDER BY sort_order ASC LIMIT 1');
@@ -61,9 +61,9 @@ require __DIR__ . '/includes/header.php';
 
 <section class="page-hero stagger-copy">
     <div class="container">
-        <span class="eyebrow">Мини-квиз</span>
+        <span class="eyebrow">Квиз</span>
         <h1>Какой кошелёк подарить?</h1>
-        <p>Три коротких вопроса — и PlayGift подскажет платформу и номинал.</p>
+        <p>Три вопроса. Сайт предложит платформу и сумму.</p>
     </div>
 </section>
 
@@ -113,15 +113,15 @@ require __DIR__ . '/includes/header.php';
                 <div class="choice-grid">
                     <label class="choice-tile">
                         <input type="radio" name="budget" value="big" <?= $answers['budget'] === 'big' ? 'checked' : '' ?> required>
-                        <span>Хочу впечатлить</span>
+                        <span>Крупный номинал</span>
                     </label>
                     <label class="choice-tile">
                         <input type="radio" name="budget" value="mid" <?= $answers['budget'] === 'mid' ? 'checked' : '' ?>>
-                        <span>Золотая середина</span>
+                        <span>Средний номинал</span>
                     </label>
                     <label class="choice-tile">
                         <input type="radio" name="budget" value="flex" <?= $answers['budget'] === 'flex' ? 'checked' : '' ?>>
-                        <span>Лёгкий и гибкий</span>
+                        <span>Небольшой номинал</span>
                     </label>
                 </div>
             </fieldset>
@@ -149,12 +149,12 @@ require __DIR__ . '/includes/header.php';
             </aside>
         <?php else: ?>
             <aside class="panel quiz-side">
-                <h2>Зачем квиз?</h2>
-                <p class="muted">Если не знаете, PS, Xbox или Steam ближе человеку — ответьте за него. Мы не продаём ключи: только пополнение кошелька.</p>
+                <h2>Как это работает</h2>
+                <p class="muted">Если неясно, PS, Xbox или Steam нужнее — ответьте на вопросы. Ключи не продаём, только пополнение кошелька.</p>
                 <ul class="value-list">
-                    <li><strong>30 секунд.</strong> Три вопроса без регистрации.</li>
-                    <li><strong>Живой совет.</strong> Платформа + сумма + дизайн.</li>
-                    <li><strong>Сразу в заказ.</strong> Один клик — и форма оформления.</li>
+                    <li><strong>3 вопроса.</strong> Регистрация не нужна.</li>
+                    <li><strong>Результат.</strong> Платформа, сумма и дизайн.</li>
+                    <li><strong>Дальше.</strong> Можно сразу открыть оформление.</li>
                 </ul>
             </aside>
         <?php endif; ?>

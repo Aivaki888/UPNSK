@@ -46,7 +46,7 @@ require __DIR__ . '/includes/header.php';
 
 <section class="container auth-layout stagger-layout">
     <div class="auth-side">
-        <?php render_media('assets/img/auth.jpg', 'Авторизация', 'auth-media', 'Место для изображения'); ?>
+        <?php render_media('assets/img/auth.jpg', 'Авторизация', 'auth-media', 'Нет изображения'); ?>
         <div class="auth-side-copy stagger-copy">
             <h2>С возвращением</h2>
             <p>Войдите, чтобы открыть профиль, историю пополнений кошельков и быстрое оформление.</p>

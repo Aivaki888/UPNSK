@@ -10,5 +10,4 @@ require_once __DIR__ . '/helpers.php';
 try {
     ensure_extra_tables();
 } catch (Throwable $e) {
-    // Таблицы подтянутся при первом обращении к функциям.
 }

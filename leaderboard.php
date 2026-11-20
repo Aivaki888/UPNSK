@@ -18,7 +18,7 @@ require __DIR__ . '/includes/header.php';
     <div class="container">
         <span class="eyebrow">Соревнование</span>
         <h1>Рейтинг дарителей</h1>
-        <p>Кто чаще и щедрее пополняет чужие кошельки в учебном PlayGift.</p>
+        <p>Пользователи с наибольшей суммой оформленных сертификатов.</p>
     </div>
 </section>
 
@@ -28,7 +28,7 @@ require __DIR__ . '/includes/header.php';
             <h2>Топ по сумме подарков</h2>
             <?php if (!$rows): ?>
                 <div class="empty-state">
-                    <p>Пока пусто. Оформите первый сертификат — и вы займёте строку рейтинга.</p>
+                    <p>Пока пусто. Оформите первый сертификат.</p>
                     <a class="btn btn-primary" href="order.php">Оформить</a>
                 </div>
             <?php else: ?>
@@ -48,9 +48,9 @@ require __DIR__ . '/includes/header.php';
         </div>
 
         <aside class="panel">
-            <h2>Живая лента</h2>
+            <h2>Последние заказы</h2>
             <?php if (!$activity): ?>
-                <p class="muted">Активности ещё нет — будьте первым.</p>
+                <p class="muted">Пока нет заказов.</p>
             <?php else: ?>
                 <ul class="activity-list stagger-layout">
                     <?php foreach ($activity as $item): ?>

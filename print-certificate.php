@@ -52,7 +52,7 @@ if (!$cert) {
             <?php if (media_exists($cert['image_path'])): ?>
                 <img src="<?= e($cert['image_path']) ?>" alt="<?= e($cert['design_title']) ?>">
             <?php else: ?>
-                <span>Место для картинки</span>
+                <span>Нет изображения</span>
             <?php endif; ?>
         </div>
         <div class="eyebrow">PlayGift · пополнение кошелька</div>

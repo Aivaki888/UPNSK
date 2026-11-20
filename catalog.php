@@ -110,7 +110,7 @@ require __DIR__ . '/includes/header.php';
                     <?php $isFav = in_array((int) $design['id'], $favoriteIds, true); ?>
                     <article class="design-tile">
                         <div class="design-media">
-                            <?php render_media($design['image_path'], $design['title'], 'design-image', 'Место для картинки дизайна'); ?>
+                            <?php render_media($design['image_path'], $design['title'], 'design-image', 'Нет изображения'); ?>
                         </div>
                         <div class="design-body">
                             <?php render_platform_chip($design['category']); ?>

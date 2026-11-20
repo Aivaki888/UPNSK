@@ -17,7 +17,7 @@ require __DIR__ . '/includes/header.php';
     <div class="container">
         <span class="eyebrow">Витрина</span>
         <h1>Стена сертификатов</h1>
-        <p>Последние оформленные ваучеры на пополнение кошельков — без секретных данных.</p>
+        <p>Последние оформленные сертификаты. Коды можно проверить на сайте.</p>
     </div>
 </section>
 
@@ -25,7 +25,7 @@ require __DIR__ . '/includes/header.php';
     <div class="container">
         <?php if (!$items): ?>
             <div class="empty-state panel">
-                <p>Стена пока пустая. Первый сертификат станет первым экспонатом.</p>
+                <p>Пока нет сертификатов. Оформите первый заказ.</p>
                 <a class="btn btn-primary" href="order.php">Оформить</a>
             </div>
         <?php else: ?>

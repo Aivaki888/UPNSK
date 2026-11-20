@@ -36,14 +36,14 @@ $bodyClass = 'page-home';
 require __DIR__ . '/includes/header.php';
 ?>
 
-<section class="hero hero-spectacular">
+<section class="hero hero-home">
     <div class="hero-orb hero-orb-a" aria-hidden="true"></div>
     <div class="hero-orb hero-orb-b" aria-hidden="true"></div>
     <div class="hero-orb hero-orb-c" aria-hidden="true"></div>
     <div class="hero-copy">
         <span class="eyebrow">Только пополнение кошельков</span>
         <h1>PlayGift</h1>
-        <p class="lead">Цифровые сертификаты для баланса PlayStation, Xbox и Steam. Красиво оформить, мгновенно проверить, легко подарить.</p>
+        <p class="lead">Сертификаты на баланс PlayStation, Xbox и Steam.</p>
         <div class="cta-row">
             <a class="btn btn-primary" href="order.php">Оформить пополнение</a>
             <a class="btn btn-secondary" href="spin.php">Колесо удачи</a>
@@ -51,7 +51,7 @@ require __DIR__ . '/includes/header.php';
         </div>
     </div>
     <div class="hero-visual">
-        <?php render_media('assets/img/hero.jpg', 'Главный баннер', 'hero-media', 'Место для главного изображения'); ?>
+        <?php render_media('assets/img/hero.jpg', 'Главный баннер', 'hero-media', 'Нет изображения'); ?>
         <div class="floating-badges" aria-hidden="true">
             <?php render_platform_icon('PlayStation', 'platform-icon platform-icon-lg float-badge'); ?>
             <?php render_platform_icon('Xbox', 'platform-icon platform-icon-lg float-badge'); ?>
@@ -115,7 +115,7 @@ require __DIR__ . '/includes/header.php';
             <?php foreach ($designs as $design): ?>
                 <article class="design-tile">
                     <div class="design-media">
-                        <?php render_media($design['image_path'], $design['title'], 'design-image', 'Место для картинки дизайна'); ?>
+                        <?php render_media($design['image_path'], $design['title'], 'design-image', 'Нет изображения'); ?>
                         <div class="design-glow" aria-hidden="true"></div>
                     </div>
                     <div class="design-body">
@@ -141,8 +141,8 @@ require __DIR__ . '/includes/header.php';
 <section class="section section-alt">
     <div class="container">
         <div class="section-head">
-            <h2 class="section-title">Пульс платформ</h2>
-            <p class="section-text">Живая статистика заказов по кошелькам.</p>
+            <h2 class="section-title">Статистика по платформам</h2>
+            <p class="section-text">Сколько заказов пришлось на каждый кошелёк.</p>
         </div>
         <div class="pulse-grid stagger-layout">
             <?php
@@ -170,8 +170,8 @@ require __DIR__ . '/includes/header.php';
 <section class="section">
     <div class="container">
         <div class="section-head">
-            <h2 class="section-title">Идеи на сейчас</h2>
-            <p class="section-text">Три готовых сценария подарка — или пройдите квиз.</p>
+            <h2 class="section-title">Идеи подарков</h2>
+            <p class="section-text">Готовые связки платформы и суммы. Можно пройти квиз.</p>
         </div>
         <div class="idea-grid stagger-layout">
             <?php foreach ($ideas as $idea): ?>
@@ -192,25 +192,25 @@ require __DIR__ . '/includes/header.php';
 <section class="section section-alt">
     <div class="container">
         <div class="section-head">
-            <h2 class="section-title">Ещё больше PlayGift</h2>
-            <p class="section-text">Новые режимы выбора подарка и витрина сертификатов.</p>
+            <h2 class="section-title">Другие разделы</h2>
+            <p class="section-text">Колесо, стена сертификатов, рейтинг и сравнение платформ.</p>
         </div>
         <div class="feature-grid">
             <a class="feature-item wallet-card" href="spin.php">
                 <h3>Колесо удачи</h3>
-                <p>Случайный номинал и платформа за один спин.</p>
+                <p>Случайная сумма и платформа.</p>
             </a>
             <a class="feature-item wallet-card" href="wall.php">
                 <h3>Стена сертификатов</h3>
-                <p>Живая витрина последних оформленных ваучеров.</p>
+                <p>Последние оформленные ваучеры.</p>
             </a>
             <a class="feature-item wallet-card" href="leaderboard.php">
                 <h3>Рейтинг дарителей</h3>
-                <p>Кто чаще пополняет чужие кошельки.</p>
+                <p>Пользователи с наибольшей суммой подарков.</p>
             </a>
             <a class="feature-item wallet-card" href="compare.php">
                 <h3>Сравнение кошельков</h3>
-                <p>PSN vs Xbox vs Steam — коротко и по делу.</p>
+                <p>Отличия PSN, Xbox и Steam.</p>
             </a>
         </div>
     </div>
@@ -220,8 +220,8 @@ require __DIR__ . '/includes/header.php';
 <section class="section">
     <div class="container">
         <div class="section-head">
-            <h2 class="section-title">Живая лента</h2>
-            <p class="section-text">Последние подарки на сайте — имена слегка скрыты.</p>
+            <h2 class="section-title">Последние заказы</h2>
+            <p class="section-text">Недавние сертификаты. Имена скрыты.</p>
         </div>
         <ul class="activity-list activity-home panel stagger-layout">
             <?php foreach ($activity as $item): ?>
@@ -273,7 +273,7 @@ require __DIR__ . '/includes/header.php';
             <?php foreach ($recentDesigns as $design): ?>
                 <article class="design-tile">
                     <div class="design-media">
-                        <?php render_media($design['image_path'], $design['title'], 'design-image', 'Место для картинки дизайна'); ?>
+                        <?php render_media($design['image_path'], $design['title'], 'design-image', 'Нет изображения'); ?>
                     </div>
                     <div class="design-body">
                         <?php render_platform_chip($design['category']); ?>

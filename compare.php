@@ -14,7 +14,7 @@ require __DIR__ . '/includes/header.php';
     <div class="container">
         <span class="eyebrow">Выбор платформы</span>
         <h1>Сравнение кошельков</h1>
-        <p>Коротко и честно: чем отличаются PSN, Xbox и Steam в логике PlayGift.</p>
+        <p>Чем отличаются PSN, Xbox и Steam на этом сайте.</p>
     </div>
 </section>
 
@@ -38,22 +38,22 @@ require __DIR__ . '/includes/header.php';
                         <td>Steam Wallet</td>
                     </tr>
                     <tr>
-                        <td>Кому дарить</td>
-                        <td>Любителям эксклюзивов</td>
-                        <td>Тем, кто играет с друзьями</td>
-                        <td>Охотникам за распродажами</td>
+                        <td>Кому подходит</td>
+                        <td>Игры на PlayStation</td>
+                        <td>Игры на Xbox</td>
+                        <td>Игры в Steam</td>
                     </tr>
                     <tr>
-                        <td>Гибкость трат</td>
-                        <td>Высокая</td>
-                        <td>Высокая</td>
-                        <td>Очень высокая</td>
+                        <td>На что тратится</td>
+                        <td>Магазин PSN</td>
+                        <td>Microsoft Store / Xbox</td>
+                        <td>Магазин Steam</td>
                     </tr>
                     <tr>
-                        <td>Стиль оформления</td>
-                        <td>Синий pulse / midnight</td>
-                        <td>Зелёный core / carbon</td>
-                        <td>RGB / clean deck</td>
+                        <td>Оформление на сайте</td>
+                        <td>Синие дизайны</td>
+                        <td>Зелёные дизайны</td>
+                        <td>PC / Steam дизайны</td>
                     </tr>
                     <tr>
                         <td>Быстрый старт</td>
@@ -67,8 +67,8 @@ require __DIR__ . '/includes/header.php';
 
         <div class="cta-row" style="margin-top: 1.25rem;">
             <a class="btn btn-primary" href="quiz.php">Подобрать через квиз</a>
-            <a class="btn btn-secondary" href="spin.php">Крутануть колесо</a>
-            <a class="btn btn-ghost" href="order.php">Сразу оформить</a>
+            <a class="btn btn-secondary" href="spin.php">Колесо удачи</a>
+            <a class="btn btn-ghost" href="order.php">Оформить</a>
         </div>
     </div>
 </section>

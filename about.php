@@ -13,8 +13,8 @@ require __DIR__ . '/includes/header.php';
 <section class="page-hero stagger-copy">
     <div class="container">
         <span class="eyebrow">О PlayGift</span>
-        <h1>Пополняем кошельки. Не продаём ключи.</h1>
-        <p>PlayGift — учебный сервис цифровых сертификатов только для пополнения кошельков PlayStation, Xbox и PC. Один сценарий: выбрали платформу, сумму и оформление — получили код.</p>
+        <h1>Пополнение кошельков PS, Xbox и Steam</h1>
+        <p>Сайт выдаёт цифровые сертификаты на баланс платформы. Ключи игр и подписки не продаём.</p>
     </div>
 </section>
 
@@ -22,53 +22,53 @@ require __DIR__ . '/includes/header.php';
     <div class="container about-story stagger-layout">
         <div class="panel">
             <div class="stagger-copy">
-                <h2>Идея проекта</h2>
-                <p class="muted">Мы сознательно сузили ассортимент. Никаких ключей игр, подписок и «серых» активаций — только баланс кошелька. Так проще объяснить логику магазина: платформа → номинал → персональный сертификат → проверка кода.</p>
-                <p class="muted">PlayGift показывает полный учебный цикл: регистрация, профиль, светлая и тёмная тема, каталог дизайнов, оформление заказа и хранение данных в MySQL.</p>
+                <h2>О проекте</h2>
+                <p class="muted">PlayGift сделан как учебный магазин: регистрация, профиль, тема, каталог, заказ сертификата и проверка кода. Данные хранятся в MySQL.</p>
+                <p class="muted">В каталоге только три направления — PlayStation, Xbox и Steam. Сумма и оформление выбираются при заказе.</p>
             </div>
             <div class="feature-grid" style="margin-top: 1.5rem;">
                 <article class="feature-item">
                     <h3>Только кошельки</h3>
-                    <p>PSN Wallet, Microsoft / Xbox balance и Steam Wallet — и больше ничего.</p>
+                    <p>PSN, Xbox / Microsoft и Steam Wallet.</p>
                 </article>
                 <article class="feature-item">
                     <h3>Три платформы</h3>
-                    <p>Каталог чётко делится на PlayStation, Xbox и PC с разными оформлениями.</p>
+                    <p>Отдельные дизайны под каждую платформу.</p>
                 </article>
                 <article class="feature-item">
-                    <h3>Учебный стек</h3>
-                    <p>HTML, CSS, JavaScript, PHP и MySQL — как требует задание.</p>
+                    <h3>Стек</h3>
+                    <p>HTML, CSS, JavaScript, PHP и MySQL.</p>
                 </article>
             </div>
         </div>
-        <?php render_media('assets/img/about.jpg', 'О проекте', 'about-visual', 'Место для изображения'); ?>
+        <?php render_media('assets/img/about.jpg', 'О проекте', 'about-visual', 'Нет изображения'); ?>
     </div>
 </section>
 
 <section class="section section-alt">
     <div class="container">
         <div class="section-head">
-            <h2 class="section-title">Что именно пополняем</h2>
-            <p class="section-text">Один продукт — баланс. Получатель сам решает, на что его потратить.</p>
+            <h2 class="section-title">Что пополняем</h2>
+            <p class="section-text">Сертификат добавляет сумму на баланс. На что тратить — решает получатель.</p>
         </div>
         <div class="feature-grid stagger-layout">
             <article class="feature-item wallet-card">
                 <?php render_platform_icon('PlayStation', 'platform-icon platform-icon-lg'); ?>
                 <?php render_platform_chip('PlayStation'); ?>
                 <h3>Кошелёк PSN</h3>
-                <p>Сертификат добавляет сумму на баланс аккаунта PlayStation Network. Дальше — игры, дополнения или то, что выберет получатель в магазине.</p>
+                <p>Пополнение PlayStation Network.</p>
             </article>
             <article class="feature-item wallet-card">
                 <?php render_platform_icon('Xbox', 'platform-icon platform-icon-lg'); ?>
                 <?php render_platform_chip('Xbox'); ?>
-                <h3>Баланс Microsoft</h3>
-                <p>Пополнение счёта Xbox / Microsoft. Деньги остаются в кошельке платформы и тратятся там, где удобно получателю.</p>
+                <h3>Баланс Xbox</h3>
+                <p>Пополнение счёта Microsoft / Xbox.</p>
             </article>
             <article class="feature-item wallet-card">
                 <?php render_platform_icon('PC', 'platform-icon platform-icon-lg'); ?>
                 <?php render_platform_chip('PC'); ?>
                 <h3>Кошелёк Steam</h3>
-                <p>Цифровой сертификат на пополнение Steam Wallet. Без привязки к конкретной игре — только сумма на счёте.</p>
+                <p>Пополнение Steam Wallet.</p>
             </article>
         </div>
     </div>
@@ -77,36 +77,36 @@ require __DIR__ . '/includes/header.php';
 <section class="section">
     <div class="container about-timeline stagger-layout">
         <div class="section-head">
-            <h2 class="section-title">Как устроен сервис</h2>
-            <p class="section-text">От выбора платформы до готового кода — короткая и прозрачная цепочка.</p>
+            <h2 class="section-title">Как это устроено</h2>
+            <p class="section-text">Четыре шага от каталога до кода.</p>
         </div>
         <ol class="timeline-list">
             <li class="panel timeline-item">
                 <span class="timeline-step">01</span>
                 <div>
-                    <h3>Выбор платформы</h3>
-                    <p class="muted">В каталоге остаются только дизайны PlayStation, Xbox и PC. Каждый дизайн — оформление ваучера на пополнение кошелька.</p>
+                    <h3>Платформа</h3>
+                    <p class="muted">Выбираете дизайн под PlayStation, Xbox или Steam.</p>
                 </div>
             </li>
             <li class="panel timeline-item">
                 <span class="timeline-step">02</span>
                 <div>
-                    <h3>Номинал и получатель</h3>
-                    <p class="muted">Выбираете сумму, повод, стиль и способ доставки. Можно добавить короткое сообщение к подарку.</p>
+                    <h3>Сумма и получатель</h3>
+                    <p class="muted">Указываете номинал, повод, сообщение и способ доставки.</p>
                 </div>
             </li>
             <li class="panel timeline-item">
                 <span class="timeline-step">03</span>
                 <div>
-                    <h3>Код в личном кабинете</h3>
-                    <p class="muted">Сертификат сохраняется в MySQL. Его можно проверить, скопировать, распечатать или отметить использованным.</p>
+                    <h3>Код в кабинете</h3>
+                    <p class="muted">Сертификат сохраняется в базе. Его можно проверить, скопировать или распечатать.</p>
                 </div>
             </li>
             <li class="panel timeline-item">
                 <span class="timeline-step">04</span>
                 <div>
-                    <h3>Пополнение кошелька</h3>
-                    <p class="muted">В учебной версии код демонстрирует сценарий. В реальном сервисе такой код шёл бы на баланс выбранной платформы.</p>
+                    <h3>Проверка</h3>
+                    <p class="muted">Коды учебные: генерируются на сайте и не активируют реальный баланс платформы.</p>
                 </div>
             </li>
         </ol>
@@ -117,24 +117,24 @@ require __DIR__ . '/includes/header.php';
     <div class="container">
         <div class="section-head">
             <h2 class="section-title">Почему только кошельки</h2>
-            <p class="section-text">Узкая тема делает сайт понятнее и честнее.</p>
+            <p class="section-text">Один тип товара проще показать в каталоге и формах.</p>
         </div>
         <div class="about-reasons stagger-layout">
             <article class="panel reason-card">
-                <h3>Понятный продукт</h3>
-                <p class="muted">Пользователь сразу видит ценность: «деньги на счёт платформы», а не список случайных ключей и подписок.</p>
+                <h3>Понятный товар</h3>
+                <p class="muted">Пополнение баланса, а не набор случайных ключей.</p>
             </article>
             <article class="panel reason-card">
-                <h3>Свобода выбора</h3>
-                <p class="muted">Получатель сам решает, что купить — новую игру, DLC или просто накопить баланс.</p>
+                <h3>Выбор за получателем</h3>
+                <p class="muted">Он сам решает, на что потратить сумму.</p>
             </article>
             <article class="panel reason-card">
-                <h3>Чистый учебный кейс</h3>
-                <p class="muted">Один тип товара проще описать в формах, каталоге, проверке кода и личном кабинете.</p>
+                <h3>Узкая тема</h3>
+                <p class="muted">Проще связать страницы: каталог, заказ, проверка, кабинет.</p>
             </article>
             <article class="panel reason-card">
-                <h3>Без лишнего шума</h3>
-                <p class="muted">Мы не смешиваем подарочные карты, подписки и ключи. PlayGift отвечает только за пополнение кошелька.</p>
+                <h3>Без лишнего</h3>
+                <p class="muted">Нет подписок и ключей — только кошелёк.</p>
             </article>
         </div>
     </div>
@@ -144,22 +144,22 @@ require __DIR__ . '/includes/header.php';
     <div class="container about-values stagger-layout">
         <div class="panel about-values-copy">
             <div class="stagger-copy">
-                <h2>Что важно для нас</h2>
-                <p class="muted">Даже в учебном проекте хочется, чтобы сервис звучал как настоящий продукт: спокойный интерфейс, честные формулировки и понятный путь от главной до готового сертификата.</p>
+                <h2>Что есть на сайте</h2>
+                <p class="muted">Базовый набор страниц и функций для учебного проекта.</p>
             </div>
             <ul class="value-list">
-                <li><strong>Честность.</strong> На сайте прямо сказано: это демо-магазин, коды учебные.</li>
-                <li><strong>Фокус.</strong> Одна задача — пополнение кошельков PS, Xbox и PC.</li>
-                <li><strong>Удобство.</strong> Избранное, проверка кода, печать и тёмная тема уже встроены.</li>
-                <li><strong>Открытость.</strong> Вопросы можно отправить через форму контактов — сообщения пишутся в MySQL.</li>
+                <li><strong>Аккаунт.</strong> Регистрация, вход и профиль.</li>
+                <li><strong>Заказ.</strong> Дизайн, сумма, получатель, код сертификата.</li>
+                <li><strong>Дополнительно.</strong> Избранное, проверка кода, печать, тема.</li>
+                <li><strong>Контакты.</strong> Форма пишет сообщения в MySQL.</li>
             </ul>
         </div>
         <div class="panel about-note">
-            <h3>Коротко для проверяющего</h3>
-            <p class="muted">Проект закрывает требования: регистрация и авторизация, профиль, тема оформления, 6+ страниц и сценарий покупки сертификата с выбором дизайна и критериев. Тематика — цифровые сертификаты на пополнение игровых кошельков.</p>
+            <h3>Состав работы</h3>
+            <p class="muted">Есть регистрация и авторизация, профиль, смена темы, больше шести страниц и покупка сертификата с выбором дизайна.</p>
             <div class="cta-row" style="margin-top: 1.1rem;">
-                <a class="btn btn-primary" href="order.php">Оформить пополнение</a>
-                <a class="btn btn-secondary" href="catalog.php">Смотреть каталог</a>
+                <a class="btn btn-primary" href="order.php">Оформить</a>
+                <a class="btn btn-secondary" href="catalog.php">Каталог</a>
             </div>
         </div>
     </div>
@@ -169,28 +169,28 @@ require __DIR__ . '/includes/header.php';
     <div class="container">
         <div class="section-head">
             <h2 class="section-title">Частые вопросы</h2>
-            <p class="section-text">Ответы про кошельки, коды и работу сайта.</p>
+            <p class="section-text">Коротко по кодам и заказу.</p>
         </div>
         <div class="faq-list stagger-layout">
             <details class="panel faq-item">
-                <summary>Можно ли купить ключ конкретной игры?</summary>
-                <p class="muted">Нет. PlayGift оформляет только сертификаты на пополнение кошелька платформы.</p>
+                <summary>Можно ли купить ключ игры?</summary>
+                <p class="muted">Нет. Только сертификат на пополнение кошелька.</p>
             </details>
             <details class="panel faq-item">
                 <summary>Это реальные коды PSN / Xbox / Steam?</summary>
-                <p class="muted">Нет. Это учебный проект: коды генерируются локально и хранятся в MySQL, чтобы показать сценарий покупки и проверки.</p>
+                <p class="muted">Нет. Коды создаются локально и хранятся в MySQL.</p>
             </details>
             <details class="panel faq-item">
                 <summary>Чем отличаются дизайны?</summary>
-                <p class="muted">Это оформление ваучера под платформу. Сумма пополнения выбирается отдельно при заказе.</p>
+                <p class="muted">Это оформление ваучера. Сумма выбирается отдельно.</p>
             </details>
             <details class="panel faq-item">
                 <summary>Как проверить сертификат?</summary>
-                <p class="muted">Откройте «Проверка» и введите код — увидите сумму, статус и получателя.</p>
+                <p class="muted">Страница «Проверка» — введите код.</p>
             </details>
             <details class="panel faq-item">
-                <summary>Куда писать вопросы?</summary>
-                <p class="muted">Форма на странице «Контакты» сохраняет сообщения в базе данных.</p>
+                <summary>Куда писать?</summary>
+                <p class="muted">Форма на странице «Контакты».</p>
             </details>
         </div>
     </div>

@@ -10,7 +10,7 @@ declare(strict_types=1);
                     <?php render_media('assets/img/logo.png', 'Логотип PlayGift', 'brand-logo', 'Лого'); ?>
                     <span class="brand-text">PlayGift</span>
                 </div>
-                <p class="footer-copy">Сертификаты только на пополнение кошельков PlayStation, Xbox и Steam. Учебный проект на HTML, CSS, JS, PHP и MySQL.</p>
+                <p class="footer-copy">Сертификаты на пополнение кошельков PlayStation, Xbox и Steam. HTML, CSS, JS, PHP, MySQL.</p>
             </div>
 
             <div class="footer-col">
@@ -62,7 +62,7 @@ declare(strict_types=1);
         <div class="container footer-newsletter panel">
             <div>
                 <h2 class="footer-title">Рассылка идей</h2>
-                <p class="footer-copy">Короткие подсказки по подаркам на кошельки — без спама.</p>
+                <p class="footer-copy">Подписка на новости о подарках и кошельках.</p>
             </div>
             <form class="newsletter-form" method="post" action="newsletter.php">
                 <input type="hidden" name="csrf_token" value="<?= e(csrf_token()) ?>">
@@ -82,7 +82,7 @@ declare(strict_types=1);
 <button class="back-top" type="button" data-back-top aria-label="Наверх">↑</button>
 <div class="cmdk" data-cmdk hidden>
     <div class="cmdk-panel" role="dialog" aria-modal="true" aria-label="Быстрый поиск">
-        <input type="search" placeholder="Куда перейти? Каталог, колесо, рейтинг…" data-cmdk-input>
+        <input type="search" placeholder="Поиск страницы" data-cmdk-input>
         <ul data-cmdk-list>
             <li><a href="index.php">Главная</a></li>
             <li><a href="catalog.php">Каталог</a></li>

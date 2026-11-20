@@ -23,9 +23,9 @@ require __DIR__ . '/includes/header.php';
 
 <section class="page-hero stagger-copy">
     <div class="container">
-        <span class="eyebrow">Мини-игра</span>
+        <span class="eyebrow">Случайный выбор</span>
         <h1>Колесо удачи</h1>
-        <p>Крутаните диск — PlayGift подскажет номинал и кошелёк для подарка.</p>
+        <p>Крутите колесо, чтобы получить случайную сумму и платформу.</p>
     </div>
 </section>
 

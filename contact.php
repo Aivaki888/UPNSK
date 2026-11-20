@@ -89,7 +89,7 @@ require __DIR__ . '/includes/header.php';
         <div class="auth-card contact-form-card">
             <div class="stagger-copy">
                 <h2>Написать сообщение</h2>
-                <p class="muted">Сообщение сохранится в базе MySQL учебного проекта.</p>
+                <p class="muted">Сообщение сохранится в базе MySQL.</p>
             </div>
 
             <?php if ($errors): ?>

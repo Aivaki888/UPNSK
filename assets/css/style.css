@@ -1565,7 +1565,7 @@ textarea {
     display: none;
   }
 
-  .hero-spectacular {
+  .hero-home {
     min-height: auto;
   }
 
@@ -1620,7 +1620,7 @@ html[data-accent="steam"] {
   box-shadow: var(--shadow-sm);
 }
 
-.hero-spectacular {
+.hero-home {
   position: relative;
   overflow: hidden;
   isolation: isolate;
@@ -2015,8 +2015,6 @@ html[data-accent="steam"] {
     grid-template-columns: 1fr;
   }
 }
-
-/* --- Grand upgrade: spin, wall, board, compare, cmdk --- */
 
 .spin-layout,
 .board-layout {

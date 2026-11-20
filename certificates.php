@@ -80,7 +80,7 @@ require __DIR__ . '/includes/header.php';
             <div class="cert-list">
                 <?php foreach ($certificates as $cert): ?>
                     <article class="cert-item">
-                        <?php render_media($cert['image_path'], $cert['design_title'], 'cert-image', 'Место для картинки'); ?>
+                        <?php render_media($cert['image_path'], $cert['design_title'], 'cert-image', 'Нет изображения'); ?>
                         <div>
                             <h3><?= e($cert['design_title']) ?></h3>
                             <div class="cert-meta muted">

@@ -120,7 +120,7 @@ require __DIR__ . '/includes/header.php';
 <section class="page-hero stagger-copy">
     <div class="container">
         <h1>Пополнение кошелька</h1>
-        <p>Сертификат только на баланс платформы. Выберите кошелёк, сумму, повод и получателя — справа живой предпросмотр.</p>
+        <p>Сертификат только на баланс платформы. Выберите кошелёк, сумму, повод и получателя. Справа — предпросмотр.</p>
     </div>
 </section>
 
@@ -245,7 +245,7 @@ require __DIR__ . '/includes/header.php';
                 <span class="voucher-platform" data-preview-platform><?= e(platform_label($currentDesign['category'] ?? 'PC')) ?></span>
             </div>
             <div class="preview-frame" data-preview-frame>
-                <?php render_media($currentDesign['image_path'] ?? null, 'Предпросмотр дизайна', 'design-image', 'Место для картинки'); ?>
+                <?php render_media($currentDesign['image_path'] ?? null, 'Предпросмотр дизайна', 'design-image', 'Нет изображения'); ?>
             </div>
             <div class="voucher-amount" data-preview-amount><?= format_money((float) $form['amount']) ?></div>
             <div class="voucher-recipient">для <strong data-preview-recipient><?= e($form['recipient_name'] !== '' ? $form['recipient_name'] : 'получателя') ?></strong></div>

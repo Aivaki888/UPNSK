@@ -68,16 +68,16 @@ require __DIR__ . '/includes/header.php';
 
 <section class="container auth-layout stagger-layout">
     <div class="auth-side">
-        <?php render_media('assets/img/auth.jpg', 'Регистрация', 'auth-media', 'Место для изображения'); ?>
+        <?php render_media('assets/img/auth.jpg', 'Регистрация', 'auth-media', 'Нет изображения'); ?>
         <div class="auth-side-copy stagger-copy">
             <h2>Создайте профиль</h2>
-            <p>После регистрации можно оформлять сертификаты на пополнение кошельков, сохранять получателей и смотреть историю.</p>
+            <p>После регистрации можно оформлять сертификаты и смотреть историю заказов.</p>
         </div>
     </div>
     <div class="auth-card">
         <div class="stagger-copy">
             <h1>Регистрация</h1>
-            <p class="muted">Заполните форму — вход и профиль появятся сразу после создания аккаунта.</p>
+            <p class="muted">Заполните форму. После создания аккаунта откроется профиль.</p>
         </div>
 
         <?php if ($errors): ?>

@@ -60,7 +60,7 @@ require __DIR__ . '/includes/header.php';
                 <span class="voucher-brand">PlayGift</span>
                 <?php render_platform_chip($result['category']); ?>
             </div>
-            <?php render_media($result['image_path'], $result['design_title'], 'design-image', 'Место для картинки'); ?>
+            <?php render_media($result['image_path'], $result['design_title'], 'design-image', 'Нет изображения'); ?>
             <h3><?= e($result['design_title']) ?></h3>
             <div class="voucher-amount"><?= e(format_money((float) $result['amount'])) ?></div>
             <div class="voucher-recipient">для <strong><?= e($result['recipient_name']) ?></strong></div>

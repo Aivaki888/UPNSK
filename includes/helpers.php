@@ -140,7 +140,7 @@ function media_exists(?string $relativePath): bool
     return is_file($full);
 }
 
-function render_media(?string $relativePath, string $alt = '', string $class = 'media-frame', string $hint = 'Место для изображения'): void
+function render_media(?string $relativePath, string $alt = '', string $class = 'media-frame', string $hint = 'Нет изображения'): void
 {
     if (media_exists($relativePath)) {
         echo '<img class="' . e($class) . '" src="' . e($relativePath) . '" alt="' . e($alt) . '">';
@@ -206,12 +206,12 @@ function ensure_extra_tables(): void
     if ($ideaCount === 0) {
         $seed = db()->prepare('INSERT INTO gift_ideas (title, platform, amount, tip, sort_order) VALUES (?, ?, ?, ?, ?)');
         foreach ([
-            ['Ночной рейд', 'PlayStation', 1500, 'Идеально, если друг завис на PS5 и копит на DLC.', 1],
-            ['Game night kit', 'Xbox', 2500, 'Пополнение Xbox перед совместным вечером в мультиплеер.', 2],
-            ['Steam wishlist boost', 'PC', 1000, 'Лёгкий толчок к покупке из вишлиста в распродажу.', 3],
-            ['Турнирный буст', 'PlayStation', 5000, 'Крупный номинал к дню рождения или финалу сезона.', 4],
-            ['Семейный кошелёк', 'Xbox', 1000, 'Небольшой баланс «просто так» — без повода, но с теплом.', 5],
-            ['Indie surprise', 'PC', 500, 'Мини-пополнение: хватит на пару indie-игр в Steam.', 6],
+            ['Ночной рейд', 'PlayStation', 1500, 'Пополнение PSN на DLC или новую игру.', 1],
+            ['Вечер в Xbox', 'Xbox', 2500, 'Пополнение Xbox перед мультиплеером.', 2],
+            ['Распродажа Steam', 'PC', 1000, 'Сумма на покупку из вишлиста в Steam.', 3],
+            ['Турнирный буст', 'PlayStation', 5000, 'Крупный номинал к дню рождения или турниру.', 4],
+            ['Семейный кошелёк', 'Xbox', 1000, 'Небольшой баланс Xbox без конкретного повода.', 5],
+            ['Indie набор', 'PC', 500, 'Небольшое пополнение Steam на несколько игр.', 6],
         ] as $row) {
             $seed->execute($row);
         }
@@ -223,12 +223,12 @@ function ensure_extra_tables(): void
 function message_templates(): array
 {
     return [
-        'С днём рождения! Пусть баланс пригодится на топ-игру.',
-        'За победу в нашем турнире — пополнение на твой кошелёк.',
-        'Спасибо за кооператив. Это тебе на следующий рейд.',
-        'Просто так. Выбери сам, во что вложишь баланс.',
-        'К релизу! Надеюсь, хватит и на игру, и на сезонник.',
-        'Удачных матчей и красивых трофеев.',
+        'С днём рождения! Баланс на новую игру.',
+        'За победу в турнире — пополнение кошелька.',
+        'Спасибо за кооператив. На следующий рейд.',
+        'Просто так. Сам реши, на что потратить.',
+        'К релизу. Хватит на игру и дополнение.',
+        'Удачных матчей.',
     ];
 }
 
@@ -436,16 +436,16 @@ function user_achievements(int $userId): array
         $badges[] = ['title' => 'Щедрый друг', 'hint' => '3+ сертификата', 'tone' => 'xbox'];
     }
     if ($stats['total'] >= 5000) {
-        $badges[] = ['title' => 'High Roller', 'hint' => 'Подарено на 5000 ₽ и больше', 'tone' => 'pc'];
+        $badges[] = ['title' => 'Крупная сумма', 'hint' => 'Подарено от 5000 ₽', 'tone' => 'pc'];
     }
     if (count($stats['platforms']) >= 2) {
-        $badges[] = ['title' => 'Мультиплатформа', 'hint' => 'Подарки на разные кошельки', 'tone' => 'ps'];
+        $badges[] = ['title' => 'Несколько платформ', 'hint' => 'Подарки на разные кошельки', 'tone' => 'ps'];
     }
     if ($favCount >= 2) {
-        $badges[] = ['title' => 'Коллекционер', 'hint' => '2+ дизайна в избранном', 'tone' => 'xbox'];
+        $badges[] = ['title' => 'Избранное', 'hint' => '2+ дизайна в избранном', 'tone' => 'xbox'];
     }
     if (!$badges) {
-        $badges[] = ['title' => 'Новичок PlayGift', 'hint' => 'Откройте заказ или квиз', 'tone' => 'pc'];
+        $badges[] = ['title' => 'Старт', 'hint' => 'Оформите заказ или пройдите квиз', 'tone' => 'pc'];
     }
 
     return $badges;
