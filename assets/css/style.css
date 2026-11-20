@@ -449,6 +449,10 @@ html[data-theme="dark"] .theme-switch-knob {
   gap: 0.85rem;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
